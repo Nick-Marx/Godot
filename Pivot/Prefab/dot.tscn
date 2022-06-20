@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[sub_resource type="SphereShape" id=1]
+
+[sub_resource type="SphereShape" id=2]
+
+[sub_resource type="SphereMesh" id=3]
+
+[sub_resource type="SpatialMaterial" id=4]
+flags_unshaded = true
+albedo_color = Color( 0.360784, 0.945098, 0.0941176, 1 )
+
+[node name="dot_1" type="StaticBody"]
+
+[node name="outer_collision" type="CollisionShape" parent="."]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0 )
+shape = SubResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="inner_collision" type="CollisionShape" parent="."]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0 )
+use_in_baked_light = true
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
