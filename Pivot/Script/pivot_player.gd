@@ -11,5 +11,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	#constantly rotates player. start clockwise
 	rotate_z(-speed)
 	
+	#if btn pressed and dot collider overlap -> get dot pos, move player to dot pos, flip player, change rot direction
+	#if Input.is_action_pressed("action_one") and :
+		#
+		

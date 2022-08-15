@@ -1,6 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [sub_resource type="CylinderShape" id=1]
+radius = 0.5055
 
 [sub_resource type="CylinderMesh" id=2]
 
@@ -11,7 +12,7 @@ albedo_color = Color( 0.101961, 0.101961, 0.101961, 1 )
 [node name="pivot_player" type="KinematicBody"]
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( -4.37114e-09, -1, 0, 0.1, -4.37114e-08, 0, 0, 0, 0.1, 1, 0, 0 )
+transform = Transform( -8.74228e-09, -0.01, 0, 0.2, -4.37114e-10, 0, 0, 0, 0.2, 1.9898, 0, 0 )
 shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
