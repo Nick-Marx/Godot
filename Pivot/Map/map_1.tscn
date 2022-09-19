@@ -26,6 +26,7 @@ environment = SubResource( 1 )
 
 [node name="pivot_player" parent="." instance=ExtResource( 1 )]
 script = ExtResource( 3 )
+speed = 0.125
 
 [node name="dot_1" parent="." instance=ExtResource( 2 )]
 script = ExtResource( 5 )

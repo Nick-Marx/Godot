@@ -23,7 +23,9 @@ action_one={
 
 [physics]
 
+common/physics_fps=30
 common/enable_pause_aware_picking=true
+common/physics_interpolation=true
 
 [rendering]
 
