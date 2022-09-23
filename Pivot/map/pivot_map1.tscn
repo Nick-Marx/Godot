@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://482no3gyatg7"]
+
+[ext_resource type="Script" path="res://map/pivot_map1.gd" id="1_sgxy7"]
+
+[sub_resource type="Environment" id="Environment_s1i21"]
+background_mode = 1
+background_color = Color(0.180392, 0.180392, 0.180392, 1)
+glow_enabled = true
+glow_strength = 2.0
+glow_bloom = 0.5
+
+[node name="pivot_map1" type="Node3D"]
+script = ExtResource("1_sgxy7")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_s1i21")
