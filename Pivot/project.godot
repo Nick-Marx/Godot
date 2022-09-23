@@ -8,6 +8,28 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "RigidBody",
+"class": "RigidBodyFwd",
+"language": "GDScript",
+"path": "res://Prefab/RigidBodyFwd.gd"
+}, {
+"base": "StaticBody",
+"class": "dot",
+"language": "GDScript",
+"path": "res://Script/dot.gd"
+}, {
+"base": "KinematicBody",
+"class": "pivot_player",
+"language": "GDScript",
+"path": "res://Script/pivot_player.gd"
+} ]
+_global_script_class_icons={
+"RigidBodyFwd": "",
+"dot": "",
+"pivot_player": ""
+}
+
 [application]
 
 config/name="Pivot"
