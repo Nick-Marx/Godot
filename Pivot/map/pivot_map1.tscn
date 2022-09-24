@@ -1,16 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://482no3gyatg7"]
+[gd_scene load_steps=5 format=3 uid="uid://482no3gyatg7"]
 
 [ext_resource type="Script" path="res://map/pivot_map1.gd" id="1_sgxy7"]
+[ext_resource type="PackedScene" uid="uid://dfj1phxwqp4ge" path="res://map/dot_1.tscn" id="2_7s6mv"]
+[ext_resource type="PackedScene" uid="uid://bnjh58oqrdu6c" path="res://player/pivot_player.tscn" id="3_2dkv4"]
 
 [sub_resource type="Environment" id="Environment_s1i21"]
 background_mode = 1
 background_color = Color(0.180392, 0.180392, 0.180392, 1)
 glow_enabled = true
+glow_intensity = 2.0
 glow_strength = 2.0
-glow_bloom = 0.5
 
 [node name="pivot_map1" type="Node3D"]
 script = ExtResource("1_sgxy7")
 
+[node name="pivot_player" parent="." instance=ExtResource("3_2dkv4")]
+
+[node name="DirectionalLight3d" type="DirectionalLight3D" parent="pivot_player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 60)
+
+[node name="Camera3d" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 10)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_s1i21")
+
+[node name="dot_1" parent="." instance=ExtResource("2_7s6mv")]
+
+[node name="dot_2" parent="." instance=ExtResource("2_7s6mv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
