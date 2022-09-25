@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dg4066jsu1k2a"]
+[gd_scene load_steps=7 format=3 uid="uid://dg4066jsu1k2a"]
 
 [ext_resource type="Script" path="res://map/dot_0.gd" id="1_da24s"]
 
@@ -17,33 +17,17 @@ backlight_texture = SubResource("GradientTexture2D_l1vgb")
 [sub_resource type="SphereMesh" id="SphereMesh_6quan"]
 material = SubResource("StandardMaterial3D_1fy2r")
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_mr53o"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_q8say"]
-
 [node name="dot_0" type="StaticBody3D"]
 script = ExtResource("1_da24s")
 
-[node name="CollisionShape3d" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3dOuter" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_6ej5q")
+
+[node name="CollisionShape3dInner" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 shape = SubResource("SphereShape3D_6ej5q")
 
 [node name="MeshInstance3d" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("SphereMesh_6quan")
-
-[node name="Area3dOuter" type="Area3D" parent="."]
-
-[node name="CollisionShape3d" type="CollisionShape3D" parent="Area3dOuter"]
-shape = SubResource("SphereShape3D_mr53o")
-
-[node name="Area3dInner" type="Area3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-
-[node name="CollisionShape3d" type="CollisionShape3D" parent="Area3dInner"]
-shape = SubResource("SphereShape3D_q8say")
-
-[connection signal="body_entered" from="Area3dOuter" to="." method="_on_area_3d_outer_body_entered"]
-[connection signal="body_exited" from="Area3dOuter" to="." method="_on_area_3d_outer_body_exited"]
-[connection signal="body_entered" from="Area3dInner" to="." method="_on_area_3d_inner_body_entered"]
-[connection signal="body_exited" from="Area3dInner" to="." method="_on_area_3d_inner_body_exited"]

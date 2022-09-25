@@ -8,16 +8,6 @@
 
 config_version=5
 
-_global_script_classes=[{
-"base": "StaticBody3D",
-"class": &"dot_0",
-"language": &"GDScript",
-"path": "res://map/dot_0.gd"
-}]
-_global_script_class_icons={
-"dot_0": ""
-}
-
 [application]
 
 config/name="Pivot"
