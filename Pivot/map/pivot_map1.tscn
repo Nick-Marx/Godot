@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://482no3gyatg7"]
+[gd_scene load_steps=5 format=3 uid="uid://dgatn785fg52c"]
 
 [ext_resource type="Script" path="res://map/pivot_map1.gd" id="1_sgxy7"]
-[ext_resource type="PackedScene" uid="uid://dfj1phxwqp4ge" path="res://map/dot_1.tscn" id="2_7s6mv"]
+[ext_resource type="PackedScene" uid="uid://dg4066jsu1k2a" path="res://map/dot_0.tscn" id="2_7s6mv"]
 [ext_resource type="PackedScene" uid="uid://bnjh58oqrdu6c" path="res://player/pivot_player.tscn" id="3_2dkv4"]
 
 [sub_resource type="Environment" id="Environment_s1i21"]
@@ -25,7 +25,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 10)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_s1i21")
 
+[node name="dot_0" parent="." instance=ExtResource("2_7s6mv")]
+
 [node name="dot_1" parent="." instance=ExtResource("2_7s6mv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 
 [node name="dot_2" parent="." instance=ExtResource("2_7s6mv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 0)
+
+[node name="dot_3" parent="." instance=ExtResource("2_7s6mv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="dot_4" parent="." instance=ExtResource("2_7s6mv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 0)
+
+[node name="dot_5" parent="." instance=ExtResource("2_7s6mv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="dot_6" parent="." instance=ExtResource("2_7s6mv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -2, 0)
+
+[node name="dot_7" parent="." instance=ExtResource("2_7s6mv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="dot_8" parent="." instance=ExtResource("2_7s6mv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2, 0)

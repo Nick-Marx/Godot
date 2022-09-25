@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://dfj1phxwqp4ge"]
+[gd_scene load_steps=9 format=3 uid="uid://dg4066jsu1k2a"]
 
-[ext_resource type="Script" path="res://map/dot_1.gd" id="1_da24s"]
+[ext_resource type="Script" path="res://map/dot_0.gd" id="1_da24s"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6ej5q"]
 
@@ -21,7 +21,7 @@ material = SubResource("StandardMaterial3D_1fy2r")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_q8say"]
 
-[node name="dot_1" type="StaticBody3D"]
+[node name="dot_0" type="StaticBody3D"]
 script = ExtResource("1_da24s")
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="."]
