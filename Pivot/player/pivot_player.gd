@@ -37,18 +37,18 @@ func outer_dot_action_press(body):
 	if Input.is_action_just_pressed("action_one") or Input.is_action_pressed("action_one"):
 		global_position = body.global_position
 		rotate_z(PI)
-		change_rotation_dir()
 		speed = loSpd #sets player speed to low and changes direction
+		change_rotation_dir()
 		print("outer: ", global_position)
 	
 func inner_dot_action_press(body):
 	if body.global_position == prevDotPos:
 		return
-	if Input.is_action_just_pressed("action_one"):
+	if Input.is_action_just_pressed("action_one") or Input.is_action_pressed("action_one"):
 		global_position = body.global_position
 		rotate_z(PI)
-		change_rotation_dir()
 		speed = hiSpd #sets player speed to low and changes direction
+		change_rotation_dir()
 		print("inner: ", global_position)
 	
 
