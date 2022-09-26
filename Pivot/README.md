@@ -29,7 +29,7 @@ After suffering a headache and bout of possibly food poisoning, I let my frustra
 
 Behold! A stick, jumping between colored dots, while alternating rotation speed and direction. Don't let my skills fool you, timing the center of the dots to increase rotation speed is actually quite tricky.
 
-![](https://github.com/Nick-Marx/Godot/Pivot/README/pivot_first_success.gif)
+![](https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_first_success.gif)
 
 ## **Second Success**
 
