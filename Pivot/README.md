@@ -13,7 +13,7 @@ Pivot is based off an old Mac game that I played in the mid 90's called Spin Doc
 
 ## **Game Summary**
 
-
+WIP
 
 ## **Initial Setup**
 
@@ -33,8 +33,9 @@ Behold! A stick, jumping between colored dots, while alternating rotation speed 
 
 ## **Second Success**
 
-Hmm
+WIP
 
 ## **Final Thoughts**
 
+WIP
 Each task in this project challenged me to consider things in a broader scope and think in terms of code reusability and efficiency. Using blueprints definately helped with this and being able to visialize the interactions between classes, objects, variables, and functions. Thank you [The Tech Academy](https://www.learncodinganywhere.com/) for giving me this opportunity and helping me succeed.
