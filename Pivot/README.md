@@ -29,7 +29,7 @@ After suffering a headache and possibly a bout of food poisoning, I let my frust
 
 Behold! A stick, jumping between colored dots, while alternating rotation speed and direction. Don't let my skills fool you, timing the center of the dots to increase rotation speed is actually quite tricky.
 
-![](https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_first_success.gif)
+![](/README/pivot_first_success.gif)
 
 ## **Second Success -- Changing Colors**
 
@@ -39,7 +39,7 @@ I spent about 10 hours testing out different approaches based on hints I got onl
 
 Forgive me if I didn't find the most efficient or practical way to do this, but it works.
 
-![](https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_second_success.gif)
+![](/README/pivot_second_success.gif)
 
 ## **Final Thoughts**
 
