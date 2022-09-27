@@ -41,6 +41,10 @@ Forgive me if I didn't find the most efficient or practical way to do this, but 
 
 ![](https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_second_success.gif)
 
+After another hour of tinkering I got more colors and a scoreboard.
+
+![](https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_second_success2.gif)
+
 ## **Final Thoughts**
 
 WIP
