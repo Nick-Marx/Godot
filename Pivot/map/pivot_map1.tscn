@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgatn785fg52c"]
+[gd_scene load_steps=8 format=3 uid="uid://dgatn785fg52c"]
 
 [ext_resource type="Script" path="res://map/pivot_map1.gd" id="1_sgxy7"]
 [ext_resource type="PackedScene" uid="uid://dg4066jsu1k2a" path="res://map/dot_0.tscn" id="2_7s6mv"]
 [ext_resource type="PackedScene" uid="uid://bnjh58oqrdu6c" path="res://player/pivot_player.tscn" id="3_2dkv4"]
+[ext_resource type="SphereMesh" uid="uid://n4v16njmbkqc" path="res://material/red_dot.tres" id="4_6k8mi"]
+[ext_resource type="Script" path="res://map/Score.gd" id="5_rof77"]
 
 [sub_resource type="Environment" id="Environment_s1i21"]
 background_mode = 1
@@ -10,6 +12,9 @@ background_color = Color(0.180392, 0.180392, 0.180392, 1)
 glow_enabled = true
 glow_intensity = 2.0
 glow_strength = 2.0
+
+[sub_resource type="Theme" id="Theme_ikn15"]
+default_font_size = 38
 
 [node name="pivot_map1" type="Node3D"]
 script = ExtResource("1_sgxy7")
@@ -39,6 +44,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 [node name="dot_4" parent="." instance=ExtResource("2_7s6mv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 0)
 
+[node name="MeshInstance3d" parent="dot_4" index="2"]
+mesh = ExtResource("4_6k8mi")
+
 [node name="dot_5" parent="." instance=ExtResource("2_7s6mv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 
@@ -48,5 +56,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -2, 0)
 [node name="dot_7" parent="." instance=ExtResource("2_7s6mv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
+[node name="MeshInstance3d" parent="dot_7" index="2"]
+mesh = ExtResource("4_6k8mi")
+
 [node name="dot_8" parent="." instance=ExtResource("2_7s6mv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2, 0)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Score" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 2.6
+anchor_bottom = 1.65
+offset_left = 64.0
+offset_top = 52.0
+offset_right = 51.0
+offset_bottom = 16.0
+theme = SubResource("Theme_ikn15")
+text = "Score: 0"
+script = ExtResource("5_rof77")
+
+[editable path="dot_4"]
+[editable path="dot_7"]

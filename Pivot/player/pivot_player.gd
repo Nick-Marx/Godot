@@ -38,6 +38,7 @@ func outer_dot_action_press(body):
 		rotate_z(PI)
 		speed = loSpd #sets player speed to low and changes direction
 		change_rotation_dir()
+		body.change_dot_color()
 		#print("outer: ", global_position)
 
 #ctrl move and spd of player from one dot to another
@@ -49,6 +50,7 @@ func inner_dot_action_press(body):
 		rotate_z(PI)
 		speed = hiSpd #sets player speed to low and changes direction
 		change_rotation_dir()
+		body.change_dot_color()
 		#print("inner: ", global_position)
 
 #signal gathers info on overlapping dot
