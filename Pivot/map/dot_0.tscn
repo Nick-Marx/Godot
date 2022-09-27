@@ -1,21 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dg4066jsu1k2a"]
+[gd_scene load_steps=4 format=3 uid="uid://dg4066jsu1k2a"]
 
 [ext_resource type="Script" path="res://map/dot_0.gd" id="1_da24s"]
+[ext_resource type="SphereMesh" uid="uid://breifxkrokbd2" path="res://material/white_dot.tres" id="2_0bq3l"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6ej5q"]
-
-[sub_resource type="Gradient" id="Gradient_jvjrk"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_l1vgb"]
-gradient = SubResource("Gradient_jvjrk")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1fy2r"]
-albedo_color = Color(0.392157, 1, 0.392157, 1)
-backlight = Color(0, 1, 0, 1)
-backlight_texture = SubResource("GradientTexture2D_l1vgb")
-
-[sub_resource type="SphereMesh" id="SphereMesh_6quan"]
-material = SubResource("StandardMaterial3D_1fy2r")
 
 [node name="dot_0" type="StaticBody3D"]
 script = ExtResource("1_da24s")
@@ -30,4 +18,4 @@ shape = SubResource("SphereShape3D_6ej5q")
 
 [node name="MeshInstance3d" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-mesh = SubResource("SphereMesh_6quan")
+mesh = ExtResource("2_0bq3l")
