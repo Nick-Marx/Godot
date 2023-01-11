@@ -1,15 +1,22 @@
-# **Pivot**  
+<table style="border: none;">
+	<th>
+		# **Pivot**  
+	</th>
+	<tr>
+		Pivot is a solo project made using the Godot 4.x Engine/GDScript. It is my first project since completeing The Tech Academy's Game Developer Course.  
+		Start date: 24/09/22 (originally 26/06/22 using Godot 3.x, but had to start over after engine upgrade)  
 
-Pivot is a solo project made using the Godot 4.x Engine/GDScript. It is my first project since completeing The Tech Academy's Game Developer Course.  
-Start date: 24/09/22 (originally 26/06/22 using Godot 3.x, but had to start over after engine upgrade)  
+		Skill level: Novice  
+	</tr>
 
-Skill level: Novice  
+	<th>
+		## **Overview** 
+	</th>
+	<tr>
+		This project is based off of an idea I've been holding for a few years now, along with several others, since I first made the decision to persue game development. I chose this project for it's simplicity yet wide range of concepts to help me practice.  
 
-## **Overview**  
-
-This project is based off of an idea I've been holding for a few years now, along with several others, since I first made the decision to persue game development. I chose this project for it's simplicity yet wide range of concepts to help me practice.  
-
-Pivot is based off an old Mac game that I played in the mid 90's called Spin Doctor. It was very rudimentary in its concepts, so I figured I might be able to recreate a semblance of the game while improving upon it.  
+		Pivot is based off an old Mac game that I played in the mid 90's called Spin Doctor. It was very rudimentary in its concepts, so I figured I might be able to recreate a semblance of the game while improving upon it.  
+	</tr>
 
 ## **Game Summary**  
 
@@ -27,9 +34,9 @@ Getting the first map, a 'dot' object, and player made were relatively simple an
 
 After suffering a headache and possibly a bout of food poisoning, I let my frustration get the better of me and decided to create a new branch in GitHub Desktop to see if coding player movement off the player script would work. This turned out to be the right choice, not only was I able to reproduce the same effects with about 50% less code, but it feels like I was able to fine-tune it more too.  
 
-<table style="border: none;">
+
 	<tr>
-		<td>
+		<td align=top>
 			Behold! A stick, jumping between colored dots, while alternating rotation speed and direction. Don't let my skills fool you, timing the center of the dots to increase rotation speed is actually quite tricky.
 		</td>
 		<td>
@@ -56,3 +63,6 @@ After another hour of tinkering I got more colors and a scoreboard.
 
 WIP - Placeholder Text -  
 Each task in this project challenged me to consider things in a broader scope and think in terms of code reusability and efficiency. Using blueprints definately helped with this and being able to visialize the interactions between classes, objects, variables, and functions. Thank you [The Tech Academy](https://www.learncodinganywhere.com/) for giving me this opportunity and helping me succeed.
+	<tr>
+	
+	</tr>
