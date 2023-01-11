@@ -29,8 +29,8 @@ After suffering a headache and possibly a bout of food poisoning, I let my frust
 
 <div>
 	<span>
+		<img width=150 src="https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_first_success.gif" >
 		Behold! A stick, jumping between colored dots, while alternating rotation speed and direction. Don't let my skills fool you, timing the center of the dots to increase rotation speed is actually quite tricky.
-	<img width=150 src="https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_first_success.gif" >
 	</span>
 </div>
 
