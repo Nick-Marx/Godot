@@ -29,7 +29,9 @@ After suffering a headache and possibly a bout of food poisoning, I let my frust
 
 <div style="display: flex; flex-wrap: wrap;>
 	<div style="flex: 80%;">
-		Behold! A stick, jumping between colored dots, while alternating rotation speed and direction. Don't let my skills fool you, timing the center of the dots to increase rotation speed is actually quite tricky.
+		<p>
+			Behold! A stick, jumping between colored dots, while alternating rotation speed and direction. Don't let my skills fool you, timing the center of the dots to increase rotation speed is actually quite tricky.
+		</p>
 	</div>
 	<div style="flex: 20%;">
 		<img width=150 src="https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_first_success.gif" >
