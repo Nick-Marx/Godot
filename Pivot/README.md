@@ -27,11 +27,11 @@ Getting the first map, a 'dot' object, and player made were relatively simple an
 
 After suffering a headache and possibly a bout of food poisoning, I let my frustration get the better of me and decided to create a new branch in GitHub Desktop to see if coding player movement off the player script would work. This turned out to be the right choice, not only was I able to reproduce the same effects with about 50% less code, but it feels like I was able to fine-tune it more too.  
 
-<div>
-	<span>
-		<img width=150 src="https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_first_success.gif" >
+<div style="display: flex; justify-content: space-between;>
+	<p>
 		Behold! A stick, jumping between colored dots, while alternating rotation speed and direction. Don't let my skills fool you, timing the center of the dots to increase rotation speed is actually quite tricky.
-	</span>
+		<img width=150 src="https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_first_success.gif" >
+	</p>
 </div>
 
 
