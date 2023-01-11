@@ -36,7 +36,7 @@ After suffering a headache and possibly a bout of food poisoning, I let my frust
 			<img width=150 src="https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_first_success.gif" >
 		</td>
 	</tr>
-</div>
+</table>
 
 
 ## **Second Success -- Changing Colors**  
