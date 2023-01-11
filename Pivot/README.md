@@ -1,5 +1,5 @@
 <div>
-<table style="border: none;">
+<table>
 	<tr>
 		# **Pivot**
 	</tr>
