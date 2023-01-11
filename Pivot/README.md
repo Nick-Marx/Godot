@@ -47,5 +47,5 @@ After another hour of tinkering I got more colors and a scoreboard.
 
 ## **Final Thoughts**
 
-WIP
+WIP - Placeholder Text -
 Each task in this project challenged me to consider things in a broader scope and think in terms of code reusability and efficiency. Using blueprints definately helped with this and being able to visialize the interactions between classes, objects, variables, and functions. Thank you [The Tech Academy](https://www.learncodinganywhere.com/) for giving me this opportunity and helping me succeed.
