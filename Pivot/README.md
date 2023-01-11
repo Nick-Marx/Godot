@@ -1,3 +1,4 @@
+<div>
 <table style="border: none;">
 	<tr>
 		# **Pivot**
@@ -47,7 +48,7 @@
 		</td>
 	</tr>
 </table>
-
+</div>
 
 ## **Second Success -- Changing Colors**  
 
