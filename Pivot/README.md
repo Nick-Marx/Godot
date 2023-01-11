@@ -33,7 +33,8 @@ Behold! A stick, jumping between colored dots, while alternating rotation speed 
 
 ## **Second Success -- Changing Colors**  
 
-'*Long Inhale*'  So... This step was more aggrovating than it should have been. Not only were there no solid answers online, but the solution seemed to come from the left while I was looking right.
+'*Long Inhale*'  
+So... This step was more aggrovating than it should have been. Not only were there no solid answers online, but the solution seemed to come from the left while I was looking right.
 It turns out that Godot conserves memory by sharing the Material resource amongst every instance of an object that uses the Material. So if I try to change the color of the Material, it changes the color across all instances.
 I spent about 10 hours testing out different approaches based on hints I got online. What finally ended up working was creating seperate Mesh files for each color that I intend to use, then loading the Meshes into their own variable and applying it whenever I want to change an objects color.  
 
