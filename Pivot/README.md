@@ -1,6 +1,6 @@
 <table style="border: none;">
 	<tr>
-		<th># **Pivot**</th>
+		# **Pivot**
 	</tr>
 	<tr>
 		Pivot is a solo project made using the Godot 4.x Engine/GDScript. It is my first project since completeing The Tech Academy's Game Developer Course.  
@@ -9,7 +9,7 @@
 		Skill level: Novice  
 	</tr>
 	<tr>
-		<th>## **Overview**</th>
+		## **Overview**
 	</tr>
 	<tr>
 		This project is based off of an idea I've been holding for a few years now, along with several others, since I first made the decision to persue game development. I chose this project for it's simplicity yet wide range of concepts to help me practice.  
