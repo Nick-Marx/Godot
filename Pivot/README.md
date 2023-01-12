@@ -47,7 +47,7 @@ Forgive me if I didn't find the most efficient or practical way to do this, but 
 
 <br>
 After another hour of tinkering I got more colors and a scoreboard.  
-
+<br>
 <div align="center">
 <img height=300 src="https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_second_success2.gif"/>  
 </div>
