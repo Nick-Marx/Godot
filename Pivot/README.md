@@ -27,11 +27,11 @@ Being new to Godot, I watched a few tutorials for 2d and 3d until I decided on u
 
 Getting the first map, a 'dot' object, and player made were relatively simple and I don't really consider this my first success since a few images floating in space seemed trivial. I spent about 12 hours researching and trying to find/plan out the best way to control the player in relation to the dots. In hindsight, my first attempt was good, but not efficient. Contrary to my first instinct, I decided to build the player movement handling off of the dot scripts since it seemed easiest to pull the positioning of the dots this way as well as control their signals (events).  
 
-Points_cAfter suffering a headache and possibly a bout of food poisoning, I let my frustration get the better of me and decided to create a new branch in GitHub Desktop to see if coding player movement off the player script would work. This turned out to be the right choice, not only was I able to reproduce the same effects with about 50% less code, but it feels like I was able to fine-tune it more too.  
+After suffering a headache and possibly a bout of food poisoning, I let my frustration get the better of me and decided to create a new branch in GitHub Desktop to see if coding player movement off the player script would work. This turned out to be the right choice, not only was I able to reproduce the same effects with about 50% less code, but it feels like I was able to fine-tune it more too.  
 
-Behold! A stick, jumping between colored dots, while alternating rotation speed and direction. Don't let my skills fool you, timing the center of the dots to increase rotation speed is actually quite tricky.  
+Behold! A stick, jumping between colored dots, while alternating rotation speed and direction. Don't let my skills fool you, timing the center of the dots to increase rotation speed is actually quite tricky. The player can hold down the action button to jump to the next dot, but it won't register as a 'center hit' and won't increase speed.  
 <div align="center">
-<img height=200 src="https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_first_success.gif"/>  
+<img height=300 src="https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_first_success.gif"/>  
 </div>
 
 ## **Second Success -- Changing Colors**  
@@ -41,12 +41,13 @@ So... This step was more aggrovating than it should have been. Not only were the
   
 Forgive me if I didn't find the most efficient or practical way to do this, but it works.  
 <div align="center">
-<img height=200 src="https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_second_success.gif"/>  
-</div>
-   
+<img height=300 src="https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_second_success.gif"/>  
+</div>  
+  
+  
 After another hour of tinkering I got more colors and a scoreboard.  
 <div align="center">
-<img align="center" height=200 src="https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_second_success2.gif"/>  
+<img align="center" height=300 src="https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_second_success2.gif"/>  
 </div>
   
 ## **Final Thoughts**  
