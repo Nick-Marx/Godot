@@ -29,12 +29,12 @@ Getting the first map, a 'dot' object, and player made were relatively simple an
 
 Points_cAfter suffering a headache and possibly a bout of food poisoning, I let my frustration get the better of me and decided to create a new branch in GitHub Desktop to see if coding player movement off the player script would work. This turned out to be the right choice, not only was I able to reproduce the same effects with about 50% less code, but it feels like I was able to fine-tune it more too.  
 
-<img align="right" width=200 src="https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_first_success.gif"/>
+<img align="right" width=200 src="https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_first_success.gif"/>  
 Behold! A stick, jumping between colored dots, while alternating rotation speed and direction. Don't let my skills fool you, timing the center of the dots to increase rotation speed is actually quite tricky.
 
 ## **Second Success -- Changing Colors**  
-----
-/*Long Inhale/*  
+
+\*Long Inhale\*  
 So... This step was more aggrovating than it should have been. Not only were there no solid answers online, but the solution seemed to come from the left while I was looking right. It turns out that Godot conserves memory by sharing the Material resource amongst every instance of an object that uses the Material. So if I try to change the color of the Material, it changes the color across all instances. I spent about 10 hours testing out different approaches based on hints I got online. What finally ended up working was creating seperate Mesh files for each color that I intend to use, then loading the Meshes into their own variable and applying it whenever I want to change an objects color.  
 
 Forgive me if I didn't find the most efficient or practical way to do this, but it works.  
