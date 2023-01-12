@@ -4,8 +4,7 @@
 Pivot is a solo project made using the Godot 4.x Engine/GDScript. It is my first project since completeing The Tech Academy's Game Developer Course.  
 Start date: 24/09/22 (originally 26/06/22 using Godot 3.x, but had to start over after engine upgrade)  
 ---|
-Skill level: Novice  
----|
+Skill level: Novice  |
 ## **Overview**
 
 This project is based off of an idea I've been holding for a few years now, along with several others, since I first made the decision to persue game development. I chose this project for it's simplicity yet wide range of concepts to help me practice.  
