@@ -49,7 +49,7 @@ Forgive me if I didn't find the most efficient or practical way to do this, but 
 After another hour of tinkering I got more colors and a scoreboard.  
 
 <div align="center">
-<img align="center" height=300 src="https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_second_success2.gif"/>  
+<img height=300 src="https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_second_success2.gif"/>  
 </div>
   
 ## **Final Thoughts**  
