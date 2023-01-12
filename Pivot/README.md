@@ -39,16 +39,13 @@ So... This step was more aggrovating than it should have been. Not only were the
 
 Forgive me if I didn't find the most efficient or practical way to do this, but it works.  
 
-![](https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_second_success.gif)  
+<img align="right" width=200 src="https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_second_success.gif"/>  
 
 After another hour of tinkering I got more colors and a scoreboard.  
   
-![](https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_second_success2.gif)  
+<img align="right" width=200 src="https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_second_success2.gif"/>  
 
 ## **Final Thoughts**  
 
 WIP - Placeholder Text -  
 Each task in this project challenged me to consider things in a broader scope and think in terms of code reusability and efficiency. Using blueprints definately helped with this and being able to visialize the interactions between classes, objects, variables, and functions. Thank you [The Tech Academy](https://www.learncodinganywhere.com/) for giving me this opportunity and helping me succeed.
-	<tr>
-	
-	</tr>
