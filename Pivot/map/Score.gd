@@ -1,6 +1,6 @@
 extends Label
 
-var score:int = 0
+var score:int = 1
 var dot:StaticBody3D
 # Called when the node enters the scene tree for the first time.
 func _ready():

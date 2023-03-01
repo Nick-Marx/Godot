@@ -20,13 +20,9 @@ func change_dot_color():
 		$MeshInstance3d.set_mesh(yellowDot)
 
 func _ready():
-	pp = get_node_or_null("../pivot_player")
-	if pp != null:
-		if global_position == pp.global_position:
-			$MeshInstance3d.set_mesh(greenDot)
 	scoreBoard = get_node_or_null("../Control/Score")
 
+
 func _physics_process(delta):
-#	if global_position == pp.global_position:
-#		change_dot_color()
+	
 	pass
