@@ -1,5 +1,5 @@
 
-# **Pivot**
+# **Pivot Devlog**
 
 Pivot is a solo project made using the Godot 4.x Engine/GDScript. It is my first project since completeing The Tech Academy's Game Developer Course.  
 

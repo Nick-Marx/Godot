@@ -1,6 +1,6 @@
 extends Node3D
 
-#@onready var pp = $pivot_player #holds pivot_player node
+@onready var pp = $pivot_player #holds pivot_player node
 
 var rand = RandomNumberGenerator.new()
 @export var dot: PackedScene #load selectable packed scene
@@ -22,8 +22,8 @@ func build_map():
 	var tempDot
 	var startingColor
 	rand.randomize() #ensures the random generation will not repeat every time
-	for x in range(-10, 11, 2):#nested for loop to assign grid
-		for y in range(-10, 11, 2):
+	for x in range(-12, 13, 2):#nested for loop to assign grid
+		for y in range(-12, 13, 2):
 			tempDot = dot.instantiate() #instantiate packed scene as a node
 			add_child(tempDot) #adds node to tree as child of this script owner
 			tempDot.global_position = Vector3(x, y, 0) #sets node position
