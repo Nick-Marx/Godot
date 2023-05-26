@@ -2,18 +2,25 @@ extends CharacterBody3D
 
 
 @export var speed:float = -0.0125 #holds rotation speed
+#@onready var map = load("res://map/pivot_map1.gd") #holds map1 node - tentative
 var hiSpd:float = 0.05 #rot spd cieling
 var loSpd:float = 0.0125 #rot spd floor
 const rotDir:int = -1 #used to change rotation direction
 var isActive:bool = false #?true if player currently overlapping a dot
 var innerActive:bool = false #?true if player touching dot center
 var activeBody #holds object of currently overlapping dot
-var prevDotPos #holds glob pos of prev dot
+@onready var passedDotPos:Vector3 #holds glob pos of prev touched dot
+var rand = RandomNumberGenerator.new()
+var didMove:bool = false
+#var whiteDot:Mesh = load("res://material/white_dot.tres")
+#var redDot:Mesh = load("res://material/red_dot.tres")
+#var greenDot:Mesh = load("res://material/green_dot.tres")
+
 
 
 func _ready():
-	prevDotPos = global_position
-	print(name)
+	#print(name)
+	pass
 
 func change_rotation_dir():
 	hiSpd *= rotDir
@@ -25,32 +32,35 @@ func _physics_process(delta):
 	if innerActive:
 		inner_dot_action_press(activeBody)
 		isActive = false
+		
 	if isActive and !innerActive:
 		outer_dot_action_press(activeBody)
 		isActive = false
 
 #ctrl move and spd of player from one dot to another
 func outer_dot_action_press(body):
-	if body.global_position == prevDotPos:
+	if body.global_position == passedDotPos:
 		return
 	if Input.is_action_just_pressed("action_one") or Input.is_action_pressed("action_one"):
-		global_position = body.global_position
+		self.global_position = body.global_position
 		rotate_z(PI)
 		speed = loSpd #sets player speed to low and changes direction
 		change_rotation_dir()
 		body.change_dot_color()
+		didMove = true
 		#print("outer: ", global_position)
 
 #ctrl move and spd of player from one dot to another
 func inner_dot_action_press(body):
-	if body.global_position == prevDotPos:
+	if body.global_position == passedDotPos:
 		return
 	if Input.is_action_just_pressed("action_one") or Input.is_action_pressed("action_one"):
-		global_position = body.global_position
+		self.global_position = body.global_position
 		rotate_z(PI)
 		speed = hiSpd #sets player speed to low and changes direction
 		change_rotation_dir()
 		body.change_dot_color()
+		didMove = true #sets whether player has recently moved
 		#print("inner: ", global_position)
 
 #signal gathers info on overlapping dot
@@ -72,5 +82,6 @@ func _on_area_3d_body_shape_exited(body_rid, body, body_shape_index, local_shape
 	if local_shape_index == 0:
 		isActive = false
 		activeBody = null
-	if body_shape_index == 0 and body.global_position == prevDotPos:
-		prevDotPos = global_position
+	if body_shape_index == 0 and body.global_position == passedDotPos:
+		passedDotPos = global_position
+			

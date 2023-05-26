@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgatn785fg52c"]
+[gd_scene load_steps=7 format=3 uid="uid://dgatn785fg52c"]
 
 [ext_resource type="Script" path="res://map/pivot_map1.gd" id="1_sgxy7"]
 [ext_resource type="PackedScene" uid="uid://dg4066jsu1k2a" path="res://map/dot_0.tscn" id="2_7s6mv"]
-[ext_resource type="PackedScene" uid="uid://bnjh58oqrdu6c" path="res://player/pivot_player.tscn" id="3_2dkv4"]
 [ext_resource type="Script" path="res://map/Camera3d.gd" id="4_ohpi4"]
 [ext_resource type="Script" path="res://map/Score.gd" id="5_rof77"]
 
@@ -21,14 +20,8 @@ script = ExtResource("1_sgxy7")
 dot = ExtResource("2_7s6mv")
 dotRatio = 0.2
 
-[node name="pivot_player" parent="." instance=ExtResource("3_2dkv4")]
-
-[node name="DirectionalLight3d" type="DirectionalLight3D" parent="pivot_player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
-
-[node name="Camera3d" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
+[node name="Camera3d" type="Camera3D" parent="."]
 script = ExtResource("4_ohpi4")
-target = NodePath("../pivot_player")
 smoothSpeed = 1.0
 offset = Vector3(0, 0, 10)
 
@@ -51,5 +44,4 @@ offset_top = 52.0
 offset_right = 51.0
 offset_bottom = 16.0
 theme = SubResource("Theme_ikn15")
-text = "Score: 1"
 script = ExtResource("5_rof77")

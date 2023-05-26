@@ -1,6 +1,6 @@
 extends Camera3D
 
-@export var target:Node #what the camera follows
+@onready var target = PivotPlayer #what the camera follows
 @export var smoothSpeed:float
 @export var offset:Vector3
 

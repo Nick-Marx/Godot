@@ -1,7 +1,6 @@
 extends StaticBody3D
 
 
-var pp #pivot_player object
 var scoreBoard:Label
 var greenDot:Mesh = load("res://material/green_dot.tres")
 var whiteDot:Mesh = load("res://material/white_dot.tres")

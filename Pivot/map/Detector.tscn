@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://8gtmukf06acl"]
+
+[ext_resource type="Script" path="res://map/Detector.gd" id="1_8divn"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nmfsv"]
+
+[node name="Detector" type="Area3D"]
+script = ExtResource("1_8divn")
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1.09278e-08, -0.25, 0, 0.25, -1.09278e-08, 0, 0, 0, 0.25, 0, 0, 0)
+shape = SubResource("SphereShape3D_nmfsv")
+
+[connection signal="body_entered" from="." to="." method="_on_detector_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_detector_body_exited"]
