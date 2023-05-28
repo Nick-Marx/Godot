@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 PivotPlayer="*res://player/pivot_player.tscn"
-Detector="*res://map/Detector.tscn"
 
 [display]
 

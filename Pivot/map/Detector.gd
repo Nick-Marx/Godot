@@ -1,6 +1,7 @@
 extends Area3D
 
 var isColliding:bool = false
+signal Collided
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,4 +20,4 @@ func _on_detector_body_entered(body):
 
 func _on_detector_body_exited(body):
 	isColliding = false
-	print("exited: ", body, "\n")
+	print("exited: ", body, " [", self.global_position,"]", "\n")
