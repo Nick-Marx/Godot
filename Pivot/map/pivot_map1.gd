@@ -2,7 +2,7 @@ extends Node3D
 
 
 #@onready var ppScript = load("res://player/pivot_player.gd").new() #holds pivot_player script
-@onready var pp = PivotPlayer #holds player singleton*
+@onready var pp = PivotPlayer.get_child(0) #holds player singleton*
 var rand = RandomNumberGenerator.new()
 @export var dot:PackedScene #holds dot scene object
 @export var dotRatio:float #percentage of red dots generated

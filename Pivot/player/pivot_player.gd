@@ -1,8 +1,8 @@
 extends CharacterBody3D
 
 
+@onready var pp = PivotPlayer
 @export var speed:float = -0.0125 #holds rotation speed
-#@onready var map = load("res://map/pivot_map1.gd") #holds map1 node - tentative
 var hiSpd:float = 0.05 #rot spd cieling
 var loSpd:float = 0.0125 #rot spd floor
 const rotDir:int = -1 #used to change rotation direction
@@ -39,7 +39,7 @@ func outer_dot_action_press(body):
 	if body.global_position == passedDotPos:
 		return
 	if Input.is_action_just_pressed("action_one") or Input.is_action_pressed("action_one"):
-		self.global_position = body.global_position
+		pp.global_position = body.global_position
 		rotate_z(PI)
 		speed = loSpd #sets player speed to low and changes direction
 		change_rotation_dir()
@@ -52,7 +52,7 @@ func inner_dot_action_press(body):
 	if body.global_position == passedDotPos:
 		return
 	if Input.is_action_just_pressed("action_one") or Input.is_action_pressed("action_one"):
-		self.global_position = body.global_position
+		pp.global_position = body.global_position
 		rotate_z(PI)
 		speed = hiSpd #sets player speed to low and changes direction
 		change_rotation_dir()
