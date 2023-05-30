@@ -16,8 +16,6 @@ var isDotPresent:bool = true #indicates if dot is present at current location
 #var time = 0 #debug
 var dotDict = {}
 
-#@export var dotDetector:PackedScene #holds area3d that's used to determine if a dot is at a location
-#var detector
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -99,52 +97,13 @@ func search_for_dot(x, y, z = 0): #searches for dot at location
 		isDotPresent = true
 	else:
 		isDotPresent = false
-#	if dotDetector == null: #not needed with autoload
-#		dotDetector = load("res://map/Detector.tscn")
-#	Detector.global_position = Vector3(x,y,0)
-#	print("Detector: ", Detector.global_position)
-#	if Detector.isColliding == true:
-#		isDotPresent = true
-#		print("is Colliding")
-	
-#	for i in dotArray:
-#		if i == "dot_%d_%d_%d" % [x, y, z]:
-#			isDotPresent = true
-#			print(i)
-#			return
-#		else:
-#			isDotPresent = false
-#			#print(i + " false")
-
-#	if dotDetector == null:
-#		dotDetector = load("res://map/Detector.tscn")
-#
-#	detector = dotDetector.instantiate() #instantiate packed scene as a node
-#	detector.set_script(load("res://map/Detector.gd"))
-#	add_child(detector) #adds node to tree as child of this script owner
-#	detector.global_position = Vector3(x, y, z) #sets node position
-	
-	
-	
-#	print(detector.get_overlapping_bodies())
-#	print(detector.global_position)
-#	if detector.get_overlapping_bodies().has("dot_%d_%d_%d" % [x, y, z]):
-#		print("dot_%d_%d_%d" % [x, y, z])
-	
-#	if detector.isColliding == true:
-#		isDotPresent = true
 
 
 func search_and_place_dot(x, y, z = 0):
 	search_for_dot(x, y)
 	if isDotPresent == false:
 		place_dot(x, y)
-	#detector.queue_free()
 	isDotPresent = false
-	#Detector.global_position = Vector3(1,0,0)
-	#print("Detector: ", Detector.global_position, Detector.currentOverlappingBody, Detector.currentOverlappingBody.global_position)
-#	Detector.isColliding = false
-	
 	
 	
 	
