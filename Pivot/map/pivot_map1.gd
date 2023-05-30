@@ -14,10 +14,10 @@ var startingColor #used to set instantiated dot color
 var isDotPresent:bool = true #indicates if dot is present at current location
 @onready var prevDotGlobPos:Vector3 = PivotPlayer.global_position
 #var time = 0 #debug
-var dotArray = []
+var dotDict = {}
 
-@export var dotDetector:PackedScene #holds area3d that's used to determine if a dot is at a location
-var detector
+#@export var dotDetector:PackedScene #holds area3d that's used to determine if a dot is at a location
+#var detector
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -76,9 +76,14 @@ func place_dot(x, y, z = 0):
 	tempDot = dot.instantiate() #instantiate packed scene as a node
 	tempDot.set_script(load("res://map/dot.gd"))
 	tempDot.set_name("dot_%d_%d_%d" % [x, y, z])
-	dotArray.append(tempDot.name)
 	add_child(tempDot) #adds node to tree as child of this script owner
 	tempDot.global_position = Vector3(x, y, 0) #sets node position
+	if dotDict.has(tempDot.global_position):
+		return
+	else:
+		dotDict[Vector3(x, y, z)] = tempDot
+#		print(dotDict)
+#		print("\n")
 	if tempDot.global_position == Vector3(0, 0, 0): #starting dot is green
 		tempDot.get_child(2).set_mesh(greenDot)
 	else:
@@ -90,6 +95,10 @@ func place_dot(x, y, z = 0):
 				tempDot.get_child(2).set_mesh(redDot)
 
 func search_for_dot(x, y, z = 0): #searches for dot at location
+	if dotDict.has(Vector3(x, y, z)):
+		isDotPresent = true
+	else:
+		isDotPresent = false
 #	if dotDetector == null: #not needed with autoload
 #		dotDetector = load("res://map/Detector.tscn")
 #	Detector.global_position = Vector3(x,y,0)
@@ -107,31 +116,30 @@ func search_for_dot(x, y, z = 0): #searches for dot at location
 #			isDotPresent = false
 #			#print(i + " false")
 
-	if dotDetector == null:
-		dotDetector = load("res://map/Detector.tscn")
-		
-	detector = dotDetector.instantiate() #instantiate packed scene as a node
-	detector.set_script(load("res://map/Detector.gd"))
-	#detector.connect("Collided", self, "")
-	add_child(detector) #adds node to tree as child of this script owner
-	detector.global_position = Vector3(x, y, z) #sets node position
+#	if dotDetector == null:
+#		dotDetector = load("res://map/Detector.tscn")
+#
+#	detector = dotDetector.instantiate() #instantiate packed scene as a node
+#	detector.set_script(load("res://map/Detector.gd"))
+#	add_child(detector) #adds node to tree as child of this script owner
+#	detector.global_position = Vector3(x, y, z) #sets node position
 	
 	
 	
-	print(detector.get_overlapping_bodies())
-	print(detector.global_position)
+#	print(detector.get_overlapping_bodies())
+#	print(detector.global_position)
 #	if detector.get_overlapping_bodies().has("dot_%d_%d_%d" % [x, y, z]):
 #		print("dot_%d_%d_%d" % [x, y, z])
 	
-	if detector.isColliding == true:
-		isDotPresent = true
+#	if detector.isColliding == true:
+#		isDotPresent = true
 
 
 func search_and_place_dot(x, y, z = 0):
 	search_for_dot(x, y)
 	if isDotPresent == false:
 		place_dot(x, y)
-	detector.queue_free()
+	#detector.queue_free()
 	isDotPresent = false
 	#Detector.global_position = Vector3(1,0,0)
 	#print("Detector: ", Detector.global_position, Detector.currentOverlappingBody, Detector.currentOverlappingBody.global_position)
