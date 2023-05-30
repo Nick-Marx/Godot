@@ -58,6 +58,14 @@ After another hour of tinkering I got more colors and a scoreboard.
 \*Personal Note\* I took a hiatus that was intended to be only a few weeks or a month, but I lost motivation and also got and lost a job in proceeding months.
 
 So I discovered Godot has it's own form of 'singletons' that it calls Autoload. This has helped me greatly. I managed to find a way to generate dots as the player moves in any direction, but I can't seem to figure out why they will keep generating even if there is a dot already there.
+
+After about 20 hours of research and testing out different approaches, I sought help from a Discord server. The solution ended up being rather simple and seems to be very efficient. Apparently, I misunderstood how Godot handles dictionaries.
+Solution: Create a dictionary of Vector3 coords and the corresponding Dot object, then just look up the coordinates in the dictionary to determine if a Dot needs placed or not. 
+Amazingly, this seems scalable to 3D and this approach could probably also work when I go to implement obstacles/enemies/collectables.
+<div align="center">
+<img height=300 src="https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_third_success.gif"/>  
+</div>
+
   
 ## **Final Thoughts**  
 
