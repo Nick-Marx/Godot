@@ -12,9 +12,6 @@ var activeBody #holds object of currently overlapping dot
 @onready var passedDotPos:Vector3 #holds glob pos of prev touched dot
 var rand = RandomNumberGenerator.new()
 var didMove:bool = false
-#var whiteDot:Mesh = load("res://material/white_dot.tres")
-#var redDot:Mesh = load("res://material/red_dot.tres")
-#var greenDot:Mesh = load("res://material/green_dot.tres")
 
 
 

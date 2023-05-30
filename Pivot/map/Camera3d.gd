@@ -12,5 +12,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	smooth_camera_follow(delta)
+
+
+func smooth_camera_follow(delta):
 	if(target != null): 
 		self.transform.origin = lerp(self.transform.origin, target.transform.origin + offset, smoothSpeed * delta) #follows player smoothly every frame

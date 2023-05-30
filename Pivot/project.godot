@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-PivotPlayer="*res://player/pivot_player.tscn"
+PivotPlayer="*res://player/pivot_player_old.tscn"
 
 [display]
 

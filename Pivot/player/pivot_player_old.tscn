@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bnjh58oqrdu6c"]
 
-[ext_resource type="Script" path="res://player/pivot_player.gd" id="1_wbwu8"]
+[ext_resource type="Script" path="res://player/pivot_player.gd" id="1_5klbs"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_trele"]
 
@@ -13,7 +13,7 @@ material = SubResource("StandardMaterial3D_h4qhd")
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_cekq6"]
 
 [node name="pivot_player" type="CharacterBody3D"]
-script = ExtResource("1_wbwu8")
+script = ExtResource("1_5klbs")
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="."]
 transform = Transform3D(-8.74228e-09, -1, 0, 0.2, -4.37114e-08, 0, 0, 0, 0.2, 1, 0, 0)
