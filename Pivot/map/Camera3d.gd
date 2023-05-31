@@ -17,10 +17,23 @@ func _ready():
 func _process(delta):
 	if self.global_position != target.global_position:
 		smooth_camera_follow(delta)
-	
+
+	if Input.is_action_just_pressed("ui_up"):
+		var upRot = target.global_transform.basis.x.normalized()
+		PivotPlayer.rotate(-upRot, PI/2)
+
 	if Input.is_action_just_pressed("ui_down"):
-		PivotPlayer.rotate_x(-PI/2)
-		
+		var downRot = target.global_transform.basis.x.normalized()
+		PivotPlayer.rotate(downRot, PI/2)
+
+	if Input.is_action_just_pressed("ui_right"):
+		var rightRot = target.global_transform.basis.y.normalized()
+		PivotPlayer.rotate(rightRot, PI/2)
+
+	if Input.is_action_just_pressed("ui_left"):
+		var leftRot = target.global_transform.basis.y.normalized()
+		PivotPlayer.rotate(-leftRot, PI/2)
+
 
 
 func smooth_camera_follow(delta):
@@ -36,15 +49,3 @@ func smooth_camera_follow(delta):
 #		print(self.global_transform," ", mainCam.global_transform)
 
 
-func _on_area_3d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	if body.name == PivotPlayer.get_child(0).name:
-		return
-	if body.visible:
-		body.visible = false
-#	print("entered camera: ", body_rid, "\n", body, "\n", body_shape_index, "\n", local_shape_index, body.visible, "\n", "\n")
-
-
-func _on_area_3d_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
-	if !body.visible:
-		body.visible = true
-#	print("exited camera: ", body_rid, "\n", body, "\n", body_shape_index, "\n", local_shape_index, body.visible, "\n", "\n")

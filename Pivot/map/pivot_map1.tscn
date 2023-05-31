@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dticb7r531bu8"]
+[gd_scene load_steps=7 format=3 uid="uid://dticb7r531bu8"]
 
 [ext_resource type="Script" path="res://map/pivot_map1.gd" id="1_sgxy7"]
 [ext_resource type="PackedScene" uid="uid://dg4066jsu1k2a" path="res://map/dot.tscn" id="2_ielvg"]
@@ -14,8 +14,6 @@ glow_strength = 2.0
 
 [sub_resource type="Theme" id="Theme_ikn15"]
 default_font_size = 38
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_sp64s"]
 
 [node name="pivot_map1" type="Node3D"]
 script = ExtResource("1_sgxy7")
@@ -46,13 +44,4 @@ script = ExtResource("5_rof77")
 [node name="Camera3d" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 script = ExtResource("4_wo5dt")
-smoothSpeed = 1.0
-
-[node name="Area3D" type="Area3D" parent="Camera3d"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3d/Area3D"]
-transform = Transform3D(16, 0, 0, 0, 16, 0, 0, 0, 9, 0, 0, -4.5)
-shape = SubResource("BoxShape3D_sp64s")
-
-[connection signal="body_shape_entered" from="Camera3d/Area3D" to="Camera3d" method="_on_area_3d_body_shape_entered"]
-[connection signal="body_shape_exited" from="Camera3d/Area3D" to="Camera3d" method="_on_area_3d_body_shape_exited"]
+smoothSpeed = 2.0
