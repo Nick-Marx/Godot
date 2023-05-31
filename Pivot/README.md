@@ -77,8 +77,10 @@ For now, I decided to implement a way of hiding objects between the camera viewp
 My next objective is to figure out the best way to keep track of the player orientation. This will directly tie into how I flesh out the map generation. I'm hoping I can find a mathematical way to orient everything, but if I can't the next best thing seems to map out each possible position (24 possible) and changing the player state as needed. This will likely work, but doesn't seem to be very efficient.
 
 Captain's Log 5/31/23: ...I couldn't sleep. As I lie awake my thoughts wander to my project and I ask myself if I'm taking the best approach. Notably, I had two epiphanies: 
-  -Instead of making the camera a child of the player, I will make the camera follow a child of the player, specifically the directional lighting since they seem to always be in the exact same spot. This has solved my camera control and smoothing problems. \*happy noises\* (It also seems my player scene restructuring was necessary, glad that hour and a half was worth it)
-  -I remembered reading in short about properties of transform called Forward and Up which will return the normalized axis requested. I believe this can solve my orientation problem. Wish me luck.
+<br>
+-Instead of making the camera a child of the player, I will make the camera follow a child of the player, specifically the directional lighting since they seem to always be in the exact same spot. This has solved my camera control and smoothing problems. \*happy noises\* (It also seems my player scene restructuring was necessary, glad that hour and a half was worth it)
+<br>
+-I remembered reading in short about properties of transform called Forward and Up which will return the normalized axis requested. I believe this can solve my orientation problem. Wish me luck.
   
 
   
