@@ -66,6 +66,17 @@ Amazingly, this seems scalable to 3D and this approach could probably also work 
 <img height=300 src="https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_third_success.gif"/>  
 </div>
 
+## **Camera control and obstructions**
+
+Wait... I have an idea. I decided to spend a few hours redoing my player scene to include a parent node. I hope this wasn't a waste of time, but it seems it would be much simpler to control the camera this way. Oh, also, I moved the camera to be a child of this parent node in the player scene so that it will always follow the player around.
+
+I ran into a problem now. How do I smooth the camera movement if it's tethered to the player position? I can't seem to get lerp or interpolate to work. My head hurts, this is a problem for future me.
+
+For now, I decided to implement a way of hiding objects between the camera viewport and the player. I ended up just using an area shape and setting up signals to toggle the objects visibility.
+
+My next objective is to figure out the best way to keep track of the player orientation. This will directly tie into how I flesh out the map generation. I'm hoping I can find a mathematical way to orient everything, but if I can't the next best thing seems to map out each possible position (24 possible) and changing the player state as needed. This will likely work, but doesn't seem to be very efficient.
+
+
   
 ## **Final Thoughts**  
 

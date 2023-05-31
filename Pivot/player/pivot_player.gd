@@ -36,7 +36,7 @@ func _physics_process(delta):
 
 #ctrl move and spd of player from one dot to another
 func outer_dot_action_press(body):
-	if body.global_position == passedDotPos:
+	if body != null and body.global_position == passedDotPos:
 		return
 	if Input.is_action_just_pressed("action_one") or Input.is_action_pressed("action_one"):
 		pp.global_position = body.global_position
@@ -45,11 +45,11 @@ func outer_dot_action_press(body):
 		change_rotation_dir()
 		body.change_dot_color()
 		didMove = true
-		#print("outer: ", global_position)
+#		print(pp.global_position)
 
 #ctrl move and spd of player from one dot to another
 func inner_dot_action_press(body):
-	if body.global_position == passedDotPos:
+	if body != null and body.global_position == passedDotPos:
 		return
 	if Input.is_action_just_pressed("action_one") or Input.is_action_pressed("action_one"):
 		pp.global_position = body.global_position
@@ -58,7 +58,7 @@ func inner_dot_action_press(body):
 		change_rotation_dir()
 		body.change_dot_color()
 		didMove = true #sets whether player has recently moved
-		#print("inner: ", global_position)
+#		print(pp.global_position)
 
 #signal gathers info on overlapping dot
 func _on_area_3d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
