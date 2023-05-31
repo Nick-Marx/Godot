@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2wciwc4v7uin"]
+[gd_scene load_steps=6 format=3 uid="uid://c2wciwc4v7uin"]
 
 [ext_resource type="Script" path="res://player/pivot_player.gd" id="1_wbwu8"]
-[ext_resource type="Script" path="res://map/Camera3d.gd" id="2_ib53m"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_f7n4k"]
 
@@ -12,8 +11,6 @@ albedo_color = Color(0, 0, 0, 1)
 material = SubResource("StandardMaterial3D_h4qhd")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_t4bs5"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_i6jd6"]
 
 [node name="pivot_player" type="Node3D"]
 
@@ -39,19 +36,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 light_energy = 0.9
 directional_shadow_max_distance = 20.0
 
-[node name="Camera3d" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
-script = ExtResource("2_ib53m")
-smoothSpeed = 1.0
-offset = Vector3(0, 0, 10)
-
-[node name="Area3D" type="Area3D" parent="Camera3d"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3d/Area3D"]
-transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, 0, 0, -4.5)
-shape = SubResource("BoxShape3D_i6jd6")
-
 [connection signal="body_shape_entered" from="CharacterBody3D/Area3d" to="CharacterBody3D" method="_on_area_3d_body_shape_entered"]
 [connection signal="body_shape_exited" from="CharacterBody3D/Area3d" to="CharacterBody3D" method="_on_area_3d_body_shape_exited"]
-[connection signal="body_shape_entered" from="Camera3d/Area3D" to="Camera3d" method="_on_area_3d_body_shape_entered"]
-[connection signal="body_shape_exited" from="Camera3d/Area3D" to="Camera3d" method="_on_area_3d_body_shape_exited"]
