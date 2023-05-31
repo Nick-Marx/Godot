@@ -81,6 +81,6 @@ My next objective is to figure out the best way to keep track of the player orie
 ## **Final Thoughts**  
 
 WIP - Placeholder Text -  
-Each task in this project challenged me to consider things in a broader scope and think in terms of code reusability and efficiency. Using blueprints definately helped with this and being able to visialize the interactions between classes, objects, variables, and functions. 
+
 
 Note: GitHub MD sucks. It took me so many hours just to get this REAME formatted correctly and it still didn't turn out the way I wanted.
