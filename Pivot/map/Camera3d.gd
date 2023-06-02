@@ -1,10 +1,9 @@
 extends Camera3D
 
 
+@onready var ppm1 = get_node("/root/pivot_map1")
 @onready var target = get_node("/root/PivotPlayer/DirectionalLight3d")
-#@onready var target = PivotPlayer #what the camera follows
 @export var smoothSpeed:float
-#@export var offset:Vector3
 
 
 # Called when the node enters the scene tree for the first time.
@@ -17,23 +16,8 @@ func _ready():
 func _process(delta):
 	if self.global_position != target.global_position:
 		smooth_camera_follow(delta)
-
-	if Input.is_action_just_pressed("ui_up"):
-		var upRot = target.global_transform.basis.x.normalized()
-		PivotPlayer.rotate(-upRot, PI/2)
-
-	if Input.is_action_just_pressed("ui_down"):
-		var downRot = target.global_transform.basis.x.normalized()
-		PivotPlayer.rotate(downRot, PI/2)
-
-	if Input.is_action_just_pressed("ui_right"):
-		var rightRot = target.global_transform.basis.y.normalized()
-		PivotPlayer.rotate(rightRot, PI/2)
-
-	if Input.is_action_just_pressed("ui_left"):
-		var leftRot = target.global_transform.basis.y.normalized()
-		PivotPlayer.rotate(-leftRot, PI/2)
-
+	
+	test_map_rotation()
 
 
 func smooth_camera_follow(delta):
@@ -48,4 +32,22 @@ func smooth_camera_follow(delta):
 #		look_at(target.global_transform.origin, target.transform.basis.y)
 #		print(self.global_transform," ", mainCam.global_transform)
 
+func test_map_rotation():
+	var verticalRot = target.global_transform.basis.x
+	var horizontalRot = target.global_transform.basis.y
+	
+	if Input.is_action_just_pressed("ui_up"):
+		PivotPlayer.rotate(-verticalRot, PI/2)
+		ppm1.build_map()
 
+	if Input.is_action_just_pressed("ui_down"):
+		PivotPlayer.rotate(verticalRot, PI/2)
+		ppm1.build_map()
+
+	if Input.is_action_just_pressed("ui_right"):
+		PivotPlayer.rotate(horizontalRot, PI/2)
+		ppm1.build_map()
+
+	if Input.is_action_just_pressed("ui_left"):
+		PivotPlayer.rotate(-horizontalRot, PI/2)
+		ppm1.build_map()
