@@ -81,8 +81,21 @@ Captain's Log 5/31/23: ...I couldn't sleep. As I lie awake my thoughts wander to
 -Instead of making the camera a child of the player, I will make the camera follow a child of the player, specifically the directional lighting since they seem to always be in the exact same spot. This has solved my camera control and smoothing problems. \*happy noises\* (It also seems my player scene restructuring was necessary, glad that hour and a half was worth it)
 <br>
 -I remembered reading in short about a property of transform called Basis  which will return the normalized vector requested. I believe this can solve my orientation problem. Wish me luck.
-  
 
+## **Player Position Orientation and Map Gen Improvement**
+
+Yay! After so many hours of research and dead ends I finally got the player orientation tracking to work. It turns out I just had to brush up on my vector math.
+<br>
+This also allowed me to get the map generation fully operational. I still think I can teak it a bunch, but it works for now.
+
+If the rest of the project goes smoothly this will officially be the 1/3 completion point.
+A little overview of what I intend to still add:
+<br>
+-Collectibles, enemies, obstacles
+<br>
+-Improved HUD
+<br>
+-Audio (movement-based sound effects and music)
   
 ## **Final Thoughts**  
 
