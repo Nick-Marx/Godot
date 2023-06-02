@@ -80,7 +80,7 @@ Captain's Log 5/31/23: ...I couldn't sleep. As I lie awake my thoughts wander to
 <br>
 -Instead of making the camera a child of the player, I will make the camera follow a child of the player, specifically the directional lighting since they seem to always be in the exact same spot. This has solved my camera control and smoothing problems. \*happy noises\* (It also seems my player scene restructuring was necessary, glad that hour and a half was worth it)
 <br>
--I remembered reading in short about properties of transform called Forward and Up which will return the normalized axis requested. I believe this can solve my orientation problem. Wish me luck.
+-I remembered reading in short about a property of transform called Basis  which will return the normalized vector requested. I believe this can solve my orientation problem. Wish me luck.
   
 
   
