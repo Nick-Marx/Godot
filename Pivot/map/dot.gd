@@ -14,7 +14,7 @@ func change_dot_color():
 		scoreBoard.score += 1
 	if $MeshInstance3d.mesh == yellowDot:
 		$MeshInstance3d.set_mesh(greenDot)
-		scoreBoard.score += 2
+		scoreBoard.score += 3
 	if $MeshInstance3d.mesh == redDot:
 		$MeshInstance3d.set_mesh(yellowDot)
 

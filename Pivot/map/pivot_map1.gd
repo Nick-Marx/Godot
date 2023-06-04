@@ -31,63 +31,23 @@ func _process(delta):
 #		print(Detector.global_position.y)
 	if pp.get_child(0).didMove == true:
 #		print(pp.transform)
-		print(dotDict)
-		print("\n", "---", "\n")
-#		expand_map()
+#		print(dotDict)
+#		print("\n", "---", "\n")
 		build_map()
 		pp.get_child(0).didMove = false
 
-
-#func build_map():
-#	print(pp.transform)
-#	for x in range(pp.global_position.x - 12, pp.global_position.x + 13, 2):#nested for loop to assign grid
-#		for y in range(pp.global_position.y - 12, pp.global_position.y + 13, 2):
-#			place_dot(x, y)
 
 func build_map():
 	for x in range(-12, 13, 2):
 		for y in range(-12, 13, 2):
 			place_dot(x, y)
-#	tempDot.transform.origin =  pp.transform.origin + (pp.transform.basis.x * distance_x) + (pp.transform.basis.y * distance_y)
 
-
-#func expand_map():#generates map as player moves
-#	for x in range(-12, 13, 2):
-#		for y in range(-12, 13, 2):
-#
-#	if pp.global_position.x - prevDotGlobPos.x == 2:
-#		var x = pp.global_position.x + 12
-#		for y in range(pp.global_position.y - 12, pp.global_position.y + 13, 2):
-#			search_and_place_dot(x, y)
-#			#print(x, ",", y)
-#		prevDotGlobPos = pp.global_position
-#
-#	if pp.global_position.x - prevDotGlobPos.x == -2:
-#		var x = pp.global_position.x - 12
-#		for y in range(pp.global_position.y - 12, pp.global_position.y + 13, 2):
-#			search_and_place_dot(x, y) 
-#			#print(x, ",", y)
-#		prevDotGlobPos = pp.global_position
-#
-#	if pp.global_position.y - prevDotGlobPos.y == 2:
-#		var y = pp.global_position.y + 12
-#		for x in range(pp.global_position.x - 12, pp.global_position.x + 13, 2):
-#			search_and_place_dot(x, y)
-#			#print(x, ",", y)
-#		prevDotGlobPos = pp.global_position
-#
-#	if pp.global_position.y - prevDotGlobPos.y == -2:
-#		var y = pp.global_position.y - 12
-#		for x in range(pp.global_position.x - 12, pp.global_position.x + 13, 2):
-#			search_and_place_dot(x, y) 
-#			#print(x, ",", y)
-#		prevDotGlobPos = pp.global_position
 
 func place_dot(x, y):
 	rand.randomize() #ensures the randomization is not the exact same each time
 	
 	var tempPos = (Vector3i(pp.global_position) + Vector3i(pp.transform.basis.x * x) + Vector3i(pp.transform.basis.y * y))
-	print("tempPos: ", tempPos)
+#	print("tempPos: ", tempPos)
 	if dot == null:
 		dot = load("res://map/dot.tscn")
 		
@@ -112,19 +72,6 @@ func place_dot(x, y):
 				false:
 					tempDot.get_child(2).set_mesh(redDot)
 
-#func search_for_dot(x, y, z=0): #searches for dot at location
-#	if dotDict.has(Vector3(x, y, z)):
-#		isDotPresent = true
-#	else:
-#		isDotPresent = false
-#
-#
-#func search_and_place_dot(x, y, z = 0):
-#	search_for_dot(x, y, z)
-#	if isDotPresent == false:
-#		place_dot(x, y)
-#	isDotPresent = false
-	
 	
 	
 	

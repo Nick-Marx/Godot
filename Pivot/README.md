@@ -59,7 +59,8 @@ After another hour of tinkering I got more colors and a scoreboard.
 
 So I discovered Godot has it's own form of 'singletons' that it calls Autoload. This has helped me greatly. I managed to find a way to generate dots as the player moves in any direction, but I can't seem to figure out why they will keep generating even if there is a dot already there.
 
-After about 20 hours of research and testing out different approaches, I sought help from a Discord server. The solution ended up being rather simple and seems to be very efficient. Apparently, I misunderstood how Godot handles dictionaries.<br>
+After about 20 hours of research and testing out different approaches, I sought help from a Discord server. The solution ended up being rather simple and seems to be very efficient. Apparently, I misunderstood how Godot handles dictionaries.
+<br>
 Solution: Create a dictionary of Vector3 coords and the corresponding Dot object, then just look up the coordinates in the dictionary to determine if a Dot needs placed or not.
 Amazingly, this seems scalable to 3D and this approach could probably also work when I go to implement obstacles/enemies/collectables.
 <div align="center">
@@ -85,6 +86,9 @@ Captain's Log 5/31/23: ...I couldn't sleep. As I lie awake my thoughts wander to
 ## **Player Position Orientation and Map Gen Improvement**
 
 Yay! After so many hours of research and dead ends I finally got the player orientation tracking to work. It turns out I just had to brush up on my vector math. This also allowed me to get the map generation fully operational. I still think I can tweak it a bunch, but it works for now.
+<div align="center">
+<img height=300 src="https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_maj_milestone1.gif"/>  
+</div>
 
 If the rest of the project goes smoothly this will officially be the 1/3 completion point.
 <br>
