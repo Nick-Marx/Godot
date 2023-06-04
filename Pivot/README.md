@@ -55,7 +55,7 @@ After another hour of tinkering I got more colors and a scoreboard.
 
 ## **Auto-Generating Map... and Singletons?¿**
 
-\*Personal Note\* I took a hiatus that was intended to be only a few weeks or a month, but I lost motivation and also got and lost a job in proceeding months.
+\*Personal Note\* I took a hiatus that was intended to be only a few weeks or a month, but I lost motivation and also got and lost a job in the proceeding months.
 
 So I discovered Godot has it's own form of 'singletons' that it calls Autoload. This has helped me greatly. I managed to find a way to generate dots as the player moves in any direction, but I can't seem to figure out why they will keep generating even if there is a dot already there.
 
