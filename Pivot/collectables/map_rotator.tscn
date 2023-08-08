@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bccg1jwd3fie8"]
+
+[node name="map_rotator" type="Node3D"]

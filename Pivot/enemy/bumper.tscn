@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://cqiiihls2rwj1"]
+
+[node name="bumper" type="Node3D"]
