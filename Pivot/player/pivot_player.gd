@@ -3,8 +3,8 @@ extends CharacterBody3D
 
 @onready var pp = PivotPlayer
 @export var speed:float = -0.0125 #holds rotation speed
-var hiSpd:float = 0.05 #rot spd cieling
-var loSpd:float = 0.0125 #rot spd floor
+var hiSpd:float = 0.05 #rot spd max
+var loSpd:float = 0.0125 #rot spd min
 const rotDir:int = -1 #used to change rotation direction
 var isActive:bool = false #?true if player currently overlapping a dot
 var innerActive:bool = false #?true if player touching dot center

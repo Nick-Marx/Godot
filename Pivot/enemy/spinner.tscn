@@ -1,3 +1,29 @@
-[gd_scene format=3 uid="uid://bgrem4yst700k"]
+[gd_scene load_steps=5 format=3 uid="uid://bgrem4yst700k"]
+
+[ext_resource type="Script" path="res://enemy/spinner.gd" id="1_sepq1"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qtr5c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ddl4l"]
+albedo_color = Color(1, 0.360784, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_j8gal"]
+material = SubResource("StandardMaterial3D_ddl4l")
 
 [node name="spinner" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(-8.74228e-09, -1, 0, 0.2, -4.37114e-08, 0, 0, 0, 0.2, 1, 0, 0)
+script = ExtResource("1_sepq1")
+
+[node name="Area3D" type="Area3D" parent="StaticBody3D"]
+transform = Transform3D(1, 1.42109e-14, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Area3D"]
+transform = Transform3D(1, -2.84217e-14, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_qtr5c")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("CylinderMesh_j8gal")
+
+[connection signal="body_shape_entered" from="StaticBody3D/Area3D" to="StaticBody3D" method="_on_area_3d_body_shape_entered"]
