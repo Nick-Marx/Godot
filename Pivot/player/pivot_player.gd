@@ -39,26 +39,30 @@ func outer_dot_action_press(body):
 	if body != null and body.global_position == passedDotPos:
 		return
 	if Input.is_action_just_pressed("action_one") or Input.is_action_pressed("action_one"):
-		pp.global_position = body.global_position
-		rotate_z(PI)
-		speed = loSpd #sets player speed to low and changes direction
-		change_rotation_dir()
-		body.change_dot_color()
-		didMove = true
-#		print(pp.global_position)
+		if body and 'dot' in body.name:
+			#print("dot in ", body.name)
+			pp.global_position = body.global_position
+			rotate_z(PI)
+			speed = loSpd #sets player speed to low and changes direction
+			change_rotation_dir()
+			body.change_dot_color()
+			didMove = true
+	#		print(pp.global_position)
 
 #ctrl move and spd of player from one dot to another
 func inner_dot_action_press(body):
 	if body != null and body.global_position == passedDotPos:
 		return
 	if Input.is_action_just_pressed("action_one") or Input.is_action_pressed("action_one"):
-		pp.global_position = body.global_position
-		rotate_z(PI)
-		speed = hiSpd #sets player speed to low and changes direction
-		change_rotation_dir()
-		body.change_dot_color()
-		didMove = true #sets whether player has recently moved
-#		print(pp.global_position)
+		if body and "dot" in body.name:
+			#print("name ", body.name)
+			pp.global_position = body.global_position
+			rotate_z(PI)
+			speed = hiSpd #sets player speed to low and changes direction
+			change_rotation_dir()
+			body.change_dot_color()
+			didMove = true #sets whether player has recently moved
+	#		print(pp.global_position)
 
 #signal gathers info on overlapping dot
 func _on_area_3d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):

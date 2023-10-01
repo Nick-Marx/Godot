@@ -2,6 +2,8 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fuh2r"]
 albedo_color = Color(1, 0, 0, 1)
+distance_fade_mode = 1
+distance_fade_min_distance = 20.0
 
 [resource]
 material = SubResource("StandardMaterial3D_fuh2r")
