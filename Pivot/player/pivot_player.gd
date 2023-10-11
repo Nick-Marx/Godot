@@ -73,6 +73,7 @@ func _on_area_3d_body_shape_entered(body_rid, body, body_shape_index, local_shap
 		activeBody = body
 	if body_shape_index == 1:
 		innerActive = true
+	
 		
 #	print(body_rid, "\n", body, "\n", body_shape_index, "\n", local_shape_index, "\n", "\n")
 

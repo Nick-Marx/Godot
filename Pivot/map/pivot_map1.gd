@@ -46,6 +46,9 @@ func build_map():
 	for x in range(-12, 13, 2):
 		for y in range(-12, 13, 2):
 			place_dot(x, y)
+	
+	for x in range(-12, 13, 1):
+		for y in range(-12, 13, 1):
 			place_bumper(x, y)
 
 
@@ -83,28 +86,29 @@ func place_bumper(x, y):
 	rand.randomize() #ensures the randomization is not the exact same each time
 	var bumperPlacement = rand.randf() #determines if bumper is placed or not
 	var tempPos = (Vector3i(pp.global_position) + Vector3i(pp.transform.basis.x * x) + Vector3i(pp.transform.basis.y * y)) #picks a position based on current plane
-	var tempPosU = Vector3(tempPos) + Vector3(0,1,0)
-	#var tempPosD = tempPos + Vector3(0,-1,0)
-	#var tempPosR = tempPos + Vector3(1,0,0)
-	#var tempPosL = tempPos + Vector3(-1,0,0)
-	
-	print(tempPosU)
-	#print(bumperPlacement)
-	
-	if !bumperDict.has(tempPosU):
-		match bumperPlacement < bumperRatio:
+
+	if (x%2==0 and y%2==0) or (x%2!=0 and y%2!=0):
+		return
+		
+	if !bumperDict.has(tempPos):
+		bumperDict[tempPos] = null
+		
+	if bumperDict[tempPos] == null:
+		match bumperPlacement <= bumperRatio:
 			true:
-				#print("true")
 				var tempBump = bumper.instantiate() #instantiate packed scene as a node
 				tempBump.set_script(load("res://enemy/bumper.gd"))
-				tempBump.set_name("bumper%s" % tempPosU)
+				tempBump.set_name("bumper%s" % tempPos)
 				add_child(tempBump) #adds node to tree as child of this script owner
-				tempBump.rotate_z(PI)
-				tempBump.global_position = tempPosU
-				if bumperDict.has(tempPosU):
-					return
-				else:
-					bumperDict[tempPosU] = tempBump
-
+				tempBump.global_position = tempPos
+				tempBump.global_rotation = pp.global_rotation
+				
+				if x%2!=0 and y%2==0:
+					tempBump.rotate_object_local(Vector3(0,0,1), PI/2)
+				
+				bumperDict[tempPos] = tempBump
 			false:
-				return
+				bumperDict[tempPos] = 0
+	
+
+
