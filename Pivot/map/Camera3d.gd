@@ -1,8 +1,11 @@
 extends Camera3D
 
 
-@onready var ppm1 = get_node("/root/pivot_map1")
+@onready var pp = PivotPlayer
+#@onready var ppm1 = get_node("/root/pivot_map1")
+var ppm1
 @onready var target = get_node("/root/PivotPlayer/DirectionalLight3d")
+#@onready var target = Global.dL3d
 @export var smoothSpeed:float
 
 
@@ -10,8 +13,7 @@ extends Camera3D
 func _ready():
 	self.global_transform = target.global_transform
 	self.current = true
-
-
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if self.global_position != target.global_position:
@@ -33,21 +35,24 @@ func smooth_camera_follow(delta):
 #		print(self.global_transform," ", mainCam.global_transform)
 
 func test_map_rotation():
+	if !ppm1:
+		ppm1 = Global.mainScene
+		
 	var verticalRot = target.global_transform.basis.x
 	var horizontalRot = target.global_transform.basis.y
 	
 	if Input.is_action_just_pressed("ui_up"):
-		PivotPlayer.rotate(-verticalRot, PI/2)
+		pp.rotate(-verticalRot, PI/2)
 		ppm1.build_map()
 
 	if Input.is_action_just_pressed("ui_down"):
-		PivotPlayer.rotate(verticalRot, PI/2)
+		pp.rotate(verticalRot, PI/2)
 		ppm1.build_map()
 
 	if Input.is_action_just_pressed("ui_right"):
-		PivotPlayer.rotate(horizontalRot, PI/2)
+		pp.rotate(horizontalRot, PI/2)
 		ppm1.build_map()
 
 	if Input.is_action_just_pressed("ui_left"):
-		PivotPlayer.rotate(-horizontalRot, PI/2)
+		pp.rotate(-horizontalRot, PI/2)
 		ppm1.build_map()

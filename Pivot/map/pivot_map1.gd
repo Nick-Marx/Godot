@@ -5,6 +5,7 @@ extends Node3D
 @onready var pp = PivotPlayer #holds player singleton*
 var rand = RandomNumberGenerator.new()
 @export var dot:PackedScene #holds dot scene object
+@onready var dotScript = load("res://map/dot.gd")
 @export var bumper:PackedScene #holds bumper scene object
 @export var dotRatio:float #percentage of red dots generated
 @export var bumperRatio:float #percentage of bumpers on the board
@@ -24,7 +25,12 @@ var spinnerDict = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.mainScene = self
 	build_map()
+	if dot == null:
+		dot = load("res://map/dot.tscn")
+	
+	rand.randomize() #ensures the randomization is not the exact same each time
 	#print("prevDotGlobPos: ", prevDotGlobPos)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,13 +39,16 @@ func _process(delta):
 #	if fmod(floor(time), 10) == 0: #debug
 #		print(Detector.global_position.x)
 #		print(Detector.global_position.y)
-	if pp.get_child(0).didMove == true:
+#	if pp.get_child(0).didMove == true:
+	if pp.didBuildMap == false:
 #		print(pp.transform)
 #		print(dotDict)
 #		print(bumperDict)
 #		print("\n", "---", "\n")
 		build_map()
-		pp.get_child(0).didMove = false
+#		pp.get_child(0).didMove = false
+		pp.didBuildMap = true
+
 
 
 func build_map():
@@ -53,16 +62,15 @@ func build_map():
 
 
 func place_dot(x, y):
-	rand.randomize() #ensures the randomization is not the exact same each time
+#	rand.randomize() #ensures the randomization is not the exact same each time
 	
 	var tempPos = (Vector3i(pp.global_position) + Vector3i(pp.transform.basis.x * x) + Vector3i(pp.transform.basis.y * y)) #picks a position based on current plane
 	#print("tempPos: ", tempPos)
-	if dot == null:
-		dot = load("res://map/dot.tscn")
+	
 		
 	if !dotDict.has(tempPos):
 		tempDot = dot.instantiate() #instantiate packed scene as a node
-		tempDot.set_script(load("res://map/dot.gd"))
+#		tempDot.set_script(dotScript)
 		tempDot.set_name("dot%s" % tempPos)
 		add_child(tempDot) #adds node to tree as child of this script owner
 		tempDot.global_position = tempPos
@@ -72,18 +80,17 @@ func place_dot(x, y):
 			dotDict[tempPos] = tempDot
 
 		if tempDot.global_position == Vector3(0, 0, 0): #starting dot is green
-			tempDot.get_child(2).set_mesh(greenDot)
+			tempDot.get_child(3).set_mesh(greenDot)
 		else:
 			startingColor = rand.randf() #percentage of starting dots are red/white
 			match startingColor > dotRatio:
 				true:
-					tempDot.get_child(2).set_mesh(whiteDot)
+					tempDot.get_child(3).set_mesh(whiteDot)
 				false:
-					tempDot.get_child(2).set_mesh(redDot)
+					tempDot.get_child(3).set_mesh(redDot)
 
 
 func place_bumper(x, y):
-	rand.randomize() #ensures the randomization is not the exact same each time
 	var bumperPlacement = rand.randf() #determines if bumper is placed or not
 	var tempPos = (Vector3i(pp.global_position) + Vector3i(pp.transform.basis.x * x) + Vector3i(pp.transform.basis.y * y)) #picks a position based on current plane
 

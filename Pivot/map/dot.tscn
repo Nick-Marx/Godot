@@ -1,21 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://dg4066jsu1k2a"]
+[gd_scene load_steps=5 format=3 uid="uid://dg4066jsu1k2a"]
 
 [ext_resource type="Script" path="res://map/dot.gd" id="1_kljqf"]
 [ext_resource type="SphereMesh" uid="uid://breifxkrokbd2" path="res://material/white_dot.tres" id="2_0bq3l"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_itgq8"]
+radius = 0.25
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_6ej5q"]
 
-[node name="dot" type="StaticBody3D" groups=["Dot_Group"]]
+[node name="dot" type="StaticBody3D" groups=["Gdot"]]
 script = ExtResource("1_kljqf")
 
-[node name="CollisionShape3dOuter" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_itgq8")
+
+[node name="Area3DOuter" type="Area3D" parent="."]
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="Area3DOuter" groups=["GdotOuter"]]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 shape = SubResource("SphereShape3D_6ej5q")
 
-[node name="CollisionShape3dInner" type="CollisionShape3D" parent="."]
+[node name="Area3DInner" type="Area3D" parent="."]
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="Area3DInner" groups=["GdotInner"]]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 shape = SubResource("SphereShape3D_6ej5q")
 
 [node name="MeshInstance3d" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = ExtResource("2_0bq3l")
+
+[connection signal="body_shape_entered" from="Area3DOuter" to="." method="_on_area_3d_outer_body_shape_entered"]
+[connection signal="body_shape_exited" from="Area3DOuter" to="." method="_on_area_3d_outer_body_shape_exited"]
+[connection signal="body_shape_entered" from="Area3DInner" to="." method="_on_area_3d_inner_body_shape_entered"]
+[connection signal="body_shape_exited" from="Area3DInner" to="." method="_on_area_3d_inner_body_shape_exited"]

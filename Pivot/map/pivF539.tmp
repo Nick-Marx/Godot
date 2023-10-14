@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=3 uid="uid://dticb7r531bu8"]
+
+[ext_resource type="Script" path="res://map/pivot_map1.gd" id="1_sgxy7"]
+[ext_resource type="PackedScene" uid="uid://dg4066jsu1k2a" path="res://map/dot.tscn" id="2_ielvg"]
+[ext_resource type="PackedScene" uid="uid://cqiiihls2rwj1" path="res://enemy/bumper.tscn" id="3_ffwjs"]
+[ext_resource type="Script" path="res://scripts/Score.gd" id="3_h0moq"]
+[ext_resource type="Script" path="res://scripts/Time.gd" id="4_gtmxh"]
+[ext_resource type="Script" path="res://map/Camera3d.gd" id="4_wo5dt"]
+
+[sub_resource type="Environment" id="Environment_s1i21"]
+background_mode = 1
+background_color = Color(0.180392, 0.180392, 0.180392, 1)
+glow_intensity = 2.0
+glow_strength = 2.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xytmr"]
+
+[sub_resource type="Theme" id="Theme_ikn15"]
+default_font_size = 38
+
+[sub_resource type="Theme" id="Theme_u7eo6"]
+default_font_size = 38
+
+[node name="pivot_map1" type="Node3D"]
+script = ExtResource("1_sgxy7")
+dot = ExtResource("2_ielvg")
+bumper = ExtResource("3_ffwjs")
+dotRatio = 0.2
+bumperRatio = 0.2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_s1i21")
+
+[node name="Control" type="Control" parent="."]
+material = SubResource("CanvasItemMaterial_xytmr")
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 0.131
+offset_bottom = -0.380005
+grow_horizontal = 2
+
+[node name="Score" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 2.6
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_right = -3040.0
+theme = SubResource("Theme_ikn15")
+vertical_alignment = 1
+script = ExtResource("3_h0moq")
+
+[node name="Time" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.533
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 0.479919
+offset_right = -64.0
+theme = SubResource("Theme_u7eo6")
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("4_gtmxh")
+
+[node name="Camera3d" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+script = ExtResource("4_wo5dt")
+smoothSpeed = 2.0

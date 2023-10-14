@@ -17,7 +17,7 @@ material = SubResource("StandardMaterial3D_6pxce")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_843t4"]
 
-[node name="bumper" type="Node3D"]
+[node name="bumper" type="Node3D" groups=["Gbumper"]]
 script = ExtResource("1_8h4dt")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
@@ -32,5 +32,5 @@ mesh = SubResource("CylinderMesh_02jra")
 
 [node name="Area3D" type="Area3D" parent="StaticBody3D"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Area3D" groups=["Gbumper"]]
 shape = SubResource("CylinderShape3D_843t4")

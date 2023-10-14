@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2wciwc4v7uin"]
+[gd_scene load_steps=9 format=3 uid="uid://c2wciwc4v7uin"]
 
 [ext_resource type="Script" path="res://player/pivot_player.gd" id="1_wbwu8"]
 [ext_resource type="Script" path="res://player/DirectionalLight3d.gd" id="2_5qodx"]
@@ -11,12 +11,16 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="CylinderMesh" id="CylinderMesh_civ7y"]
 material = SubResource("StandardMaterial3D_h4qhd")
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_t4bs5"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_v2hq0"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_ngr8u"]
 
 [node name="pivot_player" type="Node3D" groups=["Gplayer"]]
-script = ExtResource("1_wbwu8")
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["Gplayer"]]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+script = ExtResource("1_wbwu8")
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="CharacterBody3D"]
 transform = Transform3D(-8.74228e-09, -1, 0, 0.2, -4.37114e-08, 0, 0, 0, 0.2, 1, 0, 0)
@@ -25,6 +29,18 @@ shape = SubResource("CylinderShape3D_f7n4k")
 [node name="MeshInstance3d" type="MeshInstance3D" parent="CharacterBody3D"]
 transform = Transform3D(-8.74228e-09, -1, 0, 0.2, -4.37114e-08, 0, 0, 0, 0.2, 1, 0, 0)
 mesh = SubResource("CylinderMesh_civ7y")
+
+[node name="Area3d" type="Area3D" parent="CharacterBody3D"]
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="CharacterBody3D/Area3d"]
+transform = Transform3D(-1.09278e-08, -0.25, 0, 0.25, -1.09278e-08, 0, 0, 0, 0.25, 1.75, 0, 0)
+shape = SubResource("CylinderShape3D_t4bs5")
+
+[node name="Area3D" type="Area3D" parent="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Area3D"]
+transform = Transform3D(-1.09278e-08, -0.25, 0, 0.25, -1.09278e-08, 0, 0, 0, 0.25, 1, 0, 0)
+shape = SubResource("CylinderShape3D_v2hq0")
 
 [node name="DirectionalLight3d" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
@@ -38,5 +54,8 @@ script = ExtResource("2_5qodx")
 transform = Transform3D(16, 0, 0, 0, 16, 0, 0, 0, 9, 0, 0, -4.5)
 shape = SubResource("BoxShape3D_ngr8u")
 
+[connection signal="body_shape_entered" from="CharacterBody3D/Area3d" to="CharacterBody3D" method="_on_area_3d_body_shape_entered"]
+[connection signal="body_shape_exited" from="CharacterBody3D/Area3d" to="CharacterBody3D" method="_on_area_3d_body_shape_exited"]
+[connection signal="body_entered" from="CharacterBody3D/Area3D" to="CharacterBody3D" method="_on_area_3d_body_entered"]
 [connection signal="body_shape_entered" from="DirectionalLight3d/Area3D" to="DirectionalLight3d" method="_on_area_3d_body_shape_entered"]
 [connection signal="body_shape_exited" from="DirectionalLight3d/Area3D" to="DirectionalLight3d" method="_on_area_3d_body_shape_exited"]

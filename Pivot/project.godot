@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 PivotPlayer="*res://player/pivot_player.tscn"
+Signals="*res://scripts/Signals.gd"
+Global="*res://scripts/Global.gd"
 
 [display]
 
@@ -34,5 +36,4 @@ action_one={
 
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
 vulkan/rendering/back_end=1
