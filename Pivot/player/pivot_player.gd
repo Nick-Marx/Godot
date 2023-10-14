@@ -1,11 +1,11 @@
 extends Node3D
 
 
-@onready var pp = $CharacterBody3D
+@onready var pp = $Area3D
 #@export var dL3d:DirectionalLight3D
-@export var speed:float = -0.0125 #holds rotation speed
-var hiSpd:float = 0.05 #rot spd max
-var loSpd:float = 0.0125 #rot spd min
+@export var speed:float = -0.025 #holds rotation speed
+var hiSpd:float = 0.055 #rot spd max
+var loSpd:float = 0.025 #rot spd min
 const rotDir:int = -1 #used to change rotation direction
 #var isActive:bool = false #?true if player currently overlapping a dot
 var innerActive:bool = false #?true if player touching dot center
@@ -23,6 +23,8 @@ func _ready():
 	Signals.dotOuterExited.connect(dotOuterExited)
 	Signals.dotInnerEntered.connect(dotInnerEntered)
 	Signals.dotInnerExited.connect(dotInnerExited)
+	
+	Signals.bumperEntered.connect(bumperEntered)
 	#print(name)
 
 func change_rotation_dir():
@@ -31,7 +33,6 @@ func change_rotation_dir():
 
 func _physics_process(delta):
 	pp.rotate_z(speed)
-	
 	
 	if Input.is_action_just_pressed("action_one") or Input.is_action_pressed("action_one"):
 		player_movement(currentDotTouching)
@@ -44,43 +45,43 @@ func player_movement(currentDot):
 		return
 	if currentDot != null and currentDot.isActive:
 #			print("dot in ", body.name)
-		self.global_position = currentDot.global_position
-		pp.rotate_z(PI)
-		speed = loSpd #sets player speed to low and changes direction
-		currentDot.change_dot_color()
-		didBuildMap = false
-		if currentDot.isInnerActive:
-			speed = hiSpd
-		change_rotation_dir()
 		currentDot.isActive = false
 		currentDot.isInnerActive = false
+		self.global_position = currentDot.global_position
+		change_rotation_dir()
+		speed = loSpd #sets player speed to low and changes direction
+		if currentDot.isInnerActive:
+			speed = hiSpd
+		pp.rotate_z(PI)
+		currentDot.change_dot_color()
+		didBuildMap = false
+		
 	
 
-func dotOuterEntered(currentDot, body):
-	if body.is_in_group("Gplayer"):
+func dotOuterEntered(currentDot, area):
+	if area.is_in_group("Gplayer"):
 		currentDot.isActive = true
 		currentDotTouching = currentDot
 
-func dotOuterExited(currentDot, body):
-	if body.is_in_group("Gplayer"):
+func dotOuterExited(currentDot, area):
+	if area.is_in_group("Gplayer"):
 		currentDot.isActive = false
 		currentDotTouching = null
 	if currentDot.global_position == passedDotPos:
 		passedDotPos = global_position
 
-func dotInnerEntered(currentDot, body):
-	if body.is_in_group("Gplayer"):
+func dotInnerEntered(currentDot, area):
+	if area.is_in_group("Gplayer"):
 		currentDot.isInnerActive = true
 
-func dotInnerExited(currentDot, body):
-	if body.is_in_group("Gplayer"):
+func dotInnerExited(currentDot, area):
+	if area.is_in_group("Gplayer"):
 		currentDot.isInnerActive = false
 
 
-func _on_area_3d_body_entered(body):
-	if body.is_in_group("Gbumper"):
-#		printt(body.name)
+func bumperEntered(bumper, area):
+	if area.is_in_group("Gplayer"):
 		change_rotation_dir()
+		speed = hiSpd
 	
-	
-	
+

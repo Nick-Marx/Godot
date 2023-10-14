@@ -50,14 +50,13 @@ func _process(delta):
 		pp.didBuildMap = true
 
 
-
 func build_map():
-	for x in range(-12, 13, 2):
-		for y in range(-12, 13, 2):
+	for x in range(-10, 11, 2):
+		for y in range(-10, 11, 2):
 			place_dot(x, y)
 	
-	for x in range(-12, 13, 1):
-		for y in range(-12, 13, 1):
+	for x in range(-10, 11, 1):
+		for y in range(-10, 11, 1):
 			place_bumper(x, y)
 
 
@@ -80,14 +79,14 @@ func place_dot(x, y):
 			dotDict[tempPos] = tempDot
 
 		if tempDot.global_position == Vector3(0, 0, 0): #starting dot is green
-			tempDot.get_child(3).set_mesh(greenDot)
+			tempDot.get_child(0).get_child(1).set_mesh(greenDot)
 		else:
 			startingColor = rand.randf() #percentage of starting dots are red/white
 			match startingColor > dotRatio:
 				true:
-					tempDot.get_child(3).set_mesh(whiteDot)
+					tempDot.get_child(0).get_child(1).set_mesh(whiteDot)
 				false:
-					tempDot.get_child(3).set_mesh(redDot)
+					tempDot.get_child(0).get_child(1).set_mesh(redDot)
 
 
 func place_bumper(x, y):

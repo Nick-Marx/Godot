@@ -1,8 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://cqiiihls2rwj1"]
+[gd_scene load_steps=6 format=3 uid="uid://cqiiihls2rwj1"]
 
 [ext_resource type="Script" path="res://enemy/bumper.gd" id="1_8h4dt"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2yv7l"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_bokju"]
 
@@ -20,17 +18,19 @@ material = SubResource("StandardMaterial3D_6pxce")
 [node name="bumper" type="Node3D" groups=["Gbumper"]]
 script = ExtResource("1_8h4dt")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." groups=["Gbumper"]]
 transform = Transform3D(0.15, 0, 0, 0, 0.563, 0, 0, 0, 0.15, 0, 0, 0)
-physics_material_override = SubResource("PhysicsMaterial_2yv7l")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("CylinderShape3D_bokju")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
 mesh = SubResource("CylinderMesh_02jra")
 
-[node name="Area3D" type="Area3D" parent="StaticBody3D"]
+[node name="Area3D" type="Area3D" parent="Area3D"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Area3D" groups=["Gbumper"]]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D/Area3D" groups=["Gbumper"]]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0)
 shape = SubResource("CylinderShape3D_843t4")
+
+[connection signal="area_entered" from="Area3D/Area3D" to="." method="_on_area_3d_area_entered"]

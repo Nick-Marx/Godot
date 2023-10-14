@@ -16,13 +16,13 @@ material = SubResource("StandardMaterial3D_h4qhd")
 [node name="pivot_player" type="Node3D" groups=["Gplayer"]]
 script = ExtResource("1_wbwu8")
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["Gplayer"]]
+[node name="Area3D" type="Area3D" parent="." groups=["Gplayer"]]
 
-[node name="CollisionShape3d" type="CollisionShape3D" parent="CharacterBody3D"]
+[node name="CollisionShape3d" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(-8.74228e-09, -1, 0, 0.2, -4.37114e-08, 0, 0, 0, 0.2, 1, 0, 0)
 shape = SubResource("CylinderShape3D_f7n4k")
 
-[node name="MeshInstance3d" type="MeshInstance3D" parent="CharacterBody3D"]
+[node name="MeshInstance3d" type="MeshInstance3D" parent="Area3D"]
 transform = Transform3D(-8.74228e-09, -1, 0, 0.2, -4.37114e-08, 0, 0, 0, 0.2, 1, 0, 0)
 mesh = SubResource("CylinderMesh_civ7y")
 
@@ -35,8 +35,8 @@ script = ExtResource("2_5qodx")
 [node name="Area3D" type="Area3D" parent="DirectionalLight3d"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DirectionalLight3d/Area3D"]
-transform = Transform3D(16, 0, 0, 0, 16, 0, 0, 0, 9, 0, 0, -4.5)
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 9, 0, 0, -4.5)
 shape = SubResource("BoxShape3D_ngr8u")
 
-[connection signal="body_shape_entered" from="DirectionalLight3d/Area3D" to="DirectionalLight3d" method="_on_area_3d_body_shape_entered"]
-[connection signal="body_shape_exited" from="DirectionalLight3d/Area3D" to="DirectionalLight3d" method="_on_area_3d_body_shape_exited"]
+[connection signal="area_entered" from="DirectionalLight3d/Area3D" to="DirectionalLight3d" method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="DirectionalLight3d/Area3D" to="DirectionalLight3d" method="_on_area_3d_area_exited"]
