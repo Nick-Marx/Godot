@@ -7,7 +7,7 @@ var rand = RandomNumberGenerator.new()
 @export var dot:PackedScene #holds dot scene object
 @onready var dotScript = load("res://map/dot.gd")
 @export var bumper:PackedScene #holds bumper scene object
-@export var dotRatio:float #percentage of red dots generated
+@export var redDotRatio:float #percentage of red dots generated
 @export var bumperRatio:float #percentage of bumpers on the board
 var whiteDot:Mesh = load("res://material/white_dot.tres")
 var redDot:Mesh = load("res://material/red_dot.tres")
@@ -82,7 +82,7 @@ func place_dot(x, y):
 			tempDot.meshNode.set_mesh(greenDot)
 		else:
 			startingColor = rand.randf() #percentage of starting dots are red/white
-			match startingColor > dotRatio:
+			match startingColor > redDotRatio:
 				true:
 					tempDot.meshNode.set_mesh(whiteDot)
 				false:

@@ -26,8 +26,8 @@ default_font_size = 38
 script = ExtResource("1_sgxy7")
 dot = ExtResource("2_ielvg")
 bumper = ExtResource("3_ffwjs")
-dotRatio = 0.2
-bumperRatio = 0.2
+redDotRatio = 0.2
+bumperRatio = 0.1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_s1i21")
