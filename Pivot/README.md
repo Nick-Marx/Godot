@@ -120,6 +120,7 @@ Took me the better part of 3 weeks, about 2-12 hours every day:
 
 Foolish me, I tried to add a bumper obstacle while refactoring - this is probably why I took so long getting everything to work.
 <br>
+<br>
 Eureka! Everything works as it should.
 <div align="center">
 <img height=300 src="https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_maj_milestone1_2.gif"/>  
