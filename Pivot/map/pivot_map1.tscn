@@ -10,6 +10,7 @@
 [sub_resource type="Environment" id="Environment_s1i21"]
 background_mode = 1
 background_color = Color(0.180392, 0.180392, 0.180392, 1)
+glow_enabled = true
 glow_intensity = 2.0
 glow_strength = 2.0
 

@@ -79,20 +79,25 @@ func place_dot(x, y):
 			dotDict[tempPos] = tempDot
 
 		if tempDot.global_position == Vector3(0, 0, 0): #starting dot is green
-			tempDot.get_child(0).get_child(1).set_mesh(greenDot)
+			tempDot.meshNode.set_mesh(greenDot)
 		else:
 			startingColor = rand.randf() #percentage of starting dots are red/white
 			match startingColor > dotRatio:
 				true:
-					tempDot.get_child(0).get_child(1).set_mesh(whiteDot)
+					tempDot.meshNode.set_mesh(whiteDot)
 				false:
-					tempDot.get_child(0).get_child(1).set_mesh(redDot)
+					tempDot.meshNode.set_mesh(redDot)
 
 
 func place_bumper(x, y):
-	var bumperPlacement = rand.randf() #determines if bumper is placed or not
 	var tempPos = (Vector3i(pp.global_position) + Vector3i(pp.transform.basis.x * x) + Vector3i(pp.transform.basis.y * y)) #picks a position based on current plane
-
+	
+	if x in range(-1, 2, 1) and y in range(-1, 2, 1):
+		bumperDict[tempPos] = 0
+		return
+		
+	var bumperPlacement = rand.randf() #determines if bumper is placed or not
+	
 	if (x%2==0 and y%2==0) or (x%2!=0 and y%2!=0):
 		return
 		

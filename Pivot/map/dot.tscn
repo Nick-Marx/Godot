@@ -1,38 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://dg4066jsu1k2a"]
+[gd_scene load_steps=4 format=3 uid="uid://dg4066jsu1k2a"]
 
 [ext_resource type="Script" path="res://map/dot.gd" id="1_kljqf"]
 [ext_resource type="SphereMesh" uid="uid://breifxkrokbd2" path="res://material/white_dot.tres" id="2_0bq3l"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_v1kvw"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6ej5q"]
 
 [node name="dot" type="Node3D" groups=["Gdot"]]
 script = ExtResource("1_kljqf")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3DOuter" type="Area3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("SphereShape3D_v1kvw")
+[node name="CollisionShape3d" type="CollisionShape3D" parent="Area3DOuter" groups=["GdotOuter"]]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+shape = SubResource("SphereShape3D_6ej5q")
 
-[node name="MeshInstance3d" type="MeshInstance3D" parent="Area3D"]
+[node name="MeshInstance3d" type="MeshInstance3D" parent="Area3DOuter"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = ExtResource("2_0bq3l")
 skeleton = NodePath("../..")
 
-[node name="Area3DOuter" type="Area3D" parent="Area3D"]
+[node name="Area3DInner" type="Area3D" parent="."]
 
-[node name="CollisionShape3d" type="CollisionShape3D" parent="Area3D/Area3DOuter" groups=["GdotOuter"]]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+[node name="CollisionShape3d" type="CollisionShape3D" parent="Area3DInner" groups=["GdotInner"]]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 shape = SubResource("SphereShape3D_6ej5q")
 
-[node name="Area3DInner" type="Area3D" parent="Area3D"]
-
-[node name="CollisionShape3d" type="CollisionShape3D" parent="Area3D/Area3DInner" groups=["GdotInner"]]
-transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
-shape = SubResource("SphereShape3D_6ej5q")
-
-[connection signal="area_entered" from="Area3D/Area3DOuter" to="." method="_on_area_3d_outer_area_entered"]
-[connection signal="area_exited" from="Area3D/Area3DOuter" to="." method="_on_area_3d_outer_area_exited"]
-[connection signal="area_entered" from="Area3D/Area3DInner" to="." method="_on_area_3d_inner_area_entered"]
-[connection signal="area_exited" from="Area3D/Area3DInner" to="." method="_on_area_3d_inner_area_exited"]
+[connection signal="area_entered" from="Area3DOuter" to="." method="_on_area_3d_outer_area_entered"]
+[connection signal="area_exited" from="Area3DOuter" to="." method="_on_area_3d_outer_area_exited"]
+[connection signal="area_entered" from="Area3DInner" to="." method="_on_area_3d_inner_area_entered"]
+[connection signal="area_exited" from="Area3DInner" to="." method="_on_area_3d_inner_area_exited"]

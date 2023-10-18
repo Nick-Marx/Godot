@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqiiihls2rwj1"]
+[gd_scene load_steps=5 format=3 uid="uid://cqiiihls2rwj1"]
 
 [ext_resource type="Script" path="res://enemy/bumper.gd" id="1_8h4dt"]
 
@@ -13,8 +13,6 @@ distance_fade_min_distance = 13.0
 [sub_resource type="CylinderMesh" id="CylinderMesh_02jra"]
 material = SubResource("StandardMaterial3D_6pxce")
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_843t4"]
-
 [node name="bumper" type="Node3D" groups=["Gbumper"]]
 script = ExtResource("1_8h4dt")
 
@@ -27,10 +25,4 @@ shape = SubResource("CylinderShape3D_bokju")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
 mesh = SubResource("CylinderMesh_02jra")
 
-[node name="Area3D" type="Area3D" parent="Area3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D/Area3D" groups=["Gbumper"]]
-transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0)
-shape = SubResource("CylinderShape3D_843t4")
-
-[connection signal="area_entered" from="Area3D/Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
