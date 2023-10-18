@@ -81,7 +81,7 @@ Captain's Log 5/31/23: ...I couldn't sleep. As I lie awake my thoughts wander to
 <br>
 -Instead of making the camera a child of the player, I will make the camera follow a child of the player, specifically the directional lighting since they seem to always be in the exact same spot. This has solved my camera control and smoothing problems. \*happy noises\* (It also seems my player scene restructuring was necessary, glad that hour and a half was worth it)
 <br>
--I remembered reading in short about a property of transform called Basis  which will return the normalized vector requested. I believe this can solve my orientation problem. Wish me luck.
+-I remembered reading in short about a property of transform called Basis which will return the normalized vector requested. I believe this can solve my orientation problem. Wish me luck.
 
 ## **Player Position Orientation and Map Gen Improvement**
 
@@ -94,11 +94,35 @@ If the rest of the project goes smoothly this will officially be the 1/3 complet
 <br>
 A little overview of what I intend to still add:
 <br>
--Collectibles, enemies, obstacles
+-Collectibles/ power-ups, enemies, obstacles
 <br>
 -Improved HUD
 <br>
 -Audio (movement-based sound effects and music)
+
+## **Refactoring, Signals, Bumper Obstacle**
+
+\*Personal Note\* Another hiatus (I'd be finished by now if I didn't keep doing this).
+
+Joined the official Godot Discord server. Met some users who gave me a lot of sound advice (and also got some validation for this project - feels good). Using this newfound knowledge, I decided to refactor my code.
+
+Took me the better part of 3 weeks, about 2-12 hours every day: 
+-Tossed out a lot of redundant code and moved some function calls around for efficiency. 
+-Removed a bunch of unnecessary/duplicate nodes. 
+-Set up global signals (learned how to better use signals)
+-Improved a lot of object references in my scripts.
+-Added object fade out distance to help with dizziness when moving
+
+Foolish me, I tried to add a bumper obstacle while refactoring - this is probably why I took so long getting everything to work.
+
+All-in-all the game is running about 25% better with about 20% fewer lines of code.
+I learned alot and am glad I did this.
+<div align="center">
+<img height=300 src="https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_maj_milestone1_2.gif"/>  
+</div>
+
+Eureka! Everything works as it should. 
+Life is good!
   
 ## **Final Thoughts**  
 
