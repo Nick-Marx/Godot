@@ -106,22 +106,29 @@ A little overview of what I intend to still add:
 
 Joined the official Godot Discord server. Met some users who gave me a lot of sound advice (and also got some validation for this project - feels good). Using this newfound knowledge, I decided to refactor my code.
 
-Took me the better part of 3 weeks, about 2-12 hours every day: 
--Tossed out a lot of redundant code and moved some function calls around for efficiency. 
--Removed a bunch of unnecessary/duplicate nodes. 
+Took me the better part of 3 weeks, about 2-12 hours every day:
+<br>
+-Tossed out a lot of redundant code and moved some function calls around for efficiency.
+<br>
+-Removed a bunch of unnecessary/duplicate nodes.
+<br>
 -Set up global signals (learned how to better use signals)
+<br>
 -Improved a lot of object references in my scripts.
+<br>
 -Added object fade out distance to help with dizziness when moving
 
 Foolish me, I tried to add a bumper obstacle while refactoring - this is probably why I took so long getting everything to work.
-
-All-in-all the game is running about 25% better with about 20% fewer lines of code.
-I learned alot and am glad I did this.
+<br>
+Eureka! Everything works as it should.
 <div align="center">
 <img height=300 src="https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_maj_milestone1_2.gif"/>  
 </div>
 
-Eureka! Everything works as it should. 
+All-in-all the game is running about 25% better with about 20% fewer lines of code.
+<br>
+I learned alot and am glad I did this.
+<br>
 Life is good!
   
 ## **Final Thoughts**  
