@@ -1,39 +1,50 @@
 extends Node3D
 
 
-#@onready var ppScript = load("res://player/pivot_player.gd").new() #holds pivot_player script
-@onready var pp = PivotPlayer #holds player singleton*
-var rand = RandomNumberGenerator.new()
-@export var dot:PackedScene #holds dot scene object
+@onready var pp = PivotPlayer #holds player *singleton*
+
+#holds scene objects to be instantiated later
+@export var dot:PackedScene
+@export var bumper:PackedScene
+@export var spinner:PackedScene
+
+#holds loaded script (i was doing it inefficiently before; this may be redundant because of packed scene variables)
 @onready var dotScript = load("res://map/dot.gd")
-@export var bumper:PackedScene #holds bumper scene object
-@export var redDotRatio:float #percentage of red dots generated
-@export var bumperRatio:float #percentage of bumpers on the board
+@onready var bumpScript = load("res://enemy/bumper.gd")
+@onready var spinScript = load("res://enemy/spinner.gd")
+
+#percentage of object placed on board
+@export var redDotRatio:float
+@export var bumperRatio:float
+@export var spinnerRatio:float
+
+#holds dot meshes for mesh swapping
 var whiteDot:Mesh = load("res://material/white_dot.tres")
 var redDot:Mesh = load("res://material/red_dot.tres")
 var greenDot:Mesh = load("res://material/green_dot.tres")
-var tempDot #holds temporary dot node until it's instantiated
-var startingColor #used to set instantiated dot color
-var isDotPresent:bool = true #indicates if dot is present at current location
-#@onready var prevDotGlobPos:Vector3 = PivotPlayer.global_position
-#@onready var prevDotGlobPos:Transform3D = PivotPlayer.global_transform
-#var time = 0 #debug
+
+#holds dictionaries to keep track of placed objects
 var dotDict = {}
 var bumperDict = {}
 var spinnerDict = {}
 
+#holds organizer child nodes for this map for debugging
+@export var dotOrganizer:Node3D
+@export var bumperOrganizer:Node3D
+@export var spinnerOrganizer:Node3D
 
-# Called when the node enters the scene tree for the first time.
+var isDotPresent:bool = true #indicates if dot is present at current location
+#var time = 0 #debug
+
+
+
 func _ready():
 	Global.mainScene = self
 	build_map()
 	if dot == null:
 		dot = load("res://map/dot.tscn")
-	
-	rand.randomize() #ensures the randomization is not the exact same each time
 	#print("prevDotGlobPos: ", prevDotGlobPos)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 #	time += delta #debug
 #	if fmod(floor(time), 10) == 0: #debug
@@ -46,7 +57,6 @@ func _process(delta):
 #		print(bumperDict)
 #		print("\n", "---", "\n")
 		build_map()
-#		pp.get_child(0).didMove = false
 		pp.didBuildMap = true
 
 
@@ -58,20 +68,21 @@ func build_map():
 	for x in range(-10, 11, 1):
 		for y in range(-10, 11, 1):
 			place_bumper(x, y)
+	
+	for x in range(-10, 11, 2):
+		for y in range(-10, 11, 2):
+			place_spinner(x, y)
 
 
 func place_dot(x, y):
-#	rand.randomize() #ensures the randomization is not the exact same each time
-	
 	var tempPos = (Vector3i(pp.global_position) + Vector3i(pp.transform.basis.x * x) + Vector3i(pp.transform.basis.y * y)) #picks a position based on current plane
 	#print("tempPos: ", tempPos)
-	
 		
 	if !dotDict.has(tempPos):
-		tempDot = dot.instantiate() #instantiate packed scene as a node
+		var tempDot = dot.instantiate() #instantiate packed scene as a node
 #		tempDot.set_script(dotScript)
 		tempDot.set_name("dot%s" % tempPos)
-		add_child(tempDot) #adds node to tree as child of this script owner
+		dotOrganizer.add_child(tempDot) #adds node to tree as child of organizer node
 		tempDot.global_position = tempPos
 		if dotDict.has(tempPos):
 			return
@@ -81,8 +92,7 @@ func place_dot(x, y):
 		if tempDot.global_position == Vector3(0, 0, 0): #starting dot is green
 			tempDot.meshNode.set_mesh(greenDot)
 		else:
-			startingColor = rand.randf() #percentage of starting dots are red/white
-			match startingColor > redDotRatio:
+			match Global.rand.randf() > redDotRatio: #percentage of starting dots are red/white
 				true:
 					tempDot.meshNode.set_mesh(whiteDot)
 				false:
@@ -96,7 +106,7 @@ func place_bumper(x, y):
 		bumperDict[tempPos] = 0
 		return
 		
-	var bumperPlacement = rand.randf() #determines if bumper is placed or not
+	var bumperPlacement = Global.rand.randf() #determines if bumper is placed or not
 	
 	if (x%2==0 and y%2==0) or (x%2!=0 and y%2!=0):
 		return
@@ -108,9 +118,9 @@ func place_bumper(x, y):
 		match bumperPlacement <= bumperRatio:
 			true:
 				var tempBump = bumper.instantiate() #instantiate packed scene as a node
-				tempBump.set_script(load("res://enemy/bumper.gd"))
+				tempBump.set_script(bumpScript)
 				tempBump.set_name("bumper%s" % tempPos)
-				add_child(tempBump) #adds node to tree as child of this script owner
+				bumperOrganizer.add_child(tempBump) #adds node to tree as child of organizer node
 				tempBump.global_position = tempPos
 				tempBump.global_rotation = pp.global_rotation
 				
@@ -122,4 +132,28 @@ func place_bumper(x, y):
 				bumperDict[tempPos] = 0
 	
 
-
+func place_spinner(x, y):
+	var tempPos = (Vector3i(pp.global_position) + Vector3i(pp.transform.basis.x * x) + Vector3i(pp.transform.basis.y * y)) #picks a position based on current plane
+	
+	if x in range(-4, 5) and y in range(-4, 5):
+		spinnerDict[tempPos] = 0
+		return
+		
+	var spinnerPlacement = Global.rand.randf() #determines if bumper is placed or not
+		
+	if !spinnerDict.has(tempPos):
+		spinnerDict[tempPos] = null
+		
+	if spinnerDict[tempPos] == null:
+		match spinnerPlacement <= spinnerRatio:
+			true:
+				var tempSpin = spinner.instantiate() #instantiate packed scene as a node
+				tempSpin.set_script(spinScript)
+				tempSpin.set_name("spinner%s" % tempPos)
+				spinnerOrganizer.add_child(tempSpin) #adds node to tree as child of organizer node
+				tempSpin.global_position = tempPos
+				tempSpin.global_rotation = pp.global_rotation
+				
+				spinnerDict[tempPos] = tempSpin
+			false:
+				spinnerDict[tempPos] = 0

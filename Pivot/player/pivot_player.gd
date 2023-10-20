@@ -24,6 +24,7 @@ func _ready():
 	Signals.dotInnerExited.connect(dotInnerExited)
 	
 	Signals.bumperEntered.connect(bumperEntered)
+	Signals.spinnerEntered.connect(spinnerEntered)
 	#print(name)
 
 func change_rotation_dir():
@@ -83,4 +84,7 @@ func bumperEntered(bumper, area):
 		self.change_rotation_dir()
 		self.speed = hiSpd
 	
-
+func spinnerEntered(spinner, area):
+	if area.is_in_group("Gplayer"):
+		self.change_rotation_dir()
+		self.speed = loSpd

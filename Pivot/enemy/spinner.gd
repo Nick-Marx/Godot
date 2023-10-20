@@ -1,26 +1,18 @@
-extends StaticBody3D
+extends Node3D
 
 
-@onready var pp = PivotPlayer
-@export var speed:float = -0.0125 #holds rotation speed
-var hiSpd:float = 0.05 #rot spd max
-var loSpd:float = 0.0125 #rot spd min
-const rotDir:int = -1 #used to change rotation direction
+@export var speed:float = -0.025 #holds rotation speed
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if Global.rand.randf() < 0.5:
+		self.speed *= -1
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	rotate_z(speed)
-
-func change_rotation_dir():
-	hiSpd *= rotDir
-	loSpd *= rotDir
+	self.rotate_object_local(Vector3(0,0,1), speed)
 
 
+func _on_area_3d_area_entered(area):
+	Signals.spinnerEntered.emit(self, area)
+	if area.is_in_group("Gplayer") or area.is_in_group("Gspinner") or area.is_in_group("Gbumper"):
+		self.speed *= -1
 
-func _on_area_3d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	if body.name == pp.name:
-		change_rotation_dir()

@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dticb7r531bu8"]
+[gd_scene load_steps=12 format=3 uid="uid://dticb7r531bu8"]
 
 [ext_resource type="Script" path="res://map/pivot_map1.gd" id="1_sgxy7"]
 [ext_resource type="PackedScene" uid="uid://dg4066jsu1k2a" path="res://map/dot.tscn" id="2_ielvg"]
 [ext_resource type="PackedScene" uid="uid://cqiiihls2rwj1" path="res://enemy/bumper.tscn" id="3_ffwjs"]
 [ext_resource type="Script" path="res://scripts/Score.gd" id="3_h0moq"]
+[ext_resource type="PackedScene" uid="uid://bgrem4yst700k" path="res://enemy/spinner.tscn" id="4_7vwmb"]
 [ext_resource type="Script" path="res://scripts/Time.gd" id="4_gtmxh"]
 [ext_resource type="Script" path="res://map/Camera3d.gd" id="4_wo5dt"]
 
@@ -22,12 +23,17 @@ default_font_size = 38
 [sub_resource type="Theme" id="Theme_u7eo6"]
 default_font_size = 38
 
-[node name="pivot_map1" type="Node3D"]
+[node name="pivot_map1" type="Node3D" node_paths=PackedStringArray("dotOrganizer", "bumperOrganizer", "spinnerOrganizer")]
 script = ExtResource("1_sgxy7")
 dot = ExtResource("2_ielvg")
 bumper = ExtResource("3_ffwjs")
+spinner = ExtResource("4_7vwmb")
 redDotRatio = 0.2
 bumperRatio = 0.1
+spinnerRatio = 0.1
+dotOrganizer = NodePath("DotOrganizer")
+bumperOrganizer = NodePath("BumperOrganizer")
+spinnerOrganizer = NodePath("SpinnerOrganizer")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_s1i21")
@@ -68,3 +74,9 @@ script = ExtResource("4_gtmxh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 script = ExtResource("4_wo5dt")
 smoothSpeed = 2.0
+
+[node name="DotOrganizer" type="Node3D" parent="."]
+
+[node name="BumperOrganizer" type="Node3D" parent="."]
+
+[node name="SpinnerOrganizer" type="Node3D" parent="."]

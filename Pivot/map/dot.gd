@@ -1,7 +1,6 @@
 extends Node3D
 
 
-var scoreBoard:Label
 var greenDot:Mesh = load("res://material/green_dot.tres")
 var whiteDot:Mesh = load("res://material/white_dot.tres")
 var yellowDot:Mesh = load("res://material/yellow_dot.tres")
@@ -14,13 +13,12 @@ var isInnerActive:bool = false
 
 
 func change_dot_color():
-	scoreBoard = get_node_or_null("../Control/Score")
 	if meshNode.mesh == whiteDot:
 		meshNode.set_mesh(greenDot)
-		scoreBoard.score += 1
+		Global.score += 1
 	if meshNode.mesh == yellowDot:
 		meshNode.set_mesh(greenDot)
-		scoreBoard.score += 3
+		Global.score += 3
 	if meshNode.mesh == redDot:
 		meshNode.set_mesh(yellowDot)
 
