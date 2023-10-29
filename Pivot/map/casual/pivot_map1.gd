@@ -4,48 +4,48 @@ extends Node3D
 @onready var pp = PivotPlayer #holds player *singleton*
 
 #holds scene objects to be instantiated later
-@export var dot:PackedScene
-@export var bumper:PackedScene
-@export var spinner:PackedScene
+@export var dot: PackedScene
+@export var bumper: PackedScene
+@export var spinner: PackedScene
 
 #holds loaded script (i was doing it inefficiently before; this may be redundant because of packed scene variables)
-@onready var dotScript = load("res://map/dot.gd")
-@onready var bumpScript = load("res://enemy/bumper.gd")
-@onready var spinScript = load("res://enemy/spinner.gd")
+@onready var dotScript: Script = load("res://map/dot.gd")
+@onready var bumpScript: Script = load("res://enemy/bumper.gd")
+@onready var spinScript: Script = load("res://enemy/spinner.gd")
 
 #percentage of object placed on board
-@export var redDotRatio:float
-@export var bumperRatio:float
-@export var spinnerRatio:float
+@export var redDotRatio: float
+@export var bumperRatio: float
+@export var spinnerRatio: float
 
 #holds dot meshes for mesh swapping
-var whiteDot:Mesh = load("res://material/white_dot.tres")
-var redDot:Mesh = load("res://material/red_dot.tres")
-var greenDot:Mesh = load("res://material/green_dot.tres")
+var whiteDot: Mesh = load("res://material/white_dot.tres")
+var redDot: Mesh = load("res://material/red_dot.tres")
+var greenDot: Mesh = load("res://material/green_dot.tres")
 
 #holds dictionaries to keep track of placed objects
-var dotDict = {}
-var bumperDict = {}
-var spinnerDict = {}
+var dotDict: Dictionary = {}
+var bumperDict: Dictionary = {}
+var spinnerDict: Dictionary = {}
 
 #holds organizer child nodes for this map for debugging
-@export var dotOrganizer:Node3D
-@export var bumperOrganizer:Node3D
-@export var spinnerOrganizer:Node3D
+@export var dotOrganizer: Node3D
+@export var bumperOrganizer: Node3D
+@export var spinnerOrganizer: Node3D
 
-var isDotPresent:bool = true #indicates if dot is present at current location
+var isDotPresent: bool = true #indicates if dot is present at current location
 #var time = 0 #debug
 
 
 
-func _ready():
+func _ready() -> void:
 	Global.mainScene = self
 	build_map()
 	if dot == null:
 		dot = load("res://map/dot.tscn")
 	#print("prevDotGlobPos: ", prevDotGlobPos)
 
-func _process(delta):
+func _process(delta: float) -> void:
 #	time += delta #debug
 #	if fmod(floor(time), 10) == 0: #debug
 #		print(Detector.global_position.x)

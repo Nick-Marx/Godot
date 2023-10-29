@@ -6,7 +6,10 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_f7n4k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h4qhd"]
-albedo_color = Color(0, 0, 0, 1)
+albedo_color = Color(0.960784, 0.207843, 0.564706, 1)
+emission_enabled = true
+emission = Color(0.87451, 0.384314, 0.678431, 1)
+emission_energy_multiplier = 1.76
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_civ7y"]
 material = SubResource("StandardMaterial3D_h4qhd")

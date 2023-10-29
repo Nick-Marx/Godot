@@ -9,7 +9,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	time += delta
+	if !Global.menu.visible:
+		time += delta
 	var seconds = fmod(time,60)
 	var minutes = fmod(time, 3600) / 60
 	var str_elapsed = "%02d : %02d" % [minutes, seconds]

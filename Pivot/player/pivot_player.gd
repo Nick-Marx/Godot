@@ -3,19 +3,19 @@ extends Node3D
 
 @onready var pp = $Area3D
 #@export var dL3d:DirectionalLight3D
-@export var speed:float = -0.025 #holds rotation speed
-var hiSpd:float = -0.055 #rot spd max
-var loSpd:float = -0.025 #rot spd min
-const rotDir:int = -1 #used to change rotation direction
-var innerActive:bool = false #?true if player touching dot center
-var currentDotTouching #holds object of dot overlapping player tip
-@onready var prevDotPos #holds players prev glob pos after movign to new dot
+@export var speed: float = -0.025 #holds rotation speed
+var hiSpd: float = -0.055 #rot spd max
+var loSpd: float = -0.025 #rot spd min
+const rotDir: int = -1 #used to change rotation direction
+var innerActive: bool = false #?true if player touching dot center
+var currentDotTouching: Node3D #holds object of dot overlapping player tip
+@onready var prevDotPos: Vector3 #holds players prev glob pos after movign to new dot
 var rand = RandomNumberGenerator.new()
-var didBuildMap:bool = true
+var didBuildMap: bool = true
 
 
 
-func _ready():
+func _ready() -> void:
 	Global.player = self
 	
 	Signals.dotOuterEntered.connect(dotOuterEntered)
@@ -31,11 +31,12 @@ func change_rotation_dir():
 	hiSpd *= rotDir
 	loSpd *= rotDir
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	pp.rotate_z(speed)
 	
 	if Input.is_action_just_pressed("action_one") or Input.is_action_pressed("action_one"):
-		player_movement(currentDotTouching)
+		if !Global.menu.visible:
+			player_movement(currentDotTouching)
 
 #	printt(pp.global_position, $DirectionalLight3d.name, $DirectionalLight3d.global_position)
 

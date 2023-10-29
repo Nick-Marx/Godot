@@ -1,19 +1,21 @@
-[gd_scene load_steps=12 format=3 uid="uid://dticb7r531bu8"]
+[gd_scene load_steps=13 format=3 uid="uid://dticb7r531bu8"]
 
-[ext_resource type="Script" path="res://map/pivot_map1.gd" id="1_sgxy7"]
-[ext_resource type="PackedScene" uid="uid://dg4066jsu1k2a" path="res://map/dot.tscn" id="2_ielvg"]
-[ext_resource type="PackedScene" uid="uid://cqiiihls2rwj1" path="res://enemy/bumper.tscn" id="3_ffwjs"]
-[ext_resource type="Script" path="res://scripts/Score.gd" id="3_h0moq"]
-[ext_resource type="PackedScene" uid="uid://bgrem4yst700k" path="res://enemy/spinner.tscn" id="4_7vwmb"]
-[ext_resource type="Script" path="res://scripts/Time.gd" id="4_gtmxh"]
-[ext_resource type="Script" path="res://map/Camera3d.gd" id="4_wo5dt"]
+[ext_resource type="Script" path="res://map/casual/pivot_map1.gd" id="1_k52wo"]
+[ext_resource type="PackedScene" uid="uid://dg4066jsu1k2a" path="res://map/dot.tscn" id="2_shkiv"]
+[ext_resource type="PackedScene" uid="uid://cqiiihls2rwj1" path="res://enemy/bumper.tscn" id="3_k0cat"]
+[ext_resource type="PackedScene" uid="uid://bgrem4yst700k" path="res://enemy/spinner.tscn" id="4_w7j6e"]
+[ext_resource type="Script" path="res://map/world_env.gd" id="5_4v3ln"]
+[ext_resource type="Script" path="res://scripts/Score.gd" id="6_oh0mt"]
+[ext_resource type="Script" path="res://scripts/Time.gd" id="7_bxb3a"]
+[ext_resource type="Script" path="res://map/Camera3d.gd" id="8_d0swv"]
 
 [sub_resource type="Environment" id="Environment_s1i21"]
 background_mode = 1
-background_color = Color(0.180392, 0.180392, 0.180392, 1)
+background_color = Color(0.235294, 0.235294, 0.235294, 1)
 glow_enabled = true
-glow_intensity = 2.0
-glow_strength = 2.0
+glow_strength = 1.77
+glow_hdr_threshold = 1.37
+glow_hdr_scale = 1.05
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xytmr"]
 
@@ -24,10 +26,10 @@ default_font_size = 38
 default_font_size = 38
 
 [node name="pivot_map1" type="Node3D" node_paths=PackedStringArray("dotOrganizer", "bumperOrganizer", "spinnerOrganizer")]
-script = ExtResource("1_sgxy7")
-dot = ExtResource("2_ielvg")
-bumper = ExtResource("3_ffwjs")
-spinner = ExtResource("4_7vwmb")
+script = ExtResource("1_k52wo")
+dot = ExtResource("2_shkiv")
+bumper = ExtResource("3_k0cat")
+spinner = ExtResource("4_w7j6e")
 redDotRatio = 0.2
 bumperRatio = 0.1
 spinnerRatio = 0.1
@@ -37,8 +39,10 @@ spinnerOrganizer = NodePath("SpinnerOrganizer")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_s1i21")
+script = ExtResource("5_4v3ln")
 
-[node name="Control" type="Control" parent="."]
+[node name="HUD" type="Control" parent="."]
+process_mode = 1
 material = SubResource("CanvasItemMaterial_xytmr")
 layout_mode = 3
 anchor_right = 1.0
@@ -46,7 +50,7 @@ anchor_bottom = 0.131
 offset_bottom = -0.380005
 grow_horizontal = 2
 
-[node name="Score" type="Label" parent="Control"]
+[node name="Score" type="Label" parent="HUD"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 2.6
@@ -55,9 +59,9 @@ offset_left = 64.0
 offset_right = -3040.0
 theme = SubResource("Theme_ikn15")
 vertical_alignment = 1
-script = ExtResource("3_h0moq")
+script = ExtResource("6_oh0mt")
 
-[node name="Time" type="Label" parent="Control"]
+[node name="Time" type="Label" parent="HUD"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.533
@@ -68,11 +72,11 @@ offset_right = -64.0
 theme = SubResource("Theme_u7eo6")
 horizontal_alignment = 2
 vertical_alignment = 1
-script = ExtResource("4_gtmxh")
+script = ExtResource("7_bxb3a")
 
 [node name="Camera3d" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
-script = ExtResource("4_wo5dt")
+script = ExtResource("8_d0swv")
 smoothSpeed = 2.0
 
 [node name="DotOrganizer" type="Node3D" parent="."]
