@@ -143,7 +143,7 @@ Changed player color; I really like this soft neon pick I found.
 Made pause menu. This took me longer than I thought it would since there are tons of tutorials out there, but I have the bad habit of trying to change things to meet my needs at the same time I'm learning them so it all breaks and I have to fix it.
 <br>
 <br>
-I know everything's still moving behind the menu so it doesn't really 'pause' anything right now except for the time, but I may eventually add a survival mode which would have an enemy follow the player which would pause when the menu opens.
+I know everything's still moving behind the menu so it doesn't really 'pause' anything right now except for the time, but I may eventually add a survival mode that includes an enemy that follows the player which would pause when the menu opens.
 <br>
 <br>
 It's pretty minimalistic, but I like the style so far. I might change the buttons, text, and/or colors eventually.
