@@ -67,7 +67,7 @@ Amazingly, this seems scalable to 3D and this approach could probably also work 
 <img height=300 src="https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_third_success.gif"/>  
 </div>
 
-## **Camera control and obstructions**
+## **Camera Control and Obstructions**
 
 Wait... I have an idea. I decided to spend a couple hours redoing my player scene to include a parent node. I hope this wasn't a waste of time, but it seems it would be much simpler to control the camera this way. Oh, also, I moved the camera to be a child of this parent node in the player scene so that it will always follow the player around.
 
