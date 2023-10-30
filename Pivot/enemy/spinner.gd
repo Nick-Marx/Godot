@@ -1,6 +1,6 @@
 extends Node3D
 
-
+@onready var meshNode = $Area3D/MeshInstance3D
 @export var speed:float = -0.025 #holds rotation speed
 
 func _ready():
@@ -16,3 +16,5 @@ func _on_area_3d_area_entered(area):
 	if area.is_in_group("Gplayer") or area.is_in_group("Gspinner") or area.is_in_group("Gbumper"):
 		self.speed *= -1
 
+func closeness_fade():
+	pass

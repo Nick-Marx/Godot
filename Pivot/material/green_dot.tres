@@ -6,7 +6,7 @@ emission_enabled = true
 emission = Color(0.0431373, 0.129412, 0, 1)
 emission_energy_multiplier = 10.0
 distance_fade_mode = 1
-distance_fade_min_distance = 16.0
+distance_fade_min_distance = 15.0
 
 [resource]
 material = SubResource("StandardMaterial3D_72mc7")

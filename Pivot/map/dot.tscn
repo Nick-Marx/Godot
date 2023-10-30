@@ -8,7 +8,7 @@
 [node name="dot" type="Node3D" groups=["Gdot"]]
 script = ExtResource("1_kljqf")
 
-[node name="Area3DOuter" type="Area3D" parent="."]
+[node name="Area3DOuter" type="Area3D" parent="." groups=["Gdot"]]
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="Area3DOuter" groups=["GdotOuter"]]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)

@@ -35,11 +35,11 @@ light_energy = 0.9
 directional_shadow_max_distance = 20.0
 script = ExtResource("2_5qodx")
 
-[node name="Area3D" type="Area3D" parent="DirectionalLight3d"]
+[node name="Area3D_Near" type="Area3D" parent="DirectionalLight3d"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DirectionalLight3d/Area3D"]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 9, 0, 0, -4.5)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DirectionalLight3d/Area3D_Near"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 8.5, 0, 0, -4.25)
 shape = SubResource("BoxShape3D_ngr8u")
 
-[connection signal="area_entered" from="DirectionalLight3d/Area3D" to="DirectionalLight3d" method="_on_area_3d_area_entered"]
-[connection signal="area_exited" from="DirectionalLight3d/Area3D" to="DirectionalLight3d" method="_on_area_3d_area_exited"]
+[connection signal="area_entered" from="DirectionalLight3d/Area3D_Near" to="DirectionalLight3d" method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="DirectionalLight3d/Area3D_Near" to="DirectionalLight3d" method="_on_area_3d_area_exited"]

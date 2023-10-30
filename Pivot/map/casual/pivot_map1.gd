@@ -51,7 +51,7 @@ func _process(delta: float) -> void:
 #		print(Detector.global_position.x)
 #		print(Detector.global_position.y)
 #	if pp.get_child(0).didMove == true:
-	if pp.didBuildMap == false:
+	if !pp.didBuildMap:
 #		print(pp.transform)
 #		print(dotDict)
 #		print(bumperDict)

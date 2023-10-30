@@ -1,8 +1,8 @@
 extends Node3D
 
 
-@onready var pp = $Area3D
-#@export var dL3d:DirectionalLight3D
+@onready var pp: Area3D = $Area3D
+@onready var dL3d:DirectionalLight3D = $DirectionalLight3d
 @export var speed: float = -0.025 #holds rotation speed
 var hiSpd: float = -0.055 #rot spd max
 var loSpd: float = -0.025 #rot spd min
@@ -37,6 +37,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("action_one") or Input.is_action_pressed("action_one"):
 		if !Global.menu.visible:
 			player_movement(currentDotTouching)
+	
+	if !Global.isScenePaused and Global.pivotWheel.value == 8:
+		map_rotation()
 
 #	printt(pp.global_position, $DirectionalLight3d.name, $DirectionalLight3d.global_position)
 
@@ -59,6 +62,30 @@ func player_movement(currentDot):
 		currentDot.change_dot_color()
 		didBuildMap = false
 	
+
+func map_rotation():
+	var verticalRot = dL3d.global_transform.basis.x
+	var horizontalRot = dL3d.global_transform.basis.y
+	
+	if Input.is_action_just_pressed("up_dir"):
+		self.rotate(-verticalRot, PI/2)
+		didBuildMap = false
+		Global.pivotWheel.value = 0
+
+	if Input.is_action_just_pressed("down_dir"):
+		self.rotate(verticalRot, PI/2)
+		didBuildMap = false
+		Global.pivotWheel.value = 0
+
+	if Input.is_action_just_pressed("right_dir"):
+		self.rotate(horizontalRot, PI/2)
+		didBuildMap = false
+		Global.pivotWheel.value = 0
+
+	if Input.is_action_just_pressed("left_dir"):
+		self.rotate(-horizontalRot, PI/2)
+		didBuildMap = false
+		Global.pivotWheel.value = 0
 
 func dotOuterEntered(currentDot, area):
 	if area.is_in_group("Gplayer"):
@@ -89,3 +116,4 @@ func spinnerEntered(spinner, area):
 	if area.is_in_group("Gplayer"):
 		self.change_rotation_dir()
 		self.speed = loSpd
+

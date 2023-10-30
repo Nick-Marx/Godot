@@ -1,13 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://dticb7r531bu8"]
+[gd_scene load_steps=8 format=3 uid="uid://dticb7r531bu8"]
 
 [ext_resource type="Script" path="res://map/casual/pivot_map1.gd" id="1_k52wo"]
 [ext_resource type="PackedScene" uid="uid://dg4066jsu1k2a" path="res://map/dot.tscn" id="2_shkiv"]
 [ext_resource type="PackedScene" uid="uid://cqiiihls2rwj1" path="res://enemy/bumper.tscn" id="3_k0cat"]
 [ext_resource type="PackedScene" uid="uid://bgrem4yst700k" path="res://enemy/spinner.tscn" id="4_w7j6e"]
 [ext_resource type="Script" path="res://map/world_env.gd" id="5_4v3ln"]
-[ext_resource type="Script" path="res://scripts/Score.gd" id="6_oh0mt"]
-[ext_resource type="Script" path="res://scripts/Time.gd" id="7_bxb3a"]
-[ext_resource type="Script" path="res://map/Camera3d.gd" id="8_d0swv"]
+[ext_resource type="Script" path="res://scripts/Camera3d.gd" id="10_r4k1x"]
 
 [sub_resource type="Environment" id="Environment_s1i21"]
 background_mode = 1
@@ -16,14 +14,6 @@ glow_enabled = true
 glow_strength = 1.77
 glow_hdr_threshold = 1.37
 glow_hdr_scale = 1.05
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xytmr"]
-
-[sub_resource type="Theme" id="Theme_ikn15"]
-default_font_size = 38
-
-[sub_resource type="Theme" id="Theme_u7eo6"]
-default_font_size = 38
 
 [node name="pivot_map1" type="Node3D" node_paths=PackedStringArray("dotOrganizer", "bumperOrganizer", "spinnerOrganizer")]
 script = ExtResource("1_k52wo")
@@ -41,42 +31,9 @@ spinnerOrganizer = NodePath("SpinnerOrganizer")
 environment = SubResource("Environment_s1i21")
 script = ExtResource("5_4v3ln")
 
-[node name="HUD" type="Control" parent="."]
-process_mode = 1
-material = SubResource("CanvasItemMaterial_xytmr")
-layout_mode = 3
-anchor_right = 1.0
-anchor_bottom = 0.131
-offset_bottom = -0.380005
-grow_horizontal = 2
-
-[node name="Score" type="Label" parent="HUD"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 2.6
-anchor_bottom = 0.5
-offset_left = 64.0
-offset_right = -3040.0
-theme = SubResource("Theme_ikn15")
-vertical_alignment = 1
-script = ExtResource("6_oh0mt")
-
-[node name="Time" type="Label" parent="HUD"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.533
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 0.479919
-offset_right = -64.0
-theme = SubResource("Theme_u7eo6")
-horizontal_alignment = 2
-vertical_alignment = 1
-script = ExtResource("7_bxb3a")
-
 [node name="Camera3d" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
-script = ExtResource("8_d0swv")
+script = ExtResource("10_r4k1x")
 smoothSpeed = 2.0
 
 [node name="DotOrganizer" type="Node3D" parent="."]

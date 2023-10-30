@@ -19,12 +19,17 @@ func _process(delta: float) -> void:
 func pause():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	menu.visible = true
+	Global.pivotWheelTimer.paused = true
+	Global.isScenePaused = true
 
 
 func unpause():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	menu.visible = false
-
+	if Global.pivotWheelTimer.is_stopped():
+		Global.pivotWheelTimer.start()
+	Global.pivotWheelTimer.paused = false
+	Global.isScenePaused = false
 
 func _on_ng_btn_pressed():
 	Global.score = 1
