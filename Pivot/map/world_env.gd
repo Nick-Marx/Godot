@@ -26,16 +26,17 @@ var colorCounter: int
 #}
 
 var bgColorPallete: Dictionary = {
-	0 : Color.hex(0x2b0000ff),
-	1 : Color.hex(0x2d1200ff),
-	2 : Color.hex(0x2a2d00ff),
-	3 : Color.hex(0x052700ff),
-	4 : Color.hex(0x001531ff),
-	5 : Color.hex(0x1f0237ff),
+	0 : Color.hex(0x2b0000ff), # red
+	1 : Color.hex(0x3F0071ff), # purple
+	2 : Color.hex(0x1D2D50ff), # blue
+	3 : Color.hex(0x1E5128ff), # green
+	4 : Color.hex(0x035e4cff), # green
+	5 : Color.hex(0x001531ff), # blue
+	6 : Color.hex(0x1f0237ff), # purple
 }
 
 func _ready() -> void:
-	colorCounter = Global.rand.randi()%6
+	colorCounter = Global.rand.randi()%7
 #	bgColor = Color.from_ok_hsl(Global.rand.randf(), 1, 0.5, 1)
 	bgColor = bgColorPallete[colorCounter]
 	envProp.background_color = bgColor
@@ -49,7 +50,7 @@ func _process(delta: float) -> void:
 	if myTimer >= maxTime:
 		myTimer = 0.0
 		colorCounter += 1
-		if colorCounter > 5:
+		if colorCounter > 6:
 			colorCounter = 0
 		bgColor = bgColorPallete[colorCounter]
 		printt(bgColor, colorCounter)

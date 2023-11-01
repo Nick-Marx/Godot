@@ -5,9 +5,9 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_bokju"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6pxce"]
-albedo_color = Color(0.643137, 0.00392157, 0.964706, 1)
+albedo_color = Color(0, 1, 1, 1)
 emission_enabled = true
-emission = Color(0.207843, 0.0156863, 0.341176, 1)
+emission = Color(0, 0.137255, 1, 1)
 emission_energy_multiplier = 10.0
 grow_amount = 1.5
 distance_fade_mode = 1

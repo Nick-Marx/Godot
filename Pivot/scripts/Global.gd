@@ -10,6 +10,7 @@ var dL3d: DirectionalLight3D
 var rand = RandomNumberGenerator.new()
 var score: int = 1
 var isScenePaused: bool
+var trailOrganizer: Node3D
 
 func _ready():
 	rand.randomize() #ensures the randomization is not the exact same each time

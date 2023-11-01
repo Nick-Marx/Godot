@@ -3,16 +3,26 @@ extends Node3D
 
 @onready var pp: Area3D = $Area3D
 @onready var dL3d:DirectionalLight3D = $DirectionalLight3d
+
+@export var playerTrail: PackedScene
+var trailDict: Dictionary = {}
+
 @export var speed: float = -0.025 #holds rotation speed
 var hiSpd: float = -0.055 #rot spd max
 var loSpd: float = -0.025 #rot spd min
+
 const rotDir: int = -1 #used to change rotation direction
+
 var innerActive: bool = false #?true if player touching dot center
+
 var currentDotTouching: Node3D #holds object of dot overlapping player tip
 @onready var prevDotPos: Vector3 #holds players prev glob pos after movign to new dot
+
 var rand = RandomNumberGenerator.new()
+
 var didBuildMap: bool = true
 
+var debug_mapRotation: bool = false
 
 
 func _ready() -> void:
@@ -38,10 +48,11 @@ func _physics_process(delta: float) -> void:
 		if !Global.menu.visible:
 			player_movement(currentDotTouching)
 	
-	if !Global.isScenePaused and Global.pivotWheel.value == 8:
+	if !Global.isScenePaused and Global.pivotWheel.value == 8 or debug_mapRotation == true:
 		map_rotation()
 
-#	printt(pp.global_position, $DirectionalLight3d.name, $DirectionalLight3d.global_position)
+	if Input.is_action_pressed("ui_home"):
+		debug_mapRotation = true
 
 #ctrl move and spd of player from one dot to another
 func player_movement(currentDot):
@@ -61,7 +72,8 @@ func player_movement(currentDot):
 			speed = hiSpd
 		currentDot.change_dot_color()
 		didBuildMap = false
-	
+		place_player_trail(trailPosCalc(currentDot.global_position, prevDotPos))
+
 
 func map_rotation():
 	var verticalRot = dL3d.global_transform.basis.x
@@ -86,6 +98,47 @@ func map_rotation():
 		self.rotate(-horizontalRot, PI/2)
 		didBuildMap = false
 		Global.pivotWheel.value = 0
+
+
+func place_player_trail(tempPos: Vector3):
+	if !trailDict.has(tempPos):
+		trailDict[tempPos] = null
+		
+	if trailDict[tempPos] == null:
+		var tempTrail = playerTrail.instantiate() #instantiate packed scene as a node
+		tempTrail.set_name("trail%s" % tempPos)
+		Global.trailOrganizer.add_child(tempTrail) #adds node to tree as child of organizer node
+		tempTrail.global_position = tempPos
+#		tempTrail.global_rotation = self.global_rotation
+		
+		if int(tempPos.x) % 2 != 0:
+			tempTrail.rotate_object_local(Vector3(0,0,1), PI/2)
+		if int(tempPos.z) % 2 != 0:
+			tempTrail.rotate_object_local(Vector3(1,0,0), PI/2)
+			
+		trailDict[tempPos] = tempTrail
+
+
+func trailPosCalc(CDGP: Vector3, PDP: Vector3):
+	var trailPos: Vector3 = PDP
+	
+	if (CDGP - PDP).x == 2:
+		trailPos.x += 1
+	if (CDGP - PDP).x == -2:
+		trailPos.x += -1
+			
+	if (CDGP - PDP).y == 2:
+		trailPos.y += 1
+	if (CDGP - PDP).y == -2:
+		trailPos.y += -1
+	
+	if (CDGP - PDP).z == 2:
+		trailPos.z += 1
+	if (CDGP - PDP).z == -2:
+		trailPos.z += -1
+	
+	return trailPos
+
 
 func dotOuterEntered(currentDot, area):
 	if area.is_in_group("Gplayer"):

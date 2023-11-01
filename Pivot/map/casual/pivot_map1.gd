@@ -32,14 +32,15 @@ var spinnerDict: Dictionary = {}
 @export var dotOrganizer: Node3D
 @export var bumperOrganizer: Node3D
 @export var spinnerOrganizer: Node3D
+@export var trailOrganizer: Node3D
 
 var isDotPresent: bool = true #indicates if dot is present at current location
 #var time = 0 #debug
 
 
-
 func _ready() -> void:
 	Global.mainScene = self
+	Global.trailOrganizer = trailOrganizer
 	build_map()
 	if dot == null:
 		dot = load("res://map/dot.tscn")
@@ -157,3 +158,5 @@ func place_spinner(x, y):
 				spinnerDict[tempPos] = tempSpin
 			false:
 				spinnerDict[tempPos] = 0
+
+
