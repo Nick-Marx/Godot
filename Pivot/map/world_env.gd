@@ -40,7 +40,7 @@ func _ready() -> void:
 #	bgColor = Color.from_ok_hsl(Global.rand.randf(), 1, 0.5, 1)
 	bgColor = bgColorPallete[colorCounter]
 	envProp.background_color = bgColor
-	printt(bgColor, colorCounter)
+#	printt(bgColor, colorCounter)
 
 
 func _process(delta: float) -> void:
@@ -53,7 +53,7 @@ func _process(delta: float) -> void:
 		if colorCounter > 6:
 			colorCounter = 0
 		bgColor = bgColorPallete[colorCounter]
-		printt(bgColor, colorCounter)
+#		printt(bgColor, colorCounter)
 #		bgColor = Color.from_ok_hsl(Global.rand.randf(), 1, 0.5, 1)
 
 

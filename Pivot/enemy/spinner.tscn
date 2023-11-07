@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgrem4yst700k"]
+[gd_scene load_steps=6 format=3 uid="uid://bgrem4yst700k"]
 
 [ext_resource type="Script" path="res://enemy/spinner.gd" id="1_sepq1"]
+[ext_resource type="AudioStream" uid="uid://d3ijx236kfux7" path="res://audio/Korg-M3R-Low-Wood-Block.wav" id="2_3a2t4"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_qtr5c"]
 
@@ -28,5 +29,9 @@ shape = SubResource("CylinderShape3D_qtr5c")
 transform = Transform3D(1, -1.42109e-14, 0, 8.88178e-16, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CylinderMesh_j8gal")
 skeleton = NodePath("")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_3a2t4")
+volume_db = -20.0
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

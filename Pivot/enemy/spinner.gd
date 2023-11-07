@@ -15,6 +15,7 @@ func _on_area_3d_area_entered(area):
 	Signals.spinnerEntered.emit(self, area)
 	if area.is_in_group("Gplayer") or area.is_in_group("Gspinner") or area.is_in_group("Gbumper"):
 		self.speed *= -1
+	
+	if area.is_in_group("Gplayer") and !Global.isScenePaused:
+		$AudioStreamPlayer.play()
 
-func closeness_fade():
-	pass

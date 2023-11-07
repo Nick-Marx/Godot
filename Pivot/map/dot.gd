@@ -24,6 +24,10 @@ func change_dot_color():
 
 func _on_area_3d_outer_area_entered(area):
 	Signals.dotOuterEntered.emit(self, area)
+	if area.is_in_group("Gplayer") and !Global.isScenePaused:
+		if self.global_position == Global.player.prevDotPos:
+			return
+		$AudioStreamPlayer.play()
 
 func _on_area_3d_outer_area_exited(area):
 	Signals.dotOuterExited.emit(self, area)

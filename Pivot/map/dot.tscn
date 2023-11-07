@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dg4066jsu1k2a"]
+[gd_scene load_steps=5 format=3 uid="uid://dg4066jsu1k2a"]
 
 [ext_resource type="Script" path="res://map/dot.gd" id="1_kljqf"]
 [ext_resource type="SphereMesh" uid="uid://breifxkrokbd2" path="res://material/white_dot.tres" id="2_0bq3l"]
+[ext_resource type="AudioStream" uid="uid://bgkjjb5soh4k5" path="res://audio/Bass-Drum-2.wav" id="3_o0wmv"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6ej5q"]
 
@@ -24,6 +25,11 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3d" type="CollisionShape3D" parent="Area3DInner" groups=["GdotInner"]]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 shape = SubResource("SphereShape3D_6ej5q")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_o0wmv")
+volume_db = -10.0
+bus = &"SFX"
 
 [connection signal="area_entered" from="Area3DOuter" to="." method="_on_area_3d_outer_area_entered"]
 [connection signal="area_exited" from="Area3DOuter" to="." method="_on_area_3d_outer_area_exited"]
