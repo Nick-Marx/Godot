@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://p2t6adncdly2"]
+[gd_scene load_steps=5 format=3 uid="uid://p2t6adncdly2"]
 
 [ext_resource type="Script" path="res://map/menu/menu.gd" id="1_edflh"]
+[ext_resource type="AudioStream" uid="uid://demjxmpgj1y5a" path="res://audio/menu.mp3" id="2_rihxh"]
 
 [sub_resource type="Theme" id="Theme_vpx66"]
 default_font_size = 48
@@ -77,6 +78,9 @@ text = "Credits"
 layout_mode = 2
 size_flags_vertical = 8
 text = "Quit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_rihxh")
 
 [connection signal="pressed" from="ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/NG_btn" to="." method="_on_ng_btn_pressed"]
 [connection signal="pressed" from="ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Cont_btn" to="." method="_on_cont_btn_pressed"]

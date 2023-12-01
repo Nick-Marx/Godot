@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://dticb7r531bu8"]
+[gd_scene load_steps=10 format=3 uid="uid://dticb7r531bu8"]
 
 [ext_resource type="Script" path="res://map/casual/pivot_map1.gd" id="1_k52wo"]
 [ext_resource type="PackedScene" uid="uid://dg4066jsu1k2a" path="res://map/dot.tscn" id="2_shkiv"]
 [ext_resource type="PackedScene" uid="uid://cqiiihls2rwj1" path="res://enemy/bumper.tscn" id="3_k0cat"]
 [ext_resource type="PackedScene" uid="uid://bgrem4yst700k" path="res://enemy/spinner.tscn" id="4_w7j6e"]
 [ext_resource type="Script" path="res://map/world_env.gd" id="5_4v3ln"]
+[ext_resource type="AudioStream" uid="uid://dfgt360xf3lh5" path="res://audio/gravity_turn_action.wav" id="6_ieipy"]
+[ext_resource type="AudioStream" uid="uid://b25vo5mn1xx2y" path="res://audio/gravity_turn_calm.wav" id="7_55s8l"]
 [ext_resource type="Script" path="res://scripts/Camera3d.gd" id="10_r4k1x"]
 
 [sub_resource type="Environment" id="Environment_s1i21"]
@@ -19,6 +21,8 @@ script = ExtResource("1_k52wo")
 dot = ExtResource("2_shkiv")
 bumper = ExtResource("3_k0cat")
 spinner = ExtResource("4_w7j6e")
+audioStreamSlow = ExtResource("7_55s8l")
+audioStreamFast = ExtResource("6_ieipy")
 redDotRatio = 0.2
 bumperRatio = 0.1
 spinnerRatio = 0.1
@@ -43,3 +47,6 @@ smoothSpeed = 2.0
 [node name="SpinnerOrganizer" type="Node3D" parent="."]
 
 [node name="TrailOrganizer" type="Node3D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_55s8l")

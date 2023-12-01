@@ -6,6 +6,8 @@ extends Node3D
 func _ready() -> void:
 	pause()
 	Global.menu = menu
+	
+	$AudioStreamPlayer.play()
 
 
 func _process(delta: float) -> void:
@@ -21,6 +23,10 @@ func pause():
 	menu.visible = true
 	Global.pivotWheelTimer.paused = true
 	Global.isScenePaused = true
+	
+	if $AudioStreamPlayer.stream_paused:
+		$AudioStreamPlayer.stream_paused = false
+		
 
 
 func unpause():
@@ -30,6 +36,9 @@ func unpause():
 		Global.pivotWheelTimer.start()
 	Global.pivotWheelTimer.paused = false
 	Global.isScenePaused = false
+	
+	if !$AudioStreamPlayer.stream_paused:
+		$AudioStreamPlayer.stream_paused = true
 
 func _on_ng_btn_pressed():
 	Global.score = 1

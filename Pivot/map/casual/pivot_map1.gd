@@ -8,6 +8,9 @@ extends Node3D
 @export var bumper: PackedScene
 @export var spinner: PackedScene
 
+@export var audioStreamSlow: AudioStream
+@export var audioStreamFast: AudioStream
+
 #holds loaded script (i was doing it inefficiently before; this may be redundant because of packed scene variables)
 @onready var dotScript: Script = load("res://map/dot.gd")
 @onready var bumpScript: Script = load("res://enemy/bumper.gd")
@@ -41,24 +44,41 @@ var isDotPresent: bool = true #indicates if dot is present at current location
 func _ready() -> void:
 	Global.mainScene = self
 	Global.trailOrganizer = trailOrganizer
+	
+	$AudioStreamPlayer.play()
+	$AudioStreamPlayer.stream_paused = true
+	
 	build_map()
 	if dot == null:
 		dot = load("res://map/dot.tscn")
 	#print("prevDotGlobPos: ", prevDotGlobPos)
 
 func _process(delta: float) -> void:
+	if !pp.didBuildMap:
+		build_map()
+		pp.didBuildMap = true
+#		print(pp.transform)
+#		print(dotDict)
+#		print(bumperDict)
+#		print("\n", "---", "\n")
+
+	if Global.isScenePaused == true:
+		$AudioStreamPlayer.stream_paused = true
+	if Global.isScenePaused == false:
+		$AudioStreamPlayer.stream_paused = false
+	
+	if pp.speed == pp.hiSpd and $AudioStreamPlayer.stream == audioStreamSlow:
+		$AudioStreamPlayer.stream = audioStreamFast
+		$AudioStreamPlayer.play()
+	elif pp.speed == pp.loSpd and $AudioStreamPlayer.stream == audioStreamFast:
+		$AudioStreamPlayer.stream = audioStreamSlow
+		$AudioStreamPlayer.play()
+		
 #	time += delta #debug
 #	if fmod(floor(time), 10) == 0: #debug
 #		print(Detector.global_position.x)
 #		print(Detector.global_position.y)
 #	if pp.get_child(0).didMove == true:
-	if !pp.didBuildMap:
-#		print(pp.transform)
-#		print(dotDict)
-#		print(bumperDict)
-#		print("\n", "---", "\n")
-		build_map()
-		pp.didBuildMap = true
 
 
 func build_map():

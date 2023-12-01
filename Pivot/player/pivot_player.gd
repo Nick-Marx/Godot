@@ -7,9 +7,9 @@ extends Node3D
 @export var playerTrail: PackedScene
 var trailDict: Dictionary = {}
 
-@export var speed: float = -0.025 #holds rotation speed
-var hiSpd: float = -0.055 #rot spd max
-var loSpd: float = -0.025 #rot spd min
+@export var speed: float #holds rotation speed
+var hiSpd: float #rot spd max
+var loSpd: float #rot spd min
 
 const rotDir: int = -1 #used to change rotation direction
 
@@ -27,6 +27,9 @@ var debug_mapRotation: bool = false
 
 func _ready() -> void:
 	Global.player = self
+	
+	hiSpd = speed * 2
+	loSpd = speed
 	
 	Signals.dotOuterEntered.connect(dotOuterEntered)
 	Signals.dotOuterExited.connect(dotOuterExited)

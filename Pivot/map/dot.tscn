@@ -11,19 +11,19 @@ script = ExtResource("1_kljqf")
 
 [node name="Area3DOuter" type="Area3D" parent="." groups=["Gdot"]]
 
-[node name="CollisionShape3d" type="CollisionShape3D" parent="Area3DOuter" groups=["GdotOuter"]]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3DOuter" groups=["GdotOuter"]]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 shape = SubResource("SphereShape3D_6ej5q")
 
-[node name="MeshInstance3d" type="MeshInstance3D" parent="Area3DOuter"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3DOuter"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = ExtResource("2_0bq3l")
 skeleton = NodePath("../..")
 
 [node name="Area3DInner" type="Area3D" parent="."]
 
-[node name="CollisionShape3d" type="CollisionShape3D" parent="Area3DInner" groups=["GdotInner"]]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3DInner" groups=["GdotInner"]]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 shape = SubResource("SphereShape3D_6ej5q")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
