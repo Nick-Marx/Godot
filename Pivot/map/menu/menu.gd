@@ -26,7 +26,8 @@ func pause():
 	
 	if $AudioStreamPlayer.stream_paused:
 		$AudioStreamPlayer.stream_paused = false
-		
+	
+	Signals.audioChange.emit()
 
 
 func unpause():
@@ -39,6 +40,8 @@ func unpause():
 	
 	if !$AudioStreamPlayer.stream_paused:
 		$AudioStreamPlayer.stream_paused = true
+	
+	Signals.audioChange.emit()
 
 func _on_ng_btn_pressed():
 	Global.score = 1

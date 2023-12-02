@@ -28,7 +28,7 @@ var debug_mapRotation: bool = false
 func _ready() -> void:
 	Global.player = self
 	
-	hiSpd = speed * 2
+	hiSpd = speed * 3
 	loSpd = speed
 	
 	Signals.dotOuterEntered.connect(dotOuterEntered)
@@ -51,7 +51,7 @@ func _physics_process(delta: float) -> void:
 		if !Global.menu.visible:
 			player_movement(currentDotTouching)
 	
-	if !Global.isScenePaused and Global.pivotWheel.value == 8 or debug_mapRotation == true:
+	if !Global.isScenePaused and Global.pivotWheel.value == Global.pivotWheel.max_value or debug_mapRotation == true:
 		map_rotation()
 
 	if Input.is_action_pressed("ui_home"):
@@ -76,6 +76,8 @@ func player_movement(currentDot):
 		currentDot.change_dot_color()
 		didBuildMap = false
 		place_player_trail(trailPosCalc(currentDot.global_position, prevDotPos))
+		
+		Signals.audioChange.emit()
 
 
 func map_rotation():
@@ -167,9 +169,11 @@ func bumperEntered(bumper, area):
 	if area.is_in_group("Gplayer"):
 		self.change_rotation_dir()
 		self.speed = hiSpd
+		Signals.audioChange.emit()
 	
 func spinnerEntered(spinner, area):
 	if area.is_in_group("Gplayer"):
 		self.change_rotation_dir()
 		self.speed = loSpd
+		Signals.audioChange.emit()
 

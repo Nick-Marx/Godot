@@ -8,8 +8,8 @@ extends Node3D
 @export var bumper: PackedScene
 @export var spinner: PackedScene
 
-@export var audioStreamSlow: AudioStream
-@export var audioStreamFast: AudioStream
+#@export var audioStreamSlow: AudioStream
+#@export var audioStreamFast: AudioStream
 
 #holds loaded script (i was doing it inefficiently before; this may be redundant because of packed scene variables)
 @onready var dotScript: Script = load("res://map/dot.gd")
@@ -19,7 +19,8 @@ extends Node3D
 #percentage of object placed on board
 @export var redDotRatio: float
 @export var bumperRatio: float
-@export var spinnerRatio: float
+@export var spinnerRatioMin: float
+@export var spinnerRatioMax: float
 
 #holds dot meshes for mesh swapping
 var whiteDot: Mesh = load("res://material/white_dot.tres")
@@ -45,8 +46,12 @@ func _ready() -> void:
 	Global.mainScene = self
 	Global.trailOrganizer = trailOrganizer
 	
-	$AudioStreamPlayer.play()
-	$AudioStreamPlayer.stream_paused = true
+	Signals.audioChange.connect(main_audio_control)
+	
+	$AudioStreamPlayerSlow.play()
+	$AudioStreamPlayerSlow.stream_paused = true
+	$AudioStreamPlayerFast.play()
+	$AudioStreamPlayerFast.stream_paused = true
 	
 	build_map()
 	if dot == null:
@@ -57,28 +62,27 @@ func _process(delta: float) -> void:
 	if !pp.didBuildMap:
 		build_map()
 		pp.didBuildMap = true
-#		print(pp.transform)
-#		print(dotDict)
-#		print(bumperDict)
-#		print("\n", "---", "\n")
-
-	if Global.isScenePaused == true:
-		$AudioStreamPlayer.stream_paused = true
-	if Global.isScenePaused == false:
-		$AudioStreamPlayer.stream_paused = false
-	
-	if pp.speed == pp.hiSpd and $AudioStreamPlayer.stream == audioStreamSlow:
-		$AudioStreamPlayer.stream = audioStreamFast
-		$AudioStreamPlayer.play()
-	elif pp.speed == pp.loSpd and $AudioStreamPlayer.stream == audioStreamFast:
-		$AudioStreamPlayer.stream = audioStreamSlow
-		$AudioStreamPlayer.play()
 		
+	#main_audio_control()
+	
 #	time += delta #debug
 #	if fmod(floor(time), 10) == 0: #debug
 #		print(Detector.global_position.x)
 #		print(Detector.global_position.y)
 #	if pp.get_child(0).didMove == true:
+
+
+func main_audio_control():
+	if Global.isScenePaused:
+		$AudioStreamPlayerSlow.stream_paused = true
+		$AudioStreamPlayerFast.stream_paused = true
+	if !Global.isScenePaused:
+		if pp.speed == pp.hiSpd:
+			$AudioStreamPlayerSlow.stream_paused = true
+			$AudioStreamPlayerFast.stream_paused = false
+		elif pp.speed == pp.loSpd:
+			$AudioStreamPlayerFast.stream_paused = true
+			$AudioStreamPlayerSlow.stream_paused = false
 
 
 func build_map():
@@ -166,7 +170,7 @@ func place_spinner(x, y):
 		spinnerDict[tempPos] = null
 		
 	if spinnerDict[tempPos] == null:
-		match spinnerPlacement <= spinnerRatio:
+		match spinnerPlacement <= snappedf(clampf(spinnerRatioMin * (Global.score * (spinnerRatioMax / spinnerRatioMin / 500)), spinnerRatioMin, spinnerRatioMax), 0.01):
 			true:
 				var tempSpin = spinner.instantiate() #instantiate packed scene as a node
 				tempSpin.set_script(spinScript)
@@ -178,5 +182,6 @@ func place_spinner(x, y):
 				spinnerDict[tempPos] = tempSpin
 			false:
 				spinnerDict[tempPos] = 0
-
+		
+		#printt(snappedf(clampf(spinnerRatioMin * (Global.score * (spinnerRatioMax / spinnerRatioMin / 500)), spinnerRatioMin, spinnerRatioMax), 0.01))
 

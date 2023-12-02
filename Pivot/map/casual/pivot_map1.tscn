@@ -21,11 +21,10 @@ script = ExtResource("1_k52wo")
 dot = ExtResource("2_shkiv")
 bumper = ExtResource("3_k0cat")
 spinner = ExtResource("4_w7j6e")
-audioStreamSlow = ExtResource("7_55s8l")
-audioStreamFast = ExtResource("6_ieipy")
 redDotRatio = 0.2
 bumperRatio = 0.1
-spinnerRatio = 0.1
+spinnerRatioMin = 0.02
+spinnerRatioMax = 0.25
 dotOrganizer = NodePath("DotOrganizer")
 bumperOrganizer = NodePath("BumperOrganizer")
 spinnerOrganizer = NodePath("SpinnerOrganizer")
@@ -48,5 +47,8 @@ smoothSpeed = 2.0
 
 [node name="TrailOrganizer" type="Node3D" parent="."]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayerSlow" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_55s8l")
+
+[node name="AudioStreamPlayerFast" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ieipy")

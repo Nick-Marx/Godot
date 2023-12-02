@@ -8,3 +8,5 @@ signal dotOuterExited
 signal bumperEntered
 
 signal spinnerEntered
+
+signal audioChange
