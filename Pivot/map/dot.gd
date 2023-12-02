@@ -15,10 +15,10 @@ var isInnerActive:bool = false
 func change_dot_color():
 	if meshNode.mesh == whiteDot:
 		meshNode.set_mesh(greenDot)
-		Global.score += 1
+		Global.score += 1 * clampi(Global.scoreMultiplyer, 1, 5)
 	if meshNode.mesh == yellowDot:
 		meshNode.set_mesh(greenDot)
-		Global.score += 3
+		Global.score += 3 * clampi(Global.scoreMultiplyer, 1, 5)
 	if meshNode.mesh == redDot:
 		meshNode.set_mesh(yellowDot)
 

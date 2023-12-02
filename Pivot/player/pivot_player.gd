@@ -73,6 +73,9 @@ func player_movement(currentDot):
 		self.speed = loSpd #sets player speed to low and changes direction
 		if currentDot.isInnerActive:
 			speed = hiSpd
+			Global.scoreMultiplyer += 1
+		else:
+			Global.scoreMultiplyer = 1
 		currentDot.change_dot_color()
 		didBuildMap = false
 		place_player_trail(trailPosCalc(currentDot.global_position, prevDotPos))
@@ -175,5 +178,6 @@ func spinnerEntered(spinner, area):
 	if area.is_in_group("Gplayer"):
 		self.change_rotation_dir()
 		self.speed = loSpd
+		Global.scoreMultiplyer = 1
 		Signals.audioChange.emit()
 

@@ -11,6 +11,8 @@ var rand = RandomNumberGenerator.new()
 var score: int = 1
 var isScenePaused: bool
 var trailOrganizer: Node3D
+var time: float
+var scoreMultiplyer: int = 1
 
 var debug_isFullScreen: bool = false
 

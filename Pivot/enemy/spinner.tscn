@@ -23,6 +23,7 @@ script = ExtResource("1_sepq1")
 transform = Transform3D(-7.86805e-09, -0.7, 0, 0.18, -3.0598e-08, 0, 0, 0, 0.18, 1, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, 0, 0)
 shape = SubResource("CylinderShape3D_qtr5c")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]

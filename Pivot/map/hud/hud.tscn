@@ -1,0 +1,100 @@
+[gd_scene load_steps=10 format=3 uid="uid://b0h8u2e530io2"]
+
+[ext_resource type="Script" path="res://map/hud/Score.gd" id="1_1g07n"]
+[ext_resource type="Script" path="res://map/hud/Time.gd" id="2_hedoc"]
+[ext_resource type="Texture2D" uid="uid://bxd7my33ilepb" path="res://material/pivot_wheel.png" id="3_2ra2g"]
+[ext_resource type="Script" path="res://map/hud/ScoreMultiplyer.gd" id="3_qj3ov"]
+[ext_resource type="Script" path="res://map/hud/PivotWheel.gd" id="4_cn8r7"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xytmr"]
+
+[sub_resource type="Theme" id="Theme_ikn15"]
+default_font_size = 38
+
+[sub_resource type="Theme" id="Theme_x1m4t"]
+default_font_size = 38
+
+[sub_resource type="Theme" id="Theme_u7eo6"]
+default_font_size = 38
+
+[node name="HUD" type="Control"]
+process_mode = 1
+material = SubResource("CanvasItemMaterial_xytmr")
+layout_mode = 3
+anchor_left = 0.04
+anchor_top = 0.04
+anchor_right = 0.96
+anchor_bottom = 0.96
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 53.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Score" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_ikn15")
+vertical_alignment = 1
+script = ExtResource("1_1g07n")
+
+[node name="ScoreMultiplyer" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme = SubResource("Theme_x1m4t")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_qj3ov")
+
+[node name="Time" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_u7eo6")
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("2_hedoc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Node2D" type="Node2D" parent="VBoxContainer"]
+scale = Vector2(0.6, 0.6)
+
+[node name="PivotWheel" type="TextureProgressBar" parent="VBoxContainer/Node2D"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.0
+offset_top = -116.0
+offset_right = 61.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+max_value = 4.0
+fill_mode = 4
+texture_under = ExtResource("3_2ra2g")
+texture_progress = ExtResource("3_2ra2g")
+tint_under = Color(0.00784314, 0.101961, 0.113725, 0.635294)
+tint_progress = Color(1, 1, 0, 0.717647)
+script = ExtResource("4_cn8r7")
+
+[node name="Timer" type="Timer" parent="VBoxContainer/Node2D/PivotWheel"]
+
+[connection signal="timeout" from="VBoxContainer/Node2D/PivotWheel/Timer" to="VBoxContainer/Node2D/PivotWheel" method="_on_timer_timeout"]

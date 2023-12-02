@@ -138,7 +138,7 @@ Decided to add a splash of color by setting the background to randomize and lerp
 <br>
 No help online for this one, but luckily I was able to stumble my way around it.
 
-Changed player color; I really like this soft neon pick I found.
+Changed player color; I really like this soft neon pink I found.
 
 Made pause menu. This took me longer than I thought it would since there are tons of tutorials out there, but I have the bad habit of trying to change things to meet my needs at the same time I'm learning them so it all breaks and I have to fix it.
 <br>
@@ -152,6 +152,33 @@ It's pretty minimalistic, but I like the style so far. I might change the button
 <img height=300 src="https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_fourth_success.gif"/>  
 </div>
   
+## **Gameplay Mechanics, and Sound, and Bug Fixes, Oh My!**
+
+Forgot to edit the devlog after my last update. I'll list the changes in order, but I think I'll consider this my second major milestone.
+<br>
+Made a map pivot timer set to 4 seconds for casual mode. This should prevent anyone from getting stuck. It's activated with the arrow keys, if I port this to mobile I'll probably set it to activate with swipes.
+<br>
+Now, hear me out, it might not be useful, but I decided on including a player trail. It does nothing, but I think it looks neat.
+<br>
+Started messing with audio, and I'm straight up bad at it. I have a good idea of what I want for the sound and feel of everything, but no matter what I try, nothing sounds good.
+I took a break after many, many, MANY hours to add a few simple sound effects just to test things. It turned out ok, but needed quite a bit of tweaking before I was satisfied.
+<br>
+Another MANY hours later and I've come to the conclusion that I need a lot more practice before I can start creating my own tracks. So I selected some that I found online to use. Originally I only wanted these to be placeholders, but they sound better than enything I can make so I'll likely just keep them in.
+All of this has made me realize that some of the features I want to add are currently beyond my ability and/or not supported fully in the current version of Godot.
+<br>
+Was able to get about halfway toward what I wanted for audio. During the main gameplay, there are two audio tracks that will seemlessly alternate depending on if the player is on a fast streak or not.
+<br>
+Made a lot of little tweaks to things:
+-Spinner enemy spawn rate will start low and increase as the player gets a higher score.
+-Changed player starting and max speed to have a more noticeable difference.
+-Added a fast streak score multiplier.
+-Added a credits page in the menu.
+-Fixed the newgame button to reset everything, not just the score.
+-Modified dot collision areas to make it slightly easier to hit center and so a player can't just hold down the action keep and keep their fast streak.
+-Fixed bumper collision size too.
+-Set the music to loop (this took me a while to find, it wasn't intuitive)
+
+
 ## **Final Thoughts**  
 
 WIP - Placeholder Text -  
