@@ -156,17 +156,23 @@ It's pretty minimalistic, but I like the style so far. I might change the button
 
 Forgot to edit the devlog after my last update. I'll list the changes in order, but I think I'll consider this my second major milestone.
 <br>
+<br>
 Made a map pivot timer set to 4 seconds for casual mode. This should prevent anyone from getting stuck. It's activated with the arrow keys, if I port this to mobile I'll probably set it to activate with swipes.
 <br>
+<br>
 Now, hear me out, it might not be useful, but I decided on including a player trail. It does nothing, but I think it looks neat.
+<br>
 <br>
 Started messing with audio, and I'm straight up bad at it. I have a good idea of what I want for the sound and feel of everything, but no matter what I try, nothing sounds good.
 I took a break after many, many, MANY hours to add a few simple sound effects just to test things. It turned out ok, but needed quite a bit of tweaking before I was satisfied.
 <br>
+<br>
 Another MANY hours later and I've come to the conclusion that I need a lot more practice before I can start creating my own tracks. So I selected some that I found online to use. Originally I only wanted these to be placeholders, but they sound better than enything I can make so I'll likely just keep them in.
 All of this has made me realize that some of the features I want to add are currently beyond my ability and/or not supported fully in the current version of Godot.
 <br>
+<br>
 Was able to get about halfway toward what I wanted for audio. During the main gameplay, there are two audio tracks that will seemlessly alternate depending on if the player is on a fast streak or not.
+<br>
 <br>
 Made a lot of little tweaks to things:
 -Spinner enemy spawn rate will start low and increase as the player gets a higher score.
