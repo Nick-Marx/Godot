@@ -154,7 +154,7 @@ It's pretty minimalistic, but I like the style so far. I might change the button
   
 ## **Gameplay Mechanics, and Sound, and Bug Fixes, Oh My!**
 
-Forgot to edit the devlog after my last update. I'll list the changes in order, but I think I'll consider this my second major milestone.
+Forgot to edit the devlog after my last update. I'll list the changes in order and I think I'll consider this my second major milestone. Not much longer and I feel this might be ready to publish.
 <br>
 <br>
 Made a map pivot timer set to 4 seconds for casual mode. This should prevent anyone from getting stuck. It's activated with the arrow keys, if I port this to mobile I'll probably set it to activate with swipes.
