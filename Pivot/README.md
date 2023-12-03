@@ -193,6 +193,8 @@ Made a lot of little tweaks to things:
 <br>
 -Set the music to loop (this took me a while to find, it wasn't intuitive)
 <br>
+-Added play instructions to main menu.
+<br>
 <br>
 I know this gif doesn't have sound, but if you take a moment to imagine the coolest songs you've ever heard overlayed on a montage of childrens drawings, then add some low quality special effects and you'll be in the ballpark of what this game sounds/feels like.
 
