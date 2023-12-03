@@ -154,16 +154,17 @@ It's pretty minimalistic, but I like the style so far. I might change the button
   
 ## **Gameplay Mechanics, and Sound, and Bug Fixes, Oh My!**
 
-Forgot to edit the devlog after my last update. I'll list the changes in order and I think I'll consider this my second major milestone. Not much longer and I feel this might be ready to publish.
+Forgot to edit the devlog after my last update. I'll list the changes in order and I think I'll consider this my second major milestone. Not much longer and I feel Pivot might be ready to publish.
 <br>
 <br>
 Made a map pivot timer set to 4 seconds for casual mode. This should prevent anyone from getting stuck. It's activated with the arrow keys, if I port this to mobile I'll probably set it to activate with swipes.
 <br>
 <br>
-Now, hear me out, it might not be useful, but I decided on including a player trail. It does nothing, but I think it looks neat.
+I decided on including a player trail. It does nothing, now, hear me out... I think it looks neat.
 <br>
 <br>
-Started messing with audio, and I'm straight up bad at it. I have a good idea of what I want for the sound and feel of everything, but no matter what I try, nothing sounds good.
+Started messing with audio, and I'm straight up bad at it. It's fun and I have a good idea of what I want for the sound and feel of everything, but no matter what I try, nothing sounds good.
+For any curious, I use the free opensource DAW LMMS. This being my first time using something like this, it took me forever just to get setup and configured a little.
 I took a break after many, many, MANY hours to add a few simple sound effects just to test things. It turned out ok, but needed quite a bit of tweaking before I was satisfied.
 <br>
 <br>
@@ -183,7 +184,13 @@ Made a lot of little tweaks to things:
 -Modified dot collision areas to make it slightly easier to hit center and so a player can't just hold down the action keep and keep their fast streak.
 -Fixed bumper collision size too.
 -Set the music to loop (this took me a while to find, it wasn't intuitive)
+<br>
+<br>
+I know this gif doesn't have sound, but if you take a moment to imagine the coolest songs you've ever heard overlayed on a montage of childrens drawings, then add some low quality special effects and you'll be in the ballpark of what this game sounds/feels like.
 
+<div align="center">
+<img height=300 src="https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_maj_milestone2.gif"/>  
+</div>
 
 ## **Final Thoughts**  
 
