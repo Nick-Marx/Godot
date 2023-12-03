@@ -176,13 +176,21 @@ Was able to get about halfway toward what I wanted for audio. During the main ga
 <br>
 <br>
 Made a lot of little tweaks to things:
+<br>
 -Spinner enemy spawn rate will start low and increase as the player gets a higher score.
+<br>
 -Changed player starting and max speed to have a more noticeable difference.
+<br>
 -Added a fast streak score multiplier.
+<br>
 -Added a credits page in the menu.
+<br>
 -Fixed the newgame button to reset everything, not just the score.
+<br>
 -Modified dot collision areas to make it slightly easier to hit center and so a player can't just hold down the action keep and keep their fast streak.
+<br>
 -Fixed bumper collision size too.
+<br>
 -Set the music to loop (this took me a while to find, it wasn't intuitive)
 <br>
 <br>
