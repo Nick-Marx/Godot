@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://p2t6adncdly2"]
+[gd_scene load_steps=11 format=3 uid="uid://p2t6adncdly2"]
 
 [ext_resource type="Script" path="res://map/menu/menu.gd" id="1_edflh"]
 [ext_resource type="AudioStream" uid="uid://demjxmpgj1y5a" path="res://audio/menu.mp3" id="2_rihxh"]
@@ -10,6 +10,9 @@ default_font_size = 68
 default_font_size = 38
 
 [sub_resource type="Theme" id="Theme_q68sr"]
+default_font_size = 38
+
+[sub_resource type="Theme" id="Theme_ipvr5"]
 default_font_size = 38
 
 [sub_resource type="Theme" id="Theme_dabpo"]
@@ -230,6 +233,23 @@ text = "Continue"
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_constants/separation = 200
+
+[node name="HowTo_btn" type="Button" parent="ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Press SPACE while over the center of the 
+next dot to gain a speed increase.
+
+When the progress bar at the bottom fills, 
+press the ARROW KEYS to pivot the map 
+in any direction.
+
+Current goal is to get the highest score.
+
+Yellow dots are worth more than black.
+
+ESC key to open menu."
+theme = SubResource("Theme_ipvr5")
+text = "How to Play"
 
 [node name="Cred_btn" type="Button" parent="ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
