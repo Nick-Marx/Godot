@@ -7,6 +7,9 @@ extends Node3D
 @export var playerTrail: PackedScene
 var trailDict: Dictionary = {}
 
+var playerPathTracker: Array[Vector3]
+var playerRotationTracker: Array[Vector3]
+
 @export var speed: float #holds rotation speed
 var hiSpd: float #rot spd max
 var loSpd: float #rot spd min
@@ -17,8 +20,6 @@ var innerActive: bool = false #?true if player touching dot center
 
 var currentDotTouching: Node3D #holds object of dot overlapping player tip
 @onready var prevDotPos: Vector3 #holds players prev glob pos after movign to new dot
-
-var rand = RandomNumberGenerator.new()
 
 var didBuildMap: bool = true
 
@@ -44,7 +45,7 @@ func change_rotation_dir():
 	hiSpd *= rotDir
 	loSpd *= rotDir
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	pp.rotate_z(speed)
 	
 	if Input.is_action_just_pressed("action_one") or Input.is_action_pressed("action_one"):
@@ -80,7 +81,12 @@ func player_movement(currentDot):
 		didBuildMap = false
 		place_player_trail(trailPosCalc(currentDot.global_position, prevDotPos))
 		
+		playerPathTracker.append(prevDotPos)
+		playerRotationTracker.append(self.global_rotation)
+		
 		Signals.audioChange.emit()
+		
+		printt(playerPathTracker[-1], playerRotationTracker[-1])
 
 
 func map_rotation():
@@ -168,13 +174,13 @@ func dotInnerExited(currentDot, area):
 	if area.is_in_group("Gplayer"):
 		currentDot.isInnerActive = false
 
-func bumperEntered(bumper, area):
+func bumperEntered(_bumper, area):
 	if area.is_in_group("Gplayer"):
 		self.change_rotation_dir()
 		self.speed = hiSpd
 		Signals.audioChange.emit()
 	
-func spinnerEntered(spinner, area):
+func spinnerEntered(_spinner, area):
 	if area.is_in_group("Gplayer"):
 		self.change_rotation_dir()
 		self.speed = loSpd

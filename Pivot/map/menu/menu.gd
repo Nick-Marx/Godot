@@ -7,10 +7,12 @@ func _ready() -> void:
 	pause()
 	Global.menu = menu
 	
+	Signals.chaserEntered.connect(game_over)
+	
 	$AudioStreamPlayer.play()
 
 
-func _process(delta: float) -> void:
+func _process(_delta) -> void:
 	if Input.is_action_just_pressed("pause"):
 		if !menu.visible:
 			pause()
@@ -48,6 +50,10 @@ func unpause():
 		$AudioStreamPlayer.stream_paused = true
 	
 	Signals.audioChange.emit()
+
+
+func game_over(chaser, player):
+	pause()
 
 
 func credits():

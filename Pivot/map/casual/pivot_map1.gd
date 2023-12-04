@@ -7,20 +7,16 @@ extends Node3D
 @export var dot: PackedScene
 @export var bumper: PackedScene
 @export var spinner: PackedScene
-
-#@export var audioStreamSlow: AudioStream
-#@export var audioStreamFast: AudioStream
-
-#holds loaded script (i was doing it inefficiently before; this may be redundant because of packed scene variables)
-@onready var dotScript: Script = load("res://map/dot.gd")
-@onready var bumpScript: Script = load("res://enemy/bumper.gd")
-@onready var spinScript: Script = load("res://enemy/spinner.gd")
+@export var chaser: PackedScene
 
 #percentage of object placed on board
 @export var redDotRatio: float
 @export var bumperRatio: float
 @export var spinnerRatioMin: float
 @export var spinnerRatioMax: float
+@export var chaserThreshold: int #score that chaser spawns at
+@export var startChaseRange: int #how far away the chaser spawns from the player
+var playerTrackerIndex: int #holds current working index of player tracker array
 
 #holds dot meshes for mesh swapping
 var whiteDot: Mesh = load("res://material/white_dot.tres")
@@ -58,13 +54,15 @@ func _ready() -> void:
 		dot = load("res://map/dot.tscn")
 	#print("prevDotGlobPos: ", prevDotGlobPos)
 
-func _process(delta: float) -> void:
+func _process(_delta) -> void:
 	if !pp.didBuildMap:
 		build_map()
 		pp.didBuildMap = true
 		
-	#main_audio_control()
-	
+	if Global.isSurvivalMode:
+		if Global.score >= chaserThreshold:
+			place_chaser()
+			Global.isSurvivalMode = false
 #	time += delta #debug
 #	if fmod(floor(time), 10) == 0: #debug
 #		print(Detector.global_position.x)
@@ -105,7 +103,6 @@ func place_dot(x, y):
 		
 	if !dotDict.has(tempPos):
 		var tempDot = dot.instantiate() #instantiate packed scene as a node
-#		tempDot.set_script(dotScript)
 		tempDot.set_name("dot%s" % tempPos)
 		dotOrganizer.add_child(tempDot) #adds node to tree as child of organizer node
 		tempDot.global_position = tempPos
@@ -143,7 +140,6 @@ func place_bumper(x, y):
 		match bumperPlacement <= bumperRatio:
 			true:
 				var tempBump = bumper.instantiate() #instantiate packed scene as a node
-				tempBump.set_script(bumpScript)
 				tempBump.set_name("bumper%s" % tempPos)
 				bumperOrganizer.add_child(tempBump) #adds node to tree as child of organizer node
 				tempBump.global_position = tempPos
@@ -173,7 +169,6 @@ func place_spinner(x, y):
 		match spinnerPlacement <= snappedf(clampf(spinnerRatioMin * (Global.score * (spinnerRatioMax / spinnerRatioMin / 500)), spinnerRatioMin, spinnerRatioMax), 0.01):
 			true:
 				var tempSpin = spinner.instantiate() #instantiate packed scene as a node
-				tempSpin.set_script(spinScript)
 				tempSpin.set_name("spinner%s" % tempPos)
 				spinnerOrganizer.add_child(tempSpin) #adds node to tree as child of organizer node
 				tempSpin.global_position = tempPos
@@ -185,3 +180,12 @@ func place_spinner(x, y):
 		
 		#printt(snappedf(clampf(spinnerRatioMin * (Global.score * (spinnerRatioMax / spinnerRatioMin / 500)), spinnerRatioMin, spinnerRatioMax), 0.01))
 
+
+func place_chaser():
+	var tempChase = chaser.instantiate() #instantiate packed scene as a node
+	self.add_child(tempChase)
+	tempChase.global_position = Vector3i(pp.playerPathTracker[-startChaseRange])
+	printt(pp.playerPathTracker[-startChaseRange], tempChase.global_position)
+	tempChase.global_rotation = pp.global_rotation
+	playerTrackerIndex = pp.playerPathTracker.find(tempChase.global_position, )
+	#printt(tempChase.global_position, playerTrackerIndex, pp.playerPathTracker.find(tempChase.global_position, startChaseRange))

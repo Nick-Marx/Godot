@@ -9,4 +9,6 @@ signal bumperEntered
 
 signal spinnerEntered
 
+signal chaserEntered
+
 signal audioChange

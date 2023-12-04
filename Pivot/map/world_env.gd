@@ -2,7 +2,7 @@ extends WorldEnvironment
 
 
 @onready var envProp = self.environment
-@export var maxTime: int = 15.0 
+@export var maxTime: int = 15
 var myTimer: float = 5.0 #set to initiate color change quickly on game start
 var bgColor: Color
 var colorCounter: int

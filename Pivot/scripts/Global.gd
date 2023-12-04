@@ -13,14 +13,19 @@ var isScenePaused: bool
 var trailOrganizer: Node3D
 var time: float
 var scoreMultiplyer: int = 1
+var isSurvivalMode: bool = true
 
+#debugging
 var debug_isFullScreen: bool = false
 
 func _ready():
 	rand.randomize() #ensures the randomization is not the exact same each time
 	
 
-func _process(delta: float) -> void:
+func _process(_delta) -> void:
 	if Input.is_action_pressed("ui_page_up") and !debug_isFullScreen:
 		DisplayServer.window_set_mode(3)
 		debug_isFullScreen = true
+	elif Input.is_action_pressed("ui_page_up") and debug_isFullScreen:
+		DisplayServer.window_set_mode(0)
+		debug_isFullScreen = false
