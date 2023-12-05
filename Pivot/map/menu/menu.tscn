@@ -1,117 +1,34 @@
-[gd_scene load_steps=11 format=3 uid="uid://p2t6adncdly2"]
+[gd_scene load_steps=7 format=3 uid="uid://p2t6adncdly2"]
 
 [ext_resource type="Script" path="res://map/menu/menu.gd" id="1_edflh"]
 [ext_resource type="AudioStream" uid="uid://demjxmpgj1y5a" path="res://audio/menu.mp3" id="2_rihxh"]
 
-[sub_resource type="Theme" id="Theme_vpx66"]
-default_font_size = 68
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hrd3h"]
+content_margin_left = 10.0
+content_margin_top = 30.0
+content_margin_right = 10.0
+content_margin_bottom = 30.0
+bg_color = Color(0, 0, 0, 0.537255)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
-[sub_resource type="Theme" id="Theme_sidp3"]
-default_font_size = 38
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nt1u0"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
-[sub_resource type="Theme" id="Theme_q68sr"]
-default_font_size = 38
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojane"]
+bg_color = Color(1, 1, 1, 0.141176)
 
-[sub_resource type="Theme" id="Theme_ipvr5"]
-default_font_size = 38
-
-[sub_resource type="Theme" id="Theme_dabpo"]
-default_font_size = 38
-
-[sub_resource type="Theme" id="Theme_74v5b"]
-default_font_size = 38
-
-[sub_resource type="FontFile" id="FontFile_u7yi4"]
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/glyphs/0/advance = Vector2(0, 0)
-cache/0/16/0/glyphs/0/offset = Vector2(0, 0)
-cache/0/16/0/glyphs/0/size = Vector2(0, 0)
-cache/0/16/0/glyphs/0/uv_rect = Rect2(0, 0, 0, 0)
-cache/0/16/0/glyphs/0/texture_idx = -1
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/12/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/14/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/38/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/24/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/26/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/20/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/28/0 = Vector2(0, 0)
-cache/0/12/0/ascent = 0.0
-cache/0/12/0/descent = 0.0
-cache/0/12/0/underline_position = 0.0
-cache/0/12/0/underline_thickness = 0.0
-cache/0/12/0/scale = 1.0
-cache/0/12/0/glyphs/0/advance = Vector2(0, 0)
-cache/0/12/0/glyphs/0/offset = Vector2(0, 0)
-cache/0/12/0/glyphs/0/size = Vector2(0, 0)
-cache/0/12/0/glyphs/0/uv_rect = Rect2(0, 0, 0, 0)
-cache/0/12/0/glyphs/0/texture_idx = -1
-cache/0/12/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/12/0/kerning_overrides/12/0 = Vector2(0, 0)
-cache/0/12/0/kerning_overrides/14/0 = Vector2(0, 0)
-cache/0/12/0/kerning_overrides/38/0 = Vector2(0, 0)
-cache/0/12/0/kerning_overrides/24/0 = Vector2(0, 0)
-cache/0/12/0/kerning_overrides/26/0 = Vector2(0, 0)
-cache/0/12/0/kerning_overrides/20/0 = Vector2(0, 0)
-cache/0/12/0/kerning_overrides/28/0 = Vector2(0, 0)
-cache/0/14/0/ascent = 0.0
-cache/0/14/0/descent = 0.0
-cache/0/14/0/underline_position = 0.0
-cache/0/14/0/underline_thickness = 0.0
-cache/0/14/0/scale = 1.0
-cache/0/14/0/glyphs/0/advance = Vector2(0, 0)
-cache/0/14/0/glyphs/0/offset = Vector2(0, 0)
-cache/0/14/0/glyphs/0/size = Vector2(0, 0)
-cache/0/14/0/glyphs/0/uv_rect = Rect2(0, 0, 0, 0)
-cache/0/14/0/glyphs/0/texture_idx = -1
-cache/0/14/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/14/0/kerning_overrides/12/0 = Vector2(0, 0)
-cache/0/14/0/kerning_overrides/14/0 = Vector2(0, 0)
-cache/0/14/0/kerning_overrides/38/0 = Vector2(0, 0)
-cache/0/14/0/kerning_overrides/24/0 = Vector2(0, 0)
-cache/0/14/0/kerning_overrides/26/0 = Vector2(0, 0)
-cache/0/14/0/kerning_overrides/20/0 = Vector2(0, 0)
-cache/0/14/0/kerning_overrides/28/0 = Vector2(0, 0)
-cache/0/38/0/ascent = 0.0
-cache/0/38/0/descent = 0.0
-cache/0/38/0/underline_position = 0.0
-cache/0/38/0/underline_thickness = 0.0
-cache/0/38/0/scale = 1.0
-cache/0/38/0/glyphs/0/advance = Vector2(0, 0)
-cache/0/38/0/glyphs/0/offset = Vector2(0, 0)
-cache/0/38/0/glyphs/0/size = Vector2(0, 0)
-cache/0/38/0/glyphs/0/uv_rect = Rect2(0, 0, 0, 0)
-cache/0/38/0/glyphs/0/texture_idx = -1
-cache/0/38/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/38/0/kerning_overrides/12/0 = Vector2(0, 0)
-cache/0/38/0/kerning_overrides/14/0 = Vector2(0, 0)
-cache/0/38/0/kerning_overrides/38/0 = Vector2(0, 0)
-cache/0/38/0/kerning_overrides/24/0 = Vector2(0, 0)
-cache/0/38/0/kerning_overrides/26/0 = Vector2(0, 0)
-cache/0/38/0/kerning_overrides/20/0 = Vector2(0, 0)
-cache/0/38/0/kerning_overrides/28/0 = Vector2(0, 0)
-cache/0/24/0/ascent = 0.0
-cache/0/24/0/descent = 0.0
-cache/0/24/0/underline_position = 0.0
-cache/0/24/0/underline_thickness = 0.0
-cache/0/24/0/scale = 1.0
-cache/0/24/0/glyphs/0/advance = Vector2(0, 0)
-cache/0/24/0/glyphs/0/offset = Vector2(0, 0)
-cache/0/24/0/glyphs/0/size = Vector2(0, 0)
-cache/0/24/0/glyphs/0/uv_rect = Rect2(0, 0, 0, 0)
-cache/0/24/0/glyphs/0/texture_idx = -1
-cache/0/24/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/24/0/kerning_overrides/12/0 = Vector2(0, 0)
-cache/0/24/0/kerning_overrides/14/0 = Vector2(0, 0)
-cache/0/24/0/kerning_overrides/38/0 = Vector2(0, 0)
-cache/0/24/0/kerning_overrides/24/0 = Vector2(0, 0)
-cache/0/24/0/kerning_overrides/26/0 = Vector2(0, 0)
-cache/0/24/0/kerning_overrides/20/0 = Vector2(0, 0)
-cache/0/24/0/kerning_overrides/28/0 = Vector2(0, 0)
+[sub_resource type="FontFile" id="FontFile_lhgv6"]
 cache/0/26/0/ascent = 0.0
 cache/0/26/0/descent = 0.0
 cache/0/26/0/underline_position = 0.0
@@ -122,147 +39,112 @@ cache/0/26/0/glyphs/0/offset = Vector2(0, 0)
 cache/0/26/0/glyphs/0/size = Vector2(0, 0)
 cache/0/26/0/glyphs/0/uv_rect = Rect2(0, 0, 0, 0)
 cache/0/26/0/glyphs/0/texture_idx = -1
-cache/0/26/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/26/0/kerning_overrides/12/0 = Vector2(0, 0)
-cache/0/26/0/kerning_overrides/14/0 = Vector2(0, 0)
-cache/0/26/0/kerning_overrides/38/0 = Vector2(0, 0)
-cache/0/26/0/kerning_overrides/24/0 = Vector2(0, 0)
 cache/0/26/0/kerning_overrides/26/0 = Vector2(0, 0)
-cache/0/26/0/kerning_overrides/20/0 = Vector2(0, 0)
-cache/0/26/0/kerning_overrides/28/0 = Vector2(0, 0)
-cache/0/20/0/ascent = 0.0
-cache/0/20/0/descent = 0.0
-cache/0/20/0/underline_position = 0.0
-cache/0/20/0/underline_thickness = 0.0
-cache/0/20/0/scale = 1.0
-cache/0/20/0/glyphs/0/advance = Vector2(0, 0)
-cache/0/20/0/glyphs/0/offset = Vector2(0, 0)
-cache/0/20/0/glyphs/0/size = Vector2(0, 0)
-cache/0/20/0/glyphs/0/uv_rect = Rect2(0, 0, 0, 0)
-cache/0/20/0/glyphs/0/texture_idx = -1
-cache/0/20/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/20/0/kerning_overrides/12/0 = Vector2(0, 0)
-cache/0/20/0/kerning_overrides/14/0 = Vector2(0, 0)
-cache/0/20/0/kerning_overrides/38/0 = Vector2(0, 0)
-cache/0/20/0/kerning_overrides/24/0 = Vector2(0, 0)
-cache/0/20/0/kerning_overrides/26/0 = Vector2(0, 0)
-cache/0/20/0/kerning_overrides/20/0 = Vector2(0, 0)
-cache/0/20/0/kerning_overrides/28/0 = Vector2(0, 0)
-cache/0/28/0/ascent = 0.0
-cache/0/28/0/descent = 0.0
-cache/0/28/0/underline_position = 0.0
-cache/0/28/0/underline_thickness = 0.0
-cache/0/28/0/scale = 1.0
-cache/0/28/0/glyphs/0/advance = Vector2(0, 0)
-cache/0/28/0/glyphs/0/offset = Vector2(0, 0)
-cache/0/28/0/glyphs/0/size = Vector2(0, 0)
-cache/0/28/0/glyphs/0/uv_rect = Rect2(0, 0, 0, 0)
-cache/0/28/0/glyphs/0/texture_idx = -1
-cache/0/28/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/28/0/kerning_overrides/12/0 = Vector2(0, 0)
-cache/0/28/0/kerning_overrides/14/0 = Vector2(0, 0)
-cache/0/28/0/kerning_overrides/38/0 = Vector2(0, 0)
-cache/0/28/0/kerning_overrides/24/0 = Vector2(0, 0)
-cache/0/28/0/kerning_overrides/26/0 = Vector2(0, 0)
-cache/0/28/0/kerning_overrides/20/0 = Vector2(0, 0)
-cache/0/28/0/kerning_overrides/28/0 = Vector2(0, 0)
+cache/0/26/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/26/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
-[sub_resource type="Theme" id="Theme_14j41"]
-default_font = SubResource("FontFile_u7yi4")
-default_font_size = 26
-
-[node name="menu" type="Node3D"]
+[node name="menu" type="CenterContainer" node_paths=PackedStringArray("mainMenu", "creditMenu", "howToMenu", "menuMusic")]
 process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_edflh")
+mainMenu = NodePath("PanelContainer/MainMenu")
+creditMenu = NodePath("PanelContainer/CreditsMenu")
+howToMenu = NodePath("PanelContainer/HowToMenu")
+menuMusic = NodePath("AudioStreamPlayer")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0)
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(400, 800)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hrd3h")
 
-[node name="CenterContainer" type="CenterContainer" parent="ColorRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="ColorRect/CenterContainer"]
-self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(256, 512)
+[node name="MainMenu" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="ColorRect/CenterContainer/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer/PanelContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="PanelContainer/MainMenu"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme = SubResource("Theme_vpx66")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
 theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 68
 text = "Pivot"
 
-[node name="HSeparator" type="HSeparator" parent="ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MainMenu"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="NG_btn" type="Button" parent="ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="NG_btn" type="Button" parent="PanelContainer/MainMenu"]
 layout_mode = 2
-theme = SubResource("Theme_sidp3")
-text = "New Game"
+size_flags_horizontal = 4
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
+text = "Casual"
 
-[node name="Cont_btn" type="Button" parent="ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="NGS_btn" type="Button" parent="PanelContainer/MainMenu"]
 layout_mode = 2
-theme = SubResource("Theme_q68sr")
+size_flags_horizontal = 4
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
+text = "Survival"
+
+[node name="Cont_btn" type="Button" parent="PanelContainer/MainMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
 text = "Continue"
 
-[node name="HSeparator2" type="HSeparator" parent="ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/MainMenu"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
 theme_override_constants/separation = 200
 
-[node name="HowTo_btn" type="Button" parent="ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HowTo_btn" type="Button" parent="PanelContainer/MainMenu"]
 layout_mode = 2
-tooltip_text = "Press SPACE while over the center of the 
-next dot to gain a speed increase.
-
-When the progress bar at the bottom fills, 
-press the ARROW KEYS to pivot the map 
-in any direction.
-
-Current goal is to get the highest score.
-
-Yellow dots are worth more than black.
-
-ESC key to open menu."
-theme = SubResource("Theme_ipvr5")
+size_flags_horizontal = 4
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
 text = "How to Play"
 
-[node name="Cred_btn" type="Button" parent="ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Cred_btn" type="Button" parent="PanelContainer/MainMenu"]
 layout_mode = 2
-theme = SubResource("Theme_dabpo")
+size_flags_horizontal = 4
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
 text = "Credits"
 
-[node name="Quit_btn" type="Button" parent="ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Quit_btn" type="Button" parent="PanelContainer/MainMenu"]
 layout_mode = 2
-size_flags_vertical = 8
-theme = SubResource("Theme_74v5b")
+size_flags_horizontal = 4
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
 text = "Quit"
 
-[node name="VBoxContainerCredits" type="VBoxContainer" parent="ColorRect/CenterContainer/PanelContainer/MarginContainer"]
+[node name="CreditsMenu" type="VBoxContainer" parent="PanelContainer"]
 visible = false
 custom_minimum_size = Vector2(512, 0)
 layout_mode = 2
@@ -270,24 +152,25 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Label" type="Label" parent="ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainerCredits"]
+[node name="Label" type="Label" parent="PanelContainer/CreditsMenu"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme = SubResource("Theme_vpx66")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
 theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 68
 text = "Pivot"
 
-[node name="HSeparator" type="HSeparator" parent="ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainerCredits"]
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/CreditsMenu"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Label2" type="Label" parent="ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainerCredits"]
+[node name="Label2" type="Label" parent="PanelContainer/CreditsMenu"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-theme = SubResource("Theme_14j41")
 theme_override_constants/line_spacing = 5
+theme_override_fonts/font = SubResource("FontFile_lhgv6")
+theme_override_font_sizes/font_size = 26
 text = "Created By: 
 Nick Marx
 
@@ -328,10 +211,68 @@ vertical_alignment = 1
 autowrap_mode = 2
 justification_flags = 131
 
+[node name="HowToMenu" type="VBoxContainer" parent="PanelContainer"]
+visible = false
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainer/HowToMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 68
+text = "Pivot"
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/HowToMenu"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label2" type="Label" parent="PanelContainer/HowToMenu"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_constants/line_spacing = 5
+theme_override_fonts/font = SubResource("FontFile_lhgv6")
+theme_override_font_sizes/font_size = 26
+text = "Press SPACE while over the center of the 
+next dot to gain a speed increase.
+
+
+
+
+When the progress bar at the bottom fills, 
+press the ARROW KEYS to pivot the map 
+in that direction.
+
+
+
+
+Main goal is to get the highest score.
+
+
+
+
+Yellow dots are worth more than black.
+
+
+
+
+ESC key to open menu."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+justification_flags = 131
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_rihxh")
 
-[connection signal="pressed" from="ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/NG_btn" to="." method="_on_ng_btn_pressed"]
-[connection signal="pressed" from="ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Cont_btn" to="." method="_on_cont_btn_pressed"]
-[connection signal="pressed" from="ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Cred_btn" to="." method="_on_cred_btn_pressed"]
-[connection signal="pressed" from="ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit_btn" to="." method="_on_quit_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMenu/NG_btn" to="." method="_on_ng_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMenu/NGS_btn" to="." method="_on_ngs_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMenu/Cont_btn" to="." method="_on_cont_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMenu/HowTo_btn" to="." method="_on_how_to_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMenu/Cred_btn" to="." method="_on_cred_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMenu/Quit_btn" to="." method="_on_quit_btn_pressed"]

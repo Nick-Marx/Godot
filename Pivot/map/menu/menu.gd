@@ -1,53 +1,60 @@
-extends Node3D
+extends CenterContainer
 
 
-@onready var menu: ColorRect = $ColorRect
+@export var mainMenu: VBoxContainer
+@export var creditMenu: VBoxContainer
+@export var howToMenu: VBoxContainer
+
+@export var menuMusic: AudioStreamPlayer
+
 
 func _ready() -> void:
 	pause()
-	Global.menu = menu
+	Global.menu = self
 	
 	Signals.chaserEntered.connect(game_over)
 	
-	$AudioStreamPlayer.play()
+	menuMusic.play()
 
 
 func _process(_delta) -> void:
 	if Input.is_action_just_pressed("pause"):
-		if !menu.visible:
+		if !self.visible:
 			pause()
 		else:
 			unpause()
 	
 	credits()
+	how_to_play()
 
 
 func pause():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	menu.visible = true
+	self.visible = true
 	Global.pivotWheelTimer.paused = true
 	Global.isScenePaused = true
 	
-	if $AudioStreamPlayer.stream_paused:
-		$AudioStreamPlayer.stream_paused = false
+	if menuMusic.stream_paused:
+		menuMusic.stream_paused = false
 	
 	Signals.audioChange.emit()
 
 
 func unpause():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	menu.visible = false
+	self.visible = false
 	if Global.pivotWheelTimer.is_stopped():
 		Global.pivotWheelTimer.start()
 	Global.pivotWheelTimer.paused = false
 	Global.isScenePaused = false
 	
-	if !$ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer.visible:
-		$ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer.visible = true
-		$ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainerCredits.visible = false
+	if !mainMenu.visible:
+		mainMenu.visible = true
+		creditMenu.visible = false
+		howToMenu.visible = false
 	
-	if !$AudioStreamPlayer.stream_paused:
-		$AudioStreamPlayer.stream_paused = true
+	if !menuMusic.stream_paused:
+		menuMusic.stream_paused = true
 	
 	Signals.audioChange.emit()
 
@@ -56,11 +63,18 @@ func game_over(chaser, player):
 	pause()
 
 
-func credits():
-	if $ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainerCredits.visible:
+func how_to_play():
+	if howToMenu.visible:
 		if Input.is_action_pressed("action_one") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-			$ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainerCredits.visible = false
-			$ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer.visible = true
+			howToMenu.visible = false
+			mainMenu.visible = true
+
+
+func credits():
+	if creditMenu.visible:
+		if Input.is_action_pressed("action_one") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+			creditMenu.visible = false
+			mainMenu.visible = true
 
 func _on_ng_btn_pressed():
 	Global.score = 1
@@ -69,8 +83,15 @@ func _on_ng_btn_pressed():
 	Global.pivotWheel.value = 0
 	get_tree().reload_current_scene()
 	PivotPlayer.speed = PivotPlayer.loSpd
+	Global.isSurvivalMode = false
+	
 	if PivotPlayer.global_position != Vector3(0,0,0):
 		PivotPlayer.global_position = Vector3(0,0,0)
+
+
+func _on_ngs_btn_pressed():
+	_on_ng_btn_pressed()
+	Global.isSurvivalMode = true
 
 
 func _on_quit_btn_pressed():
@@ -82,5 +103,13 @@ func _on_cont_btn_pressed():
 
 
 func _on_cred_btn_pressed():
-	$ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer.visible = false
-	$ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainerCredits.visible = true
+	mainMenu.visible = false
+	creditMenu.visible = true
+
+
+func _on_how_to_btn_pressed():
+	mainMenu.visible = false
+	howToMenu.visible = true
+
+
+
