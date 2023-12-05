@@ -66,7 +66,9 @@ func player_movement(currentDot):
 	if currentDot and currentDot.isActive:
 #		print("dot in ", body.name)
 #		printt(prevDot, currentDot)
-		pp.rotate_z(PI)
+		#pp.rotate_z(PI)
+		#pp.global_scale(Vector3(1, 1, -1))
+		pp.rotate_object_local(Vector3(0,0,1), PI)
 		prevDotPos = self.global_position
 #		printt(prevDot)
 		self.global_position = currentDot.global_position
@@ -85,8 +87,6 @@ func player_movement(currentDot):
 		playerRotationTracker.append(self.global_rotation)
 		
 		Signals.audioChange.emit()
-		
-		printt(playerPathTracker[-1], playerRotationTracker[-1])
 
 
 func map_rotation():
@@ -94,22 +94,22 @@ func map_rotation():
 	var horizontalRot = dL3d.global_transform.basis.y
 	
 	if Input.is_action_just_pressed("up_dir"):
-		self.rotate(-verticalRot, PI/2)
+		self.global_rotate(-verticalRot, PI/2)
 		didBuildMap = false
 		Global.pivotWheel.value = 0
 
 	if Input.is_action_just_pressed("down_dir"):
-		self.rotate(verticalRot, PI/2)
+		self.global_rotate(verticalRot, PI/2)
 		didBuildMap = false
 		Global.pivotWheel.value = 0
 
 	if Input.is_action_just_pressed("right_dir"):
-		self.rotate(horizontalRot, PI/2)
+		self.global_rotate(horizontalRot, PI/2)
 		didBuildMap = false
 		Global.pivotWheel.value = 0
 
 	if Input.is_action_just_pressed("left_dir"):
-		self.rotate(-horizontalRot, PI/2)
+		self.global_rotate(-horizontalRot, PI/2)
 		didBuildMap = false
 		Global.pivotWheel.value = 0
 

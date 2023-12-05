@@ -28,7 +28,6 @@ Menu="*res://map/menu/menu.tscn"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/always_on_top=true
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

@@ -17,6 +17,7 @@ extends Node3D
 @export var chaserThreshold: int #score that chaser spawns at
 @export var startChaseRange: int #how far away the chaser spawns from the player
 var playerTrackerIndex: int #holds current working index of player tracker array
+var playerRotationIndex: int = 0 #hods current working index of player rotation array
 
 #holds dot meshes for mesh swapping
 var whiteDot: Mesh = load("res://material/white_dot.tres")
@@ -187,5 +188,16 @@ func place_chaser():
 	tempChase.global_position = Vector3i(pp.playerPathTracker[-startChaseRange])
 	printt(pp.playerPathTracker[-startChaseRange], tempChase.global_position)
 	tempChase.global_rotation = pp.global_rotation
-	playerTrackerIndex = pp.playerPathTracker.find(tempChase.global_position, )
-	#printt(tempChase.global_position, playerTrackerIndex, pp.playerPathTracker.find(tempChase.global_position, startChaseRange))
+	#playerTrackerIndex = pp.playerPathTracker.find(tempChase.global_position, -5)
+	playerTrackerIndex = find_array_index(pp.playerPathTracker, tempChase.global_position)
+	printt(PivotPlayer.playerPathTracker[Global.mainScene.playerTrackerIndex], playerTrackerIndex,  PivotPlayer.playerRotationTracker[Global.mainScene.playerTrackerIndex])
+
+
+func find_array_index(arr: Array, position: Vector3):
+	for i in range(arr.size() - startChaseRange, 0, -1):
+		if arr[i] == position:
+			return i + 1
+		else:
+			printt(position, "not found")
+
+
