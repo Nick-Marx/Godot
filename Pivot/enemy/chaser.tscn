@@ -15,7 +15,8 @@ material = SubResource("StandardMaterial3D_xqisb")
 
 [node name="Chaser" type="Node3D"]
 script = ExtResource("1_c5vd4")
-speed = -0.01
+speedMin = 0.01
+speedMax = 0.04
 
 [node name="Area3D" type="Area3D" parent="." groups=["Gchaser"]]
 

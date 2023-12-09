@@ -196,18 +196,9 @@ func place_chaser():
 	
 	var tempChase = chaser.instantiate() #instantiate packed scene as a node
 	self.add_child(tempChase)
-	#tempChase.global_position = Vector3i(pp.playerPathTracker[-(startChaseRange + 1)][0])
 	tempChase.global_position = Vector3i(tempStartPos)
 	tempChase.global_rotation = pp.global_rotation
 	pp.playerTrackerIndex = tempStartRange + 1
-	#pp.playerTrackerIndex = find_array_index(pp.playerPathTracker, tempChase.global_position, tempStartRange)
 
-
-#func find_array_index(arr: Array, pos: Vector3, tempStartRange: int):
-	#for i in range(arr.size() - tempStartRange, -1, -1):
-		#if arr[i - 1][0] == pos:
-			#return i
-		#else:
-			#printt(pos, "not found")
 
 

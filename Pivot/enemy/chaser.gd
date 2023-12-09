@@ -1,9 +1,13 @@
 extends Node3D
 
 
-@export var speed: float
+@export var speedMin: float
+@export var speedMax: float
+var speed: float
 
 func _ready():
+	speed = speedMin
+	
 	Signals.dotInnerEntered.connect(chaser_movement)
 
 
@@ -19,11 +23,12 @@ func chaser_movement(dot, area):
 		if self.global_position == PivotPlayer.global_position:
 			return
 		
-		check_rotation()
+		check_map_rotation()
 		update_pos(dot)
+		speed_increase()
 
 
-func check_rotation():
+func check_map_rotation():
 	if PivotPlayer.playerPathTracker[PivotPlayer.playerTrackerIndex - 1][0] == PivotPlayer.playerPathTracker[PivotPlayer.playerTrackerIndex][0]:
 		self.global_rotation = PivotPlayer.playerPathTracker[PivotPlayer.playerTrackerIndex][1]
 		PivotPlayer.playerTrackerIndex += 1
@@ -39,6 +44,15 @@ func update_pos(dot: Node3D):
 				self.global_rotation = PivotPlayer.playerPathTracker[PivotPlayer.playerTrackerIndex + 1][1]
 		
 		PivotPlayer.playerTrackerIndex += 1
+		speed *= -1
+
+
+func speed_increase():
+	var isCurRotDirNeg: bool = true if speed <0 else false
+	var tempNum: float = floorf(clampf(speedMin * (Global.score * (speedMax / speedMin / 500)), speedMin, speedMax) * 100)
+	
+	speed = tempNum / 100
+	if isCurRotDirNeg:
 		speed *= -1
 
 
