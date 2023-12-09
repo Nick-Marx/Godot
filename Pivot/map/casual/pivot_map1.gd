@@ -16,8 +16,7 @@ extends Node3D
 @export var spinnerRatioMax: float
 @export var chaserThreshold: int #score that chaser spawns at
 @export var startChaseRange: int #how far away the chaser spawns from the player
-var playerTrackerIndex: int #holds current working index of player tracker array
-var playerRotationIndex: int = 0 #hods current working index of player rotation array
+
 
 #holds dot meshes for mesh swapping
 var whiteDot: Mesh = load("res://material/white_dot.tres")
@@ -89,13 +88,13 @@ func build_map():
 		for y in range(-10, 11, 2):
 			place_dot(x, y)
 	
-	for x in range(-10, 11, 1):
-		for y in range(-10, 11, 1):
-			place_bumper(x, y)
-	
-	for x in range(-10, 11, 2):
-		for y in range(-10, 11, 2):
-			place_spinner(x, y)
+	#for x in range(-10, 11, 1):
+		#for y in range(-10, 11, 1):
+			#place_bumper(x, y)
+	#
+	#for x in range(-10, 11, 2):
+		#for y in range(-10, 11, 2):
+			#place_spinner(x, y)
 
 
 func place_dot(x, y):
@@ -183,21 +182,32 @@ func place_spinner(x, y):
 
 
 func place_chaser():
+	var tempPosArray: Array = []
+	var tempStartPos: Vector3 = Vector3.ZERO
+	var tempStartRange: int = 0
+	
+	for i in range(pp.playerPathTracker.size(), -1, -1):
+		if !tempPosArray.has(pp.playerPathTracker[i - 1][0]):
+			tempPosArray.append(pp.playerPathTracker[i - 1][0])
+			if tempPosArray.size() == startChaseRange + 1:
+				tempStartPos = tempPosArray[-1]
+				tempStartRange = i - 1
+				break
+	
 	var tempChase = chaser.instantiate() #instantiate packed scene as a node
 	self.add_child(tempChase)
-	tempChase.global_position = Vector3i(pp.playerPathTracker[-startChaseRange])
-	printt(pp.playerPathTracker[-startChaseRange], tempChase.global_position)
+	#tempChase.global_position = Vector3i(pp.playerPathTracker[-(startChaseRange + 1)][0])
+	tempChase.global_position = Vector3i(tempStartPos)
 	tempChase.global_rotation = pp.global_rotation
-	#playerTrackerIndex = pp.playerPathTracker.find(tempChase.global_position, -5)
-	playerTrackerIndex = find_array_index(pp.playerPathTracker, tempChase.global_position)
-	printt(PivotPlayer.playerPathTracker[Global.mainScene.playerTrackerIndex], playerTrackerIndex,  PivotPlayer.playerRotationTracker[Global.mainScene.playerTrackerIndex])
+	pp.playerTrackerIndex = tempStartRange + 1
+	#pp.playerTrackerIndex = find_array_index(pp.playerPathTracker, tempChase.global_position, tempStartRange)
 
 
-func find_array_index(arr: Array, position: Vector3):
-	for i in range(arr.size() - startChaseRange, 0, -1):
-		if arr[i] == position:
-			return i + 1
-		else:
-			printt(position, "not found")
+#func find_array_index(arr: Array, pos: Vector3, tempStartRange: int):
+	#for i in range(arr.size() - tempStartRange, -1, -1):
+		#if arr[i - 1][0] == pos:
+			#return i
+		#else:
+			#printt(pos, "not found")
 
 

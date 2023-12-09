@@ -20,7 +20,7 @@ speed = -0.01
 [node name="Area3D" type="Area3D" parent="." groups=["Gchaser"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(-4.37114e-10, -0.66, 0, 0.01, -2.88495e-08, 0, 0, 0, 0.01, 1.33, 0, 0)
+transform = Transform3D(-2.18557e-09, -0.66, 0, 0.05, -2.88495e-08, 0, 0, 0, 0.05, 1.33, 0, 0)
 shape = SubResource("CylinderShape3D_mxipk")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]

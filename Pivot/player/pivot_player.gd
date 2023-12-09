@@ -7,8 +7,10 @@ extends Node3D
 @export var playerTrail: PackedScene
 var trailDict: Dictionary = {}
 
-var playerPathTracker: Array[Vector3]
-var playerRotationTracker: Array[Vector3]
+var playerPathTracker: Array[Array] = []
+var playerTrackerIndex: int = 0 #holds current working index of player tracker array
+#var playerRotationIndex: int = 0 #holds current working index of player rotation array
+
 
 @export var speed: float #holds rotation speed
 var hiSpd: float #rot spd max
@@ -31,6 +33,9 @@ func _ready() -> void:
 	
 	hiSpd = speed * 3
 	loSpd = speed
+	playerTrackerIndex = 0
+	playerPathTracker = []
+	playerPathTracker.append([self.global_position, self.global_rotation])
 	
 	Signals.dotOuterEntered.connect(dotOuterEntered)
 	Signals.dotOuterExited.connect(dotOuterExited)
@@ -60,17 +65,11 @@ func _physics_process(_delta: float) -> void:
 
 #ctrl move and spd of player from one dot to another
 func player_movement(currentDot):
-#	printt(prevDot, currentDot)
 	if !currentDot or currentDot.global_position == prevDotPos:
 		return
 	if currentDot and currentDot.isActive:
-#		print("dot in ", body.name)
-#		printt(prevDot, currentDot)
-		#pp.rotate_z(PI)
-		#pp.global_scale(Vector3(1, 1, -1))
 		pp.rotate_object_local(Vector3(0,0,1), PI)
 		prevDotPos = self.global_position
-#		printt(prevDot)
 		self.global_position = currentDot.global_position
 		self.change_rotation_dir()
 		self.speed = loSpd #sets player speed to low and changes direction
@@ -83,8 +82,7 @@ func player_movement(currentDot):
 		didBuildMap = false
 		place_player_trail(trailPosCalc(currentDot.global_position, prevDotPos))
 		
-		playerPathTracker.append(prevDotPos)
-		playerRotationTracker.append(self.global_rotation)
+		playerPathTracker.append([currentDot.global_position, self.global_rotation])
 		
 		Signals.audioChange.emit()
 
@@ -97,21 +95,25 @@ func map_rotation():
 		self.global_rotate(-verticalRot, PI/2)
 		didBuildMap = false
 		Global.pivotWheel.value = 0
+		playerPathTracker.append([self.global_position, self.global_rotation])
 
 	if Input.is_action_just_pressed("down_dir"):
 		self.global_rotate(verticalRot, PI/2)
 		didBuildMap = false
 		Global.pivotWheel.value = 0
+		playerPathTracker.append([self.global_position, self.global_rotation])
 
 	if Input.is_action_just_pressed("right_dir"):
 		self.global_rotate(horizontalRot, PI/2)
 		didBuildMap = false
 		Global.pivotWheel.value = 0
+		playerPathTracker.append([self.global_position, self.global_rotation])
 
 	if Input.is_action_just_pressed("left_dir"):
 		self.global_rotate(-horizontalRot, PI/2)
 		didBuildMap = false
 		Global.pivotWheel.value = 0
+		playerPathTracker.append([self.global_position, self.global_rotation])
 
 
 func place_player_trail(tempPos: Vector3):
