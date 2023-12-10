@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Dream_Of_Days_Text"
+config/name="Dream_Of_Nights_Text"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
