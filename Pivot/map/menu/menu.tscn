@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://p2t6adncdly2"]
+[gd_scene load_steps=9 format=3 uid="uid://p2t6adncdly2"]
 
 [ext_resource type="Script" path="res://map/menu/menu.gd" id="1_edflh"]
 [ext_resource type="AudioStream" uid="uid://demjxmpgj1y5a" path="res://audio/menu.mp3" id="2_rihxh"]
+[ext_resource type="Script" path="res://map/menu/ResultsMenu.gd" id="2_y32v3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hrd3h"]
 content_margin_left = 10.0
@@ -53,7 +54,23 @@ cache/0/16/0/scale = 1.0
 cache/0/16/0/kerning_overrides/26/0 = Vector2(0, 0)
 cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
-[node name="menu" type="CenterContainer" node_paths=PackedStringArray("mainMenu", "creditMenu", "howToMenu", "menuMusic")]
+[sub_resource type="FontFile" id="FontFile_31e23"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/26/0 = Vector2(0, 0)
+cache/0/26/0/ascent = 0.0
+cache/0/26/0/descent = 0.0
+cache/0/26/0/underline_position = 0.0
+cache/0/26/0/underline_thickness = 0.0
+cache/0/26/0/scale = 1.0
+cache/0/26/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/26/0/kerning_overrides/26/0 = Vector2(0, 0)
+
+[node name="menu" type="CenterContainer" node_paths=PackedStringArray("mainMenu", "creditMenu", "howToMenu", "resultsMenu", "menuMusic")]
 process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -64,6 +81,7 @@ script = ExtResource("1_edflh")
 mainMenu = NodePath("PanelContainer/MainMenu")
 creditMenu = NodePath("PanelContainer/CreditsMenu")
 howToMenu = NodePath("PanelContainer/HowToMenu")
+resultsMenu = NodePath("PanelContainer/ResultsMenu")
 menuMusic = NodePath("AudioStreamPlayer")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -114,6 +132,15 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
 text = "Continue"
 
+[node name="Result_btn" type="Button" parent="PanelContainer/MainMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
+text = "Results"
+
 [node name="HSeparator2" type="HSeparator" parent="PanelContainer/MainMenu"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
@@ -131,6 +158,15 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
 text = "How to Play"
 
 [node name="Cred_btn" type="Button" parent="PanelContainer/MainMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
+text = "Credits"
+
+[node name="Optn_btn" type="Button" parent="PanelContainer/MainMenu"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
@@ -162,7 +198,7 @@ size_flags_horizontal = 4
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 68
-text = "Pivot"
+text = "Credits"
 
 [node name="HSeparator" type="HSeparator" parent="PanelContainer/CreditsMenu"]
 modulate = Color(1, 1, 1, 0)
@@ -229,7 +265,7 @@ size_flags_horizontal = 4
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 68
-text = "Pivot"
+text = "How To Play"
 
 [node name="HSeparator" type="HSeparator" parent="PanelContainer/HowToMenu"]
 modulate = Color(1, 1, 1, 0)
@@ -279,6 +315,123 @@ vertical_alignment = 1
 autowrap_mode = 2
 justification_flags = 131
 
+[node name="ResultsMenu" type="VBoxContainer" parent="PanelContainer" node_paths=PackedStringArray("lastResultsLabel", "totalResultsLabel")]
+visible = false
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+size_flags_stretch_ratio = 8.0
+alignment = 1
+script = ExtResource("2_y32v3")
+lastResultsLabel = NodePath("LastGameResultsLabel")
+totalResultsLabel = NodePath("TotalResultsLabel")
+
+[node name="Label" type="Label" parent="PanelContainer/ResultsMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.5
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 68
+text = "Results"
+horizontal_alignment = 1
+
+[node name="LastGameResultsLabel" type="Label" parent="PanelContainer/ResultsMenu"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_constants/line_spacing = 5
+theme_override_fonts/font = SubResource("FontFile_lhgv6")
+theme_override_font_sizes/font_size = 26
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+justification_flags = 131
+
+[node name="TotalResultsLabel" type="Label" parent="PanelContainer/ResultsMenu"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_constants/line_spacing = 5
+theme_override_fonts/font = SubResource("FontFile_lhgv6")
+theme_override_font_sizes/font_size = 26
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+justification_flags = 131
+
+[node name="OptionMenu" type="GridContainer" parent="PanelContainer"]
+visible = false
+layout_mode = 2
+size_flags_stretch_ratio = 6.0
+
+[node name="Label" type="Label" parent="PanelContainer/OptionMenu"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.5
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 68
+text = "Options"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/OptionMenu"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="WindowSize" type="Label" parent="PanelContainer/OptionMenu"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = SubResource("FontFile_31e23")
+theme_override_font_sizes/font_size = 26
+text = "Window Size"
+
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/OptionMenu"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="ScreenRes" type="Label" parent="PanelContainer/OptionMenu"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = SubResource("FontFile_31e23")
+theme_override_font_sizes/font_size = 26
+text = "Screen Resolution"
+
+[node name="HSeparator3" type="HSeparator" parent="PanelContainer/OptionMenu"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="MusicVol" type="Label" parent="PanelContainer/OptionMenu"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = SubResource("FontFile_31e23")
+theme_override_font_sizes/font_size = 26
+text = "Music Volume"
+
+[node name="HSeparator4" type="HSeparator" parent="PanelContainer/OptionMenu"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="SFXVol" type="Label" parent="PanelContainer/OptionMenu"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = SubResource("FontFile_31e23")
+theme_override_font_sizes/font_size = 26
+text = "SFX Volume"
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_rihxh")
 bus = &"Music"
@@ -286,6 +439,8 @@ bus = &"Music"
 [connection signal="pressed" from="PanelContainer/MainMenu/NG_btn" to="." method="_on_ng_btn_pressed"]
 [connection signal="pressed" from="PanelContainer/MainMenu/NGS_btn" to="." method="_on_ngs_btn_pressed"]
 [connection signal="pressed" from="PanelContainer/MainMenu/Cont_btn" to="." method="_on_cont_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMenu/Result_btn" to="." method="_on_result_btn_pressed"]
 [connection signal="pressed" from="PanelContainer/MainMenu/HowTo_btn" to="." method="_on_how_to_btn_pressed"]
 [connection signal="pressed" from="PanelContainer/MainMenu/Cred_btn" to="." method="_on_cred_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMenu/Optn_btn" to="." method="_on_cred_btn_pressed"]
 [connection signal="pressed" from="PanelContainer/MainMenu/Quit_btn" to="." method="_on_quit_btn_pressed"]

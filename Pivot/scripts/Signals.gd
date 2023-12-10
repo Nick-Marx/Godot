@@ -12,3 +12,5 @@ signal spinnerEntered
 signal chaserEntered
 
 signal audioChange
+
+signal newGame

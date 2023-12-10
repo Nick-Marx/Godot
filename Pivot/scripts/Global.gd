@@ -14,6 +14,12 @@ var trailOrganizer: Node3D
 var time: float
 var scoreMultiplyer: int = 1
 var isSurvivalMode: bool = false
+var timeElapsed: String
+
+var lastEndScore: int
+var lastEndTime: String
+var totalScore: int
+var totalTime: float
 
 #debugging
 var debug_isFullScreen: bool = false

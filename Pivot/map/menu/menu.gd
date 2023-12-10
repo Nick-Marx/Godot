@@ -4,6 +4,7 @@ extends CenterContainer
 @export var mainMenu: VBoxContainer
 @export var creditMenu: VBoxContainer
 @export var howToMenu: VBoxContainer
+@export var resultsMenu: VBoxContainer
 
 @export var menuMusic: AudioStreamPlayer
 
@@ -26,6 +27,7 @@ func _process(_delta) -> void:
 	
 	credits()
 	how_to_play()
+	results()
 
 
 func pause():
@@ -52,6 +54,7 @@ func unpause():
 		mainMenu.visible = true
 		creditMenu.visible = false
 		howToMenu.visible = false
+		resultsMenu.visible = false
 	
 	if !menuMusic.stream_paused:
 		menuMusic.stream_paused = true
@@ -60,7 +63,9 @@ func unpause():
 
 
 func game_over(chaser, player):
+	_on_ngs_btn_pressed()
 	pause()
+	_on_result_btn_pressed()
 
 
 func how_to_play():
@@ -76,14 +81,29 @@ func credits():
 			creditMenu.visible = false
 			mainMenu.visible = true
 
+
+func results():
+	if resultsMenu.visible:
+		if Input.is_action_pressed("action_one") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+			resultsMenu.visible = false
+			mainMenu.visible = true
+
+
 func _on_ng_btn_pressed():
+	Global.lastEndScore = Global.score
+	Global.lastEndTime = Global.timeElapsed
+	Global.totalScore += Global.score
+	Global.totalTime += Global.time
+	Signals.newGame.emit()
+	
 	Global.score = 1
 	Global.time = 0
 	Global.scoreMultiplyer = 1
 	Global.pivotWheel.value = 0
-	get_tree().reload_current_scene()
 	PivotPlayer.speed = PivotPlayer.loSpd
+	get_tree().reload_current_scene()
 	Global.isSurvivalMode = false
+	
 	
 	if PivotPlayer.global_position != Vector3(0,0,0):
 		PivotPlayer.global_position = Vector3(0,0,0)
@@ -112,4 +132,6 @@ func _on_how_to_btn_pressed():
 	howToMenu.visible = true
 
 
-
+func _on_result_btn_pressed():
+	mainMenu.visible = false
+	resultsMenu.visible = true
