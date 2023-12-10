@@ -88,13 +88,13 @@ func build_map():
 		for y in range(-10, 11, 2):
 			place_dot(x, y)
 	
-	#for x in range(-10, 11, 1):
-		#for y in range(-10, 11, 1):
-			#place_bumper(x, y)
-	#
-	#for x in range(-10, 11, 2):
-		#for y in range(-10, 11, 2):
-			#place_spinner(x, y)
+	for x in range(-10, 11, 1):
+		for y in range(-10, 11, 1):
+			place_bumper(x, y)
+	
+	for x in range(-10, 11, 2):
+		for y in range(-10, 11, 2):
+			place_spinner(x, y)
 
 
 func place_dot(x, y):
@@ -177,8 +177,6 @@ func place_spinner(x, y):
 				spinnerDict[tempPos] = tempSpin
 			false:
 				spinnerDict[tempPos] = 0
-		
-		#printt(snappedf(clampf(spinnerRatioMin * (Global.score * (spinnerRatioMax / spinnerRatioMin / 500)), spinnerRatioMin, spinnerRatioMax), 0.01))
 
 
 func place_chaser():

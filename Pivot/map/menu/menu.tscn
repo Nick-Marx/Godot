@@ -265,6 +265,13 @@ Yellow dots are worth more than black.
 
 
 
+In Survival you must also avoid the 
+inevitable TUV for as long as possible.
+It will spawn once your score is high enough
+
+
+
+
 ESC key to open menu."
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -273,6 +280,7 @@ justification_flags = 131
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_rihxh")
+bus = &"Music"
 
 [connection signal="pressed" from="PanelContainer/MainMenu/NG_btn" to="." method="_on_ng_btn_pressed"]
 [connection signal="pressed" from="PanelContainer/MainMenu/NGS_btn" to="." method="_on_ngs_btn_pressed"]

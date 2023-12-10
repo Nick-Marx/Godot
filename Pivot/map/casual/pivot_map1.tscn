@@ -53,6 +53,8 @@ smoothSpeed = 2.0
 
 [node name="AudioStreamPlayerSlow" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_55s8l")
+bus = &"Music"
 
 [node name="AudioStreamPlayerFast" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_ieipy")
+bus = &"Music"

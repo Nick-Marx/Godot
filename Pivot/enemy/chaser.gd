@@ -1,6 +1,7 @@
 extends Node3D
 
 
+@export var chaserDespawnDistance: int
 @export var speedMin: float
 @export var speedMax: float
 var speed: float
@@ -13,9 +14,6 @@ func _ready():
 
 func _physics_process(_delta) -> void:
 	$Area3D.rotate_z(speed)
-	
-	#if self.global_position == PivotPlayer.global_position:
-			#self.global_rotation = PivotPlayer.global_rotation
 
 
 func chaser_movement(dot, area):
@@ -26,6 +24,7 @@ func chaser_movement(dot, area):
 		check_map_rotation()
 		update_pos(dot)
 		speed_increase()
+		respawn()
 
 
 func check_map_rotation():
@@ -56,9 +55,16 @@ func speed_increase():
 		speed *= -1
 
 
+func respawn():
+	if PivotPlayer.playerPathTracker.size() - PivotPlayer.playerTrackerIndex >= chaserDespawnDistance:
+		Global.mainScene.place_chaser()
+		self.queue_free()
+
+
 func _on_area_3d_area_entered(area):
 	if area.is_in_group("Gplayer") and !Global.isScenePaused:
 		Signals.chaserEntered.emit(self, area)
 	
-	if area.is_in_group("Gspinner"):
-		speed *= -1
+	if area.is_in_group("Gspinner") or area.is_in_group("Gbumper"):
+		area.get_parent().queue_free()
+		$AudioStreamPlayerDestroy.play()
