@@ -195,7 +195,7 @@ func place_chaser():
 	var tempChase = chaser.instantiate() #instantiate packed scene as a node
 	self.add_child(tempChase)
 	tempChase.global_position = Vector3i(tempStartPos)
-	tempChase.global_rotation = pp.global_rotation
+	tempChase.global_rotation = pp.playerPathTracker[tempStartRange][1]
 	pp.playerTrackerIndex = tempStartRange + 1
 
 
