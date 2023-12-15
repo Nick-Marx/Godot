@@ -109,7 +109,7 @@ func options():
 func _on_ng_btn_pressed():
 	Global.lastEndScore = Global.score
 	Global.lastEndTime = Global.timeElapsed
-	Global.totalScore += Global.score
+	Global.totalScore += Global.score if Global.score > 1 else 0
 	Global.totalTime += Global.time
 	Signals.newGame.emit()
 	
