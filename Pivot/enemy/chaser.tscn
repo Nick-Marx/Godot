@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://d1tsixcu6otx1"]
+[gd_scene load_steps=9 format=3 uid="uid://d1tsixcu6otx1"]
 
 [ext_resource type="Script" path="res://enemy/chaser.gd" id="1_c5vd4"]
 [ext_resource type="AudioStream" uid="uid://djluxajvtfws3" path="res://audio/TUV_collide.wav" id="2_301y8"]
@@ -6,13 +6,33 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_mxipk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xqisb"]
-albedo_color = Color(0.396078, 0, 0.396078, 1)
+albedo_color = Color(0, 0, 0, 1)
 emission_enabled = true
-emission = Color(0.137255, 0, 0.172549, 1)
-emission_energy_multiplier = 10.0
+emission = Color(0.282353, 0, 0.34902, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ge713"]
 material = SubResource("StandardMaterial3D_xqisb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p2c0s"]
+emission_shape = 3
+emission_box_extents = Vector3(3, 2, 2)
+gravity = Vector3(0, 0, 0)
+linear_accel_max = 1.0
+radial_accel_max = 1.0
+attractor_interaction_enabled = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c0c3j"]
+albedo_color = Color(0, 0, 0, 0)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 20.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_nsfuc"]
+material = SubResource("StandardMaterial3D_c0c3j")
+radius = 0.02
+height = 0.01
+radial_segments = 4
+rings = 4
 
 [node name="Chaser" type="Node3D"]
 script = ExtResource("1_c5vd4")
@@ -29,6 +49,15 @@ shape = SubResource("CylinderShape3D_mxipk")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
 transform = Transform3D(-8.74228e-09, -1, 0, 0.2, -4.37114e-08, 0, 0, 0, 0.2, 1, 0, 0)
 mesh = SubResource("CylinderMesh_ge713")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Area3D/MeshInstance3D"]
+transform = Transform3D(-3.25841e-08, 0.2, 0, -0.2, -3.25841e-08, 0, 0, 0, 0.2, 0, -1, 0)
+amount = 20
+lifetime = 1.2
+speed_scale = 1.5
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_p2c0s")
+draw_pass_1 = SubResource("SphereMesh_nsfuc")
 
 [node name="AudioStreamPlayerDestroy" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_301y8")

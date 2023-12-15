@@ -62,6 +62,7 @@ cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
 cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 cache/0/16/0/kerning_overrides/26/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/20/0 = Vector2(0, 0)
 cache/0/26/0/ascent = 0.0
 cache/0/26/0/descent = 0.0
 cache/0/26/0/underline_position = 0.0
@@ -69,117 +70,149 @@ cache/0/26/0/underline_thickness = 0.0
 cache/0/26/0/scale = 1.0
 cache/0/26/0/kerning_overrides/16/0 = Vector2(0, 0)
 cache/0/26/0/kerning_overrides/26/0 = Vector2(0, 0)
+cache/0/26/0/kerning_overrides/20/0 = Vector2(0, 0)
+cache/0/20/0/ascent = 0.0
+cache/0/20/0/descent = 0.0
+cache/0/20/0/underline_position = 0.0
+cache/0/20/0/underline_thickness = 0.0
+cache/0/20/0/scale = 1.0
+cache/0/20/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/20/0/kerning_overrides/26/0 = Vector2(0, 0)
+cache/0/20/0/kerning_overrides/20/0 = Vector2(0, 0)
 
-[node name="menu" type="CenterContainer" node_paths=PackedStringArray("mainMenu", "creditMenu", "howToMenu", "resultsMenu", "menuMusic")]
+[node name="menu" type="CenterContainer" node_paths=PackedStringArray("mainMenu", "creditMenu", "howToMenu", "resultsMenu", "optionMenu", "menuMusic")]
 process_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -187.0
+offset_top = -260.5
+offset_right = 187.0
+offset_bottom = 260.5
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource("1_edflh")
 mainMenu = NodePath("PanelContainer/MainMenu")
 creditMenu = NodePath("PanelContainer/CreditsMenu")
 howToMenu = NodePath("PanelContainer/HowToMenu")
 resultsMenu = NodePath("PanelContainer/ResultsMenu")
+optionMenu = NodePath("PanelContainer/OptionsMenu")
 menuMusic = NodePath("AudioStreamPlayer")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(400, 800)
+custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_hrd3h")
 
 [node name="MainMenu" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_stretch_ratio = 7.0
 
 [node name="Label" type="Label" parent="PanelContainer/MainMenu"]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 68
+theme_override_font_sizes/font_size = 50
 text = "Pivot"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="PanelContainer/MainMenu"]
-modulate = Color(1, 1, 1, 0)
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MainMenu"]
 layout_mode = 2
-theme_override_constants/separation = 8
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="NG_btn" type="Button" parent="PanelContainer/MainMenu"]
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MainMenu/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 2
-theme_override_font_sizes/font_size = 38
+columns = 2
+
+[node name="NG_btn" type="Button" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
 text = "Casual"
 
-[node name="NGS_btn" type="Button" parent="PanelContainer/MainMenu"]
+[node name="NGS_btn" type="Button" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 2
-theme_override_font_sizes/font_size = 38
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
 text = "Survival"
 
-[node name="Cont_btn" type="Button" parent="PanelContainer/MainMenu"]
+[node name="Cont_btn" type="Button" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 2
-theme_override_font_sizes/font_size = 38
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
 text = "Continue"
 
-[node name="Result_btn" type="Button" parent="PanelContainer/MainMenu"]
+[node name="Result_btn" type="Button" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 2
-theme_override_font_sizes/font_size = 38
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
 text = "Results"
 
-[node name="HSeparator2" type="HSeparator" parent="PanelContainer/MainMenu"]
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 2
-theme_override_constants/separation = 200
+size_flags_vertical = 7
+theme_override_constants/separation = 100
 
-[node name="HowTo_btn" type="Button" parent="PanelContainer/MainMenu"]
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 2
-theme_override_font_sizes/font_size = 38
+size_flags_vertical = 7
+theme_override_constants/separation = 100
+
+[node name="HowTo_btn" type="Button" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
 text = "How to Play"
 
-[node name="Cred_btn" type="Button" parent="PanelContainer/MainMenu"]
+[node name="Optn_btn" type="Button" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 2
-theme_override_font_sizes/font_size = 38
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
+text = "Options"
+
+[node name="Cred_btn" type="Button" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
 text = "Credits"
 
-[node name="Optn_btn" type="Button" parent="PanelContainer/MainMenu"]
+[node name="Quit_btn" type="Button" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 2
-theme_override_font_sizes/font_size = 38
-theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
-text = "Credits"
-
-[node name="Quit_btn" type="Button" parent="PanelContainer/MainMenu"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 2
-theme_override_font_sizes/font_size = 38
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
 text = "Quit"
@@ -195,19 +228,28 @@ alignment = 1
 [node name="Label" type="Label" parent="PanelContainer/CreditsMenu"]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 68
+theme_override_font_sizes/font_size = 50
 text = "Credits"
 
 [node name="HSeparator" type="HSeparator" parent="PanelContainer/CreditsMenu"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_constants/separation = 8
 
-[node name="Label2" type="Label" parent="PanelContainer/CreditsMenu"]
+[node name="ScrollContainer2" type="ScrollContainer" parent="PanelContainer/CreditsMenu"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label2" type="Label" parent="PanelContainer/CreditsMenu/ScrollContainer2"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/line_spacing = 5
 theme_override_fonts/font = SubResource("FontFile_lhgv6")
 theme_override_font_sizes/font_size = 26
@@ -253,28 +295,40 @@ justification_flags = 131
 
 [node name="HowToMenu" type="VBoxContainer" parent="PanelContainer"]
 visible = false
-custom_minimum_size = Vector2(512, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 0
 alignment = 1
 
 [node name="Label" type="Label" parent="PanelContainer/HowToMenu"]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 68
+theme_override_font_sizes/font_size = 50
 text = "How To Play"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="PanelContainer/HowToMenu"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
+size_flags_vertical = 2
 theme_override_constants/separation = 8
 
-[node name="Label2" type="Label" parent="PanelContainer/HowToMenu"]
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/HowToMenu"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
+horizontal_scroll_mode = 0
+
+[node name="Label2" type="Label" parent="PanelContainer/HowToMenu/ScrollContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/line_spacing = 5
 theme_override_fonts/font = SubResource("FontFile_lhgv6")
 theme_override_font_sizes/font_size = 26
@@ -332,7 +386,7 @@ size_flags_vertical = 2
 size_flags_stretch_ratio = 0.5
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 68
+theme_override_font_sizes/font_size = 50
 text = "Results"
 horizontal_alignment = 1
 
@@ -360,87 +414,126 @@ vertical_alignment = 1
 autowrap_mode = 2
 justification_flags = 131
 
-[node name="OptionMenu" type="GridContainer" parent="PanelContainer"]
+[node name="OptionsMenu" type="VBoxContainer" parent="PanelContainer"]
 visible = false
 layout_mode = 2
-size_flags_stretch_ratio = 6.0
+size_flags_horizontal = 4
+size_flags_stretch_ratio = 8.0
 
-[node name="Label" type="Label" parent="PanelContainer/OptionMenu"]
+[node name="Label" type="Label" parent="PanelContainer/OptionsMenu"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 0
-size_flags_stretch_ratio = 0.5
+size_flags_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 68
+theme_override_font_sizes/font_size = 50
 text = "Options"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="PanelContainer/OptionMenu"]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(0, 20)
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/OptionsMenu"]
 layout_mode = 2
-size_flags_vertical = 0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+columns = 2
 
-[node name="WindowSize" type="Label" parent="PanelContainer/OptionMenu"]
+[node name="FullScreen" type="Label" parent="PanelContainer/OptionsMenu/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 0
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.5
 theme_override_fonts/font = SubResource("FontFile_31e23")
-theme_override_font_sizes/font_size = 26
-text = "Window Size"
+theme_override_font_sizes/font_size = 20
+text = "Full Screen"
+vertical_alignment = 1
 
-[node name="HSeparator2" type="HSeparator" parent="PanelContainer/OptionMenu"]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(0, 20)
+[node name="FulScrn_btn" type="CheckButton" parent="PanelContainer/OptionsMenu/GridContainer"]
 layout_mode = 2
-size_flags_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.5
 
-[node name="ScreenRes" type="Label" parent="PanelContainer/OptionMenu"]
+[node name="UIRes" type="Label" parent="PanelContainer/OptionsMenu/GridContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
+size_flags_horizontal = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.5
 theme_override_fonts/font = SubResource("FontFile_31e23")
-theme_override_font_sizes/font_size = 26
-text = "Screen Resolution"
+theme_override_font_sizes/font_size = 20
+text = "UI Scaling"
+vertical_alignment = 1
 
-[node name="HSeparator3" type="HSeparator" parent="PanelContainer/OptionMenu"]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(0, 20)
+[node name="UIRes_btn" type="OptionButton" parent="PanelContainer/OptionsMenu/GridContainer"]
 layout_mode = 2
-size_flags_vertical = 0
+size_flags_horizontal = 10
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.5
+theme_override_font_sizes/font_size = 20
+flat = true
+alignment = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "100%"
+popup/item_0/id = 2
+popup/item_1/text = "120%"
+popup/item_1/id = 0
+popup/item_2/text = "150%"
+popup/item_2/id = 1
 
-[node name="MusicVol" type="Label" parent="PanelContainer/OptionMenu"]
+[node name="MusicVol" type="Label" parent="PanelContainer/OptionsMenu/GridContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
+size_flags_horizontal = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.5
 theme_override_fonts/font = SubResource("FontFile_31e23")
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 20
 text = "Music Volume"
+vertical_alignment = 1
 
-[node name="HSeparator4" type="HSeparator" parent="PanelContainer/OptionMenu"]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(0, 20)
+[node name="MusicSlider" type="HSlider" parent="PanelContainer/OptionsMenu/GridContainer"]
 layout_mode = 2
-size_flags_vertical = 0
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.5
+max_value = 1.0
+step = 0.001
+value = 1.0
 
-[node name="SFXVol" type="Label" parent="PanelContainer/OptionMenu"]
+[node name="SFXVol" type="Label" parent="PanelContainer/OptionsMenu/GridContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
+size_flags_horizontal = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.5
 theme_override_fonts/font = SubResource("FontFile_31e23")
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 20
 text = "SFX Volume"
+vertical_alignment = 1
+
+[node name="SFXSlider" type="HSlider" parent="PanelContainer/OptionsMenu/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.5
+max_value = 1.0
+step = 0.001
+value = 1.0
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/OptionsMenu"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_rihxh")
 bus = &"Music"
 
-[connection signal="pressed" from="PanelContainer/MainMenu/NG_btn" to="." method="_on_ng_btn_pressed"]
-[connection signal="pressed" from="PanelContainer/MainMenu/NGS_btn" to="." method="_on_ngs_btn_pressed"]
-[connection signal="pressed" from="PanelContainer/MainMenu/Cont_btn" to="." method="_on_cont_btn_pressed"]
-[connection signal="pressed" from="PanelContainer/MainMenu/Result_btn" to="." method="_on_result_btn_pressed"]
-[connection signal="pressed" from="PanelContainer/MainMenu/HowTo_btn" to="." method="_on_how_to_btn_pressed"]
-[connection signal="pressed" from="PanelContainer/MainMenu/Cred_btn" to="." method="_on_cred_btn_pressed"]
-[connection signal="pressed" from="PanelContainer/MainMenu/Optn_btn" to="." method="_on_cred_btn_pressed"]
-[connection signal="pressed" from="PanelContainer/MainMenu/Quit_btn" to="." method="_on_quit_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/NG_btn" to="." method="_on_ng_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/NGS_btn" to="." method="_on_ngs_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/Cont_btn" to="." method="_on_cont_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/Result_btn" to="." method="_on_result_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/HowTo_btn" to="." method="_on_how_to_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/Optn_btn" to="." method="_on_optn_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/Cred_btn" to="." method="_on_cred_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/Quit_btn" to="." method="_on_quit_btn_pressed"]
+[connection signal="toggled" from="PanelContainer/OptionsMenu/GridContainer/FulScrn_btn" to="." method="_on_ful_scrn_btn_toggled"]
+[connection signal="item_selected" from="PanelContainer/OptionsMenu/GridContainer/UIRes_btn" to="." method="_on_ui_res_btn_item_selected"]
+[connection signal="value_changed" from="PanelContainer/OptionsMenu/GridContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="PanelContainer/OptionsMenu/GridContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]

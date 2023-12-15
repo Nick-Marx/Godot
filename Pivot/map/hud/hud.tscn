@@ -35,7 +35,7 @@ anchor_right = 1.0
 offset_bottom = 53.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/separation = 0
+theme_override_constants/separation = 20
 alignment = 1
 
 [node name="Score" type="Label" parent="HBoxContainer"]
