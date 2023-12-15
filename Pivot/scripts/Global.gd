@@ -21,8 +21,6 @@ var lastEndTime: String
 var totalScore: int
 var totalTime: float
 
-#debugging
-var debug_isFullScreen: bool = false
 
 func _ready():
 	rand.randomize() #ensures the randomization is not the exact same each time
