@@ -13,9 +13,15 @@ This project is based off of an idea I've been holding for a few years now, alon
 
 Pivot is based off an old Mac game that I played in the mid 90's called Spin Doctor. It was very rudimentary in its concepts, so I figured I might be able to recreate a semblance of the game while improving upon it.  
 
-## **Game Summary**</th>
+## **Game Summary**
 
-WIP 
+You control Pivot as it rotates around colored dots. The goal is to jump from dot to dot, gaining points, until you've reached a gratuitously high score.
+<br>
+When the wheel at the bottom fills, you can pivot the map 90deg in any direction.
+<br>
+In survival mode, you must also avoid TUV as you aim to earn a high score.
+
+My goal was to make a hyper casual game to relax to, but for those who wanted a little more challenge I added that too. I hope I've achieved this.
 
 ## **Initial Setup**
 
@@ -160,11 +166,11 @@ Forgot to edit the devlog after my last update. I'll list the changes in order a
 Made a map pivot timer set to 4 seconds for casual mode. This should prevent anyone from getting stuck. It's activated with the arrow keys, if I port this to mobile I'll probably set it to activate with swipes.
 <br>
 <br>
-I decided on including a player trail. It does nothing, now, hear me out... I think it looks neat.
+I decided on including a player trail and it does nothing. Now, hear me out... I think it looks neat.
 <br>
 <br>
 Started messing with audio, and I'm straight up bad at it. It's fun and I have a good idea of what I want for the sound and feel of everything, but no matter what I try, nothing sounds good.
-For any curious, I use the free opensource DAW LMMS. This being my first time using something like this, it took me forever just to get setup and configured a little.
+For any curious, I use the free opensource DAW LMMS. This being my first time using something like this, it took me forever just to get it setup and configured a little.
 I took a break after many, many, MANY hours to add a few simple sound effects just to test things. It turned out ok, but needed quite a bit of tweaking before I was satisfied.
 <br>
 <br>
@@ -172,7 +178,7 @@ Another MANY hours later and I've come to the conclusion that I need a lot more 
 All of this has made me realize that some of the features I want to add are currently beyond my ability and/or not supported fully in the current version of Godot.
 <br>
 <br>
-Was able to get about halfway toward what I wanted for audio. During the main gameplay, there are two audio tracks that will seemlessly alternate depending on if the player is on a fast streak or not.
+Was able to get about halfway toward what I wanted for audio. During the main gameplay, there are two audio tracks that will alternate depending on if the player is on a fast streak or not.
 <br>
 <br>
 Made a lot of little tweaks to things:
@@ -187,7 +193,7 @@ Made a lot of little tweaks to things:
 <br>
 -Fixed the newgame button to reset everything, not just the score.
 <br>
--Modified dot collision areas to make it slightly easier to hit center and so a player can't just hold down the action keep and keep their fast streak.
+-Modified dot collision areas to make it slightly easier to hit center and so a player can't just hold down the action key and keep their fast streak.
 <br>
 -Fixed bumper collision size too.
 <br>
@@ -196,15 +202,59 @@ Made a lot of little tweaks to things:
 -Added play instructions to main menu.
 <br>
 <br>
-I know this gif doesn't have sound, but if you take a moment to imagine the coolest songs you've ever heard overlayed on a montage of childrens drawings, then add some low quality special effects and you'll be in the ballpark of what this game sounds/feels like.
+I know this gif doesn't have sound, but if you take a moment to imagine the coolest songs you've ever heard overlayed on a slideshow of childrens drawings, then add some low quality special effects and you'll be in the ballpark of what this game sounds/feels like.
 
 <div align="center">
 <img height=300 src="https://github.com/Nick-Marx/Godot/blob/main/Pivot/README/pivot_maj_milestone2.gif"/>  
 </div>
 
+## **Better Menu and a New Mode, Finally Publishing**
+
+It occured to me after the last edit that I haven't been posting the amounts of time it's taken for each task. I think somewhere along the line I developed a routine and now I don't even notice the time. But, for those keeping track, I've spent about 80 hours on research, 200 hours on writing/testing code, and 20 hours on outlining/conceptualizing total up till this point.
+<br>
+<br>
+I added a new survival game mode with a chaser enemy that the player must avoid. I named the enemy TUV and it sparkles (this was to help players notice it easier when it creeps into their view).
+<br>
+<br>
+I modified the main menu and added an options menu.
+<br>
+<br>
+I don't plan on adding a gif with this edit since I've decided to publish the game. I feel that at this point it's complete enough to play, but for any more updates I will need a lot more practice making games and a lot more feedback. 
+<br>
+<br>
+
 ## **Final Thoughts**  
 
-WIP - Placeholder Text -  
+For anyone who's read this far, there's one thing I'd like you to take away from this: The entire experience, though challenging at times, was incredibly fun and rewarding.
+<br>
+<br>
+Thank you so much for reading this devlog and I hope it can be at least a little help to you or anyone else looking to get into game development.
+<br>
+<br>
+As I stated before, I compromised on a few features for this game. Here's a list of things I intend to update or add when I return to this project as a far more skilled developer:
+<br>
+<br>
+Expanded soundtrack
+<br>
+<br>
+Synchronized audio
+<br>
+<br>
+New game modes
+<br>
+<br>
+Improved graphics
+<br>
+<br>
+Better UI
+<br>
+<br>
+Collectables and powerups
+<br>
+<br>
+Online score keeping
+<br>
+<br>
 
 
 Note: GitHub MD sucks. It took me so many hours just to get this REAME formatted correctly and it still didn't turn out the way I wanted.
