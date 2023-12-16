@@ -233,27 +233,19 @@ Thank you so much for reading this devlog and I hope it can be at least a little
 <br>
 As I stated before, I compromised on a few features for this game. Here's a list of things I intend to update or add when I return to this project as a far more skilled developer:
 <br>
-<br>
 Expanded soundtrack
-<br>
 <br>
 Synchronized audio
 <br>
-<br>
 New game modes
-<br>
 <br>
 Improved graphics
 <br>
-<br>
 Better UI
-<br>
 <br>
 Collectables and powerups
 <br>
-<br>
 Online score keeping
-<br>
 <br>
 
 
