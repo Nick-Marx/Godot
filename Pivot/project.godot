@@ -68,4 +68,5 @@ right_dir={
 
 [rendering]
 
+renderer/rendering_method="gl_compatibility"
 vulkan/rendering/back_end=1

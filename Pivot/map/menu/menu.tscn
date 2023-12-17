@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://p2t6adncdly2"]
+[gd_scene load_steps=7 format=3 uid="uid://p2t6adncdly2"]
 
 [ext_resource type="Script" path="res://map/menu/menu.gd" id="1_edflh"]
 [ext_resource type="AudioStream" uid="uid://demjxmpgj1y5a" path="res://audio/menu.mp3" id="2_rihxh"]
@@ -32,53 +32,6 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
-
-[sub_resource type="FontFile" id="FontFile_lhgv6"]
-cache/0/26/0/ascent = 0.0
-cache/0/26/0/descent = 0.0
-cache/0/26/0/underline_position = 0.0
-cache/0/26/0/underline_thickness = 0.0
-cache/0/26/0/scale = 1.0
-cache/0/26/0/glyphs/0/advance = Vector2(0, 0)
-cache/0/26/0/glyphs/0/offset = Vector2(0, 0)
-cache/0/26/0/glyphs/0/size = Vector2(0, 0)
-cache/0/26/0/glyphs/0/uv_rect = Rect2(0, 0, 0, 0)
-cache/0/26/0/glyphs/0/texture_idx = -1
-cache/0/26/0/kerning_overrides/26/0 = Vector2(0, 0)
-cache/0/26/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/26/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-
-[sub_resource type="FontFile" id="FontFile_31e23"]
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/26/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/20/0 = Vector2(0, 0)
-cache/0/26/0/ascent = 0.0
-cache/0/26/0/descent = 0.0
-cache/0/26/0/underline_position = 0.0
-cache/0/26/0/underline_thickness = 0.0
-cache/0/26/0/scale = 1.0
-cache/0/26/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/26/0/kerning_overrides/26/0 = Vector2(0, 0)
-cache/0/26/0/kerning_overrides/20/0 = Vector2(0, 0)
-cache/0/20/0/ascent = 0.0
-cache/0/20/0/descent = 0.0
-cache/0/20/0/underline_position = 0.0
-cache/0/20/0/underline_thickness = 0.0
-cache/0/20/0/scale = 1.0
-cache/0/20/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/20/0/kerning_overrides/26/0 = Vector2(0, 0)
-cache/0/20/0/kerning_overrides/20/0 = Vector2(0, 0)
 
 [node name="menu" type="CenterContainer" node_paths=PackedStringArray("mainMenu", "creditMenu", "howToMenu", "resultsMenu", "optionMenu", "menuMusic")]
 process_mode = 3
@@ -251,41 +204,22 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/line_spacing = 5
-theme_override_fonts/font = SubResource("FontFile_lhgv6")
 theme_override_font_sizes/font_size = 26
 text = "Created By: 
 Nick Marx
-
-
-
 
 Audio Assets:
 cynicmusic - Crystal Cave (song18)
 pixelsphere.org/The Cynic Project
 
-
-
-
 Vitalezzz - Gravity Turn(action/calm)
 
-
-
-
 *music obtained from opengameart.org*
-
-
-
 
 Special Thanks to:
 Jeremiah Domon for his valuable feedback
 
-
-
-
 The Godot community for creating such a wonderful game engine and helping me whenever I got stuck
-
-
-
 
 ...and thank you for playing."
 horizontal_alignment = 1
@@ -330,38 +264,17 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/line_spacing = 5
-theme_override_fonts/font = SubResource("FontFile_lhgv6")
 theme_override_font_sizes/font_size = 26
-text = "Press SPACE while over the center of the 
-next dot to gain a speed increase.
+text = "Press SPACE while over the center of the next dot to gain a speed increase.
 
-
-
-
-When the progress bar at the bottom fills, 
-press the ARROW KEYS to pivot the map 
-in that direction.
-
-
-
+When the progress bar at the bottom fills, press the ARROW KEYS to pivot the map in that direction.
 
 Main goal is to get the highest score.
 
-
-
-
 Yellow dots are worth more than black.
 
-
-
-
-In Survival you must also avoid the 
-inevitable TUV for as long as possible.
-It will spawn once your score is high 
-enough.
-
-
-
+In Survival you must also avoid the inevitable TUV for as long as possible.
+It will spawn once your score is high enough.
 
 ESC key to open menu."
 horizontal_alignment = 1
@@ -395,7 +308,6 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_vertical = 2
 theme_override_constants/line_spacing = 5
-theme_override_fonts/font = SubResource("FontFile_lhgv6")
 theme_override_font_sizes/font_size = 26
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -407,7 +319,6 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_vertical = 2
 theme_override_constants/line_spacing = 5
-theme_override_fonts/font = SubResource("FontFile_lhgv6")
 theme_override_font_sizes/font_size = 26
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -441,7 +352,6 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 6
 size_flags_stretch_ratio = 0.5
-theme_override_fonts/font = SubResource("FontFile_31e23")
 theme_override_font_sizes/font_size = 20
 text = "Full Screen"
 vertical_alignment = 1
@@ -457,7 +367,6 @@ layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 6
 size_flags_stretch_ratio = 0.5
-theme_override_fonts/font = SubResource("FontFile_31e23")
 theme_override_font_sizes/font_size = 20
 text = "UI Scaling"
 vertical_alignment = 1
@@ -484,7 +393,6 @@ layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 6
 size_flags_stretch_ratio = 0.5
-theme_override_fonts/font = SubResource("FontFile_31e23")
 theme_override_font_sizes/font_size = 20
 text = "Music Volume"
 vertical_alignment = 1
@@ -502,7 +410,6 @@ layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 6
 size_flags_stretch_ratio = 0.5
-theme_override_fonts/font = SubResource("FontFile_31e23")
 theme_override_font_sizes/font_size = 20
 text = "SFX Volume"
 vertical_alignment = 1
