@@ -2,6 +2,7 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7kgqu"]
 albedo_color = Color(0, 0, 0, 1)
+emission_energy_multiplier = 10.0
 anisotropy = 1.0
 refraction_scale = -0.51
 proximity_fade_distance = 5.0

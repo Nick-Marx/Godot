@@ -3,7 +3,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fuh2r"]
 albedo_color = Color(1, 0, 0, 1)
 emission_enabled = true
-emission = Color(0.282353, 0, 0.00392157, 1)
+emission = Color(0.337255, 0, 0.00392157, 1)
 emission_energy_multiplier = 10.0
 distance_fade_mode = 1
 distance_fade_min_distance = 15.0

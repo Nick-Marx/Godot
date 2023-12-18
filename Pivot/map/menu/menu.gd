@@ -72,7 +72,7 @@ func unpause():
 	Signals.audioChange.emit()
 
 
-func game_over(chaser, player):
+func game_over(_chaser, _player):
 	_on_ngs_btn_pressed()
 	pause()
 	_on_result_btn_pressed()
