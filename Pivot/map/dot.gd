@@ -38,4 +38,3 @@ func _on_area_3d_inner_area_entered(area):
 
 func _on_area_3d_inner_area_exited(area):
 	Signals.dotInnerExited.emit(self, area)
-

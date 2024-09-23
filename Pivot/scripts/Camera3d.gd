@@ -29,4 +29,3 @@ func smooth_camera_follow(delta):
 #		global_transform = global_transform.interpolate_with(target_xform, smoothSpeed * delta)
 #		look_at(target.global_transform.origin, target.transform.basis.y)
 #		print(self.global_transform," ", mainCam.global_transform)
-

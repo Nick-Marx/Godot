@@ -188,4 +188,3 @@ func spinnerEntered(_spinner, area):
 		self.speed = loSpd
 		Global.scoreMultiplyer = 1
 		Signals.audioChange.emit()
-

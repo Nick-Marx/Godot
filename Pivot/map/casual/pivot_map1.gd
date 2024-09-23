@@ -197,6 +197,3 @@ func place_chaser():
 	tempChase.global_position = Vector3i(tempStartPos)
 	tempChase.global_rotation = pp.playerPathTracker[tempStartRange][1]
 	pp.playerTrackerIndex = tempStartRange + 1
-
-
-

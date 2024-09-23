@@ -13,10 +13,11 @@
 [sub_resource type="Environment" id="Environment_s1i21"]
 background_mode = 1
 background_color = Color(0.235294, 0.235294, 0.235294, 1)
+background_energy_multiplier = 0.4
 glow_enabled = true
 glow_levels/2 = 3.53
 glow_normalized = true
-glow_intensity = 1.78
+glow_intensity = 0.5
 glow_blend_mode = 0
 
 [node name="pivot_map1" type="Node3D" node_paths=PackedStringArray("dotOrganizer", "bumperOrganizer", "spinnerOrganizer", "trailOrganizer")]

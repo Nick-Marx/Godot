@@ -55,8 +55,3 @@ func _process(delta: float) -> void:
 		bgColor = bgColorPallete[colorCounter]
 #		printt(bgColor, colorCounter)
 #		bgColor = Color.from_ok_hsl(Global.rand.randf(), 1, 0.5, 1)
-
-
-
-
-

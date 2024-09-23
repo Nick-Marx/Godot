@@ -15,19 +15,19 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojane"]
+bg_color = Color(1, 1, 1, 0.141176)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nt1u0"]
 content_margin_left = 16.0
 content_margin_top = 8.0
 content_margin_right = 16.0
 content_margin_bottom = 8.0
 bg_color = Color(0.6, 0.6, 0.6, 0)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojane"]
-bg_color = Color(1, 1, 1, 0.141176)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -95,8 +95,8 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
+theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
 text = "Casual"
 
 [node name="NGS_btn" type="Button" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
@@ -104,8 +104,8 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
+theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
 text = "Survival"
 
 [node name="Cont_btn" type="Button" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
@@ -113,8 +113,8 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
+theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
 text = "Continue"
 
 [node name="Result_btn" type="Button" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
@@ -122,8 +122,8 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
+theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
 text = "Results"
 
 [node name="HSeparator" type="HSeparator" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
@@ -142,32 +142,32 @@ theme_override_constants/separation = 100
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 22
-theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
+theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
 text = "How to Play"
 
 [node name="Optn_btn" type="Button" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
+theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
 text = "Options"
 
 [node name="Cred_btn" type="Button" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
+theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
 text = "Credits"
 
 [node name="Quit_btn" type="Button" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
+theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
 text = "Quit"
 
 [node name="CreditsMenu" type="VBoxContainer" parent="PanelContainer"]
@@ -379,12 +379,11 @@ size_flags_stretch_ratio = 0.5
 theme_override_font_sizes/font_size = 20
 flat = true
 alignment = 2
-item_count = 3
 selected = 0
+item_count = 3
 popup/item_0/text = "100%"
 popup/item_0/id = 2
 popup/item_1/text = "120%"
-popup/item_1/id = 0
 popup/item_2/text = "150%"
 popup/item_2/id = 1
 
@@ -403,7 +402,7 @@ size_flags_vertical = 6
 size_flags_stretch_ratio = 0.5
 max_value = 1.0
 step = 0.001
-value = 1.0
+value = 0.25
 
 [node name="SFXVol" type="Label" parent="PanelContainer/OptionsMenu/GridContainer"]
 layout_mode = 2
@@ -420,7 +419,7 @@ size_flags_vertical = 6
 size_flags_stretch_ratio = 0.5
 max_value = 1.0
 step = 0.001
-value = 1.0
+value = 0.25
 
 [node name="HSeparator" type="HSeparator" parent="PanelContainer/OptionsMenu"]
 modulate = Color(1, 1, 1, 0)
