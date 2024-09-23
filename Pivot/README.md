@@ -252,9 +252,7 @@ As I stated before, I compromised on a few features for this game. Here's a list
 ## **Updates**  
 
 v1.0.2:
-<br>
 * Fixed glow effect when played through browser.
-<br>
 * Adjusted audio volume to start at 25%.
 
 <br>
