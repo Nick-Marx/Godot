@@ -247,6 +247,14 @@ As I stated before, I compromised on a few features for this game. Here's a list
 <br>
 -Online score keeping
 <br>
+<br>
+
+## **Updates**  
+
+v1.0.2 - 	Fixed glow effect when played through browser.
+			Adjusted audio volume to start at 25%.
+
+<br>
 
 \*I wanted to add this here in case anyone accuses me of retcon: All of my games are intended to build off each other and exist in the same 'universe'; Pivot is intended to be a meditative/mental practice tought to students in my 'Dream' settings\*
 
