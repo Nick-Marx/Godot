@@ -261,7 +261,7 @@ v1.0.3:
 * Moved menu music control node.
 <br>
 
-
+[^0]
 [^1]: I used this to practice FSMs. Conclusion: not very useful for the scope of this game, but I definitely see the usefullness in something larger in scale. Next I need to figure out Hierarchal FSMs; I will need to use them in my next game.
 
 [^0]: I wanted to add this here in case anyone accuses me of retcon: All of my games are intended to build off each other and exist in the same 'universe'; Pivot is intended to be a meditative/mental practice tought to students in my 'Dream' settings
