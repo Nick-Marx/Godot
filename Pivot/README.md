@@ -257,16 +257,13 @@ v1.0.2:
 <br>
 
 v1.0.3:
-* Added FSMs to handle pause state and menuing.
+* Added FSMs to handle pause state and menuing[^1].
 * Moved menu music control node.
 <br>
 
-## **v1.0.3 Thoughts**
 
-I used this to practice FSMs. Conclusion: not very useful for the scope of this game, but I definitely see the usefullness in something larger in scale. Next I need to figure out Hierarchal FSMs; I will need to use them in my next game.
+[^1]: I used this to practice FSMs. Conclusion: not very useful for the scope of this game, but I definitely see the usefullness in something larger in scale. Next I need to figure out Hierarchal FSMs; I will need to use them in my next game.
 
-<br>
----
-Note: \*I wanted to add this here in case anyone accuses me of retcon: All of my games are intended to build off each other and exist in the same 'universe'; Pivot is intended to be a meditative/mental practice tought to students in my 'Dream' settings\*
+[^]: I wanted to add this here in case anyone accuses me of retcon: All of my games are intended to build off each other and exist in the same 'universe'; Pivot is intended to be a meditative/mental practice tought to students in my 'Dream' settings
 
-Note: GitHub MD sucks. It took me so many hours just to get this REAME formatted correctly and it still didn't turn out the way I wanted.
+[^]: GitHub MD sucks. It took me so many hours just to get this REAME formatted correctly and it still didn't turn out the way I wanted.
