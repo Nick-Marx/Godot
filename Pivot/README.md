@@ -254,6 +254,15 @@ As I stated before, I compromised on a few features for this game. Here's a list
 v1.0.2:
 * Fixed glow effect when played through browser.
 * Adjusted audio volume to start at 25%.
+<br>
+v1.0.3:
+* Added FSMs to handle pause state and menuing
+* Moved menu music control node
+<br>
+
+## **v1.0.3 Thoughts**
+
+I used this to practice FSMs. Conclusion: not very useful for the scope of this game, but I definitely see the usefullness in something larger in scale. Next I need to figure out Hierarchal FSMs; I will need to use them in my next game.
 
 <br>
 
