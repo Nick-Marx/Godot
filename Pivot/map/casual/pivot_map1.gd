@@ -48,6 +48,7 @@ func _ready() -> void:
 	$AudioStreamPlayerSlow.stream_paused = true
 	$AudioStreamPlayerFast.play()
 	$AudioStreamPlayerFast.stream_paused = true
+	$AudioStreamPlayerMenu.play()
 	
 	build_map()
 	if dot == null:
@@ -74,7 +75,9 @@ func main_audio_control():
 	if Global.isScenePaused:
 		$AudioStreamPlayerSlow.stream_paused = true
 		$AudioStreamPlayerFast.stream_paused = true
+		$AudioStreamPlayerMenu.stream_paused = false
 	if !Global.isScenePaused:
+		$AudioStreamPlayerMenu.stream_paused = true
 		if pp.speed == pp.hiSpd:
 			$AudioStreamPlayerSlow.stream_paused = true
 			$AudioStreamPlayerFast.stream_paused = false

@@ -23,6 +23,7 @@ Global="*res://scripts/Global.gd"
 Signals="*res://scripts/Signals.gd"
 Hud="*res://map/hud/hud.tscn"
 Menu="*res://map/menu/menu.tscn"
+FsmPause="*res://map/fsm_pause.tscn"
 
 [display]
 

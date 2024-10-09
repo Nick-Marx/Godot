@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://p2t6adncdly2"]
+[gd_scene load_steps=11 format=3 uid="uid://p2t6adncdly2"]
 
-[ext_resource type="Script" path="res://map/menu/menu.gd" id="1_edflh"]
-[ext_resource type="AudioStream" uid="uid://demjxmpgj1y5a" path="res://audio/menu.mp3" id="2_rihxh"]
 [ext_resource type="Script" path="res://map/menu/ResultsMenu.gd" id="2_y32v3"]
+[ext_resource type="Script" path="res://scripts/FSM.gd" id="4_8psv6"]
+[ext_resource type="Script" path="res://map/menu/states/main_menu.gd" id="4_qju6f"]
+[ext_resource type="Script" path="res://map/menu/states/options.gd" id="5_hv24h"]
+[ext_resource type="Script" path="res://map/menu/states/results.gd" id="6_pbcyw"]
+[ext_resource type="Script" path="res://map/menu/states/how_to.gd" id="7_c0b2j"]
+[ext_resource type="Script" path="res://map/menu/states/credits.gd" id="8_io5wr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hrd3h"]
 content_margin_left = 10.0
@@ -33,7 +37,7 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[node name="menu" type="CenterContainer" node_paths=PackedStringArray("mainMenu", "creditMenu", "howToMenu", "resultsMenu", "optionMenu", "menuMusic")]
+[node name="menu" type="CenterContainer"]
 process_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -48,13 +52,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-script = ExtResource("1_edflh")
-mainMenu = NodePath("PanelContainer/MainMenu")
-creditMenu = NodePath("PanelContainer/CreditsMenu")
-howToMenu = NodePath("PanelContainer/HowToMenu")
-resultsMenu = NodePath("PanelContainer/ResultsMenu")
-optionMenu = NodePath("PanelContainer/OptionsMenu")
-menuMusic = NodePath("AudioStreamPlayer")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(0, 500)
@@ -384,6 +381,7 @@ item_count = 3
 popup/item_0/text = "100%"
 popup/item_0/id = 2
 popup/item_1/text = "120%"
+popup/item_1/id = 1
 popup/item_2/text = "150%"
 popup/item_2/id = 1
 
@@ -427,19 +425,40 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 5.0
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_rihxh")
-bus = &"Music"
+[node name="FSMMenu" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_8psv6")
+initial_state = NodePath("MainMenu")
 
-[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/NG_btn" to="." method="_on_ng_btn_pressed"]
-[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/NGS_btn" to="." method="_on_ngs_btn_pressed"]
-[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/Cont_btn" to="." method="_on_cont_btn_pressed"]
-[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/Result_btn" to="." method="_on_result_btn_pressed"]
-[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/HowTo_btn" to="." method="_on_how_to_btn_pressed"]
-[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/Optn_btn" to="." method="_on_optn_btn_pressed"]
-[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/Cred_btn" to="." method="_on_cred_btn_pressed"]
-[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/Quit_btn" to="." method="_on_quit_btn_pressed"]
-[connection signal="toggled" from="PanelContainer/OptionsMenu/GridContainer/FulScrn_btn" to="." method="_on_ful_scrn_btn_toggled"]
-[connection signal="item_selected" from="PanelContainer/OptionsMenu/GridContainer/UIRes_btn" to="." method="_on_ui_res_btn_item_selected"]
-[connection signal="value_changed" from="PanelContainer/OptionsMenu/GridContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
-[connection signal="value_changed" from="PanelContainer/OptionsMenu/GridContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[node name="MainMenu" type="Node" parent="FSMMenu" node_paths=PackedStringArray("mainMenu", "rootMenu")]
+script = ExtResource("4_qju6f")
+mainMenu = NodePath("../../PanelContainer/MainMenu")
+rootMenu = NodePath("../..")
+
+[node name="Options" type="Node" parent="FSMMenu" node_paths=PackedStringArray("optionMenu")]
+script = ExtResource("5_hv24h")
+optionMenu = NodePath("../../PanelContainer/OptionsMenu")
+
+[node name="Results" type="Node" parent="FSMMenu" node_paths=PackedStringArray("resultsMenu")]
+script = ExtResource("6_pbcyw")
+resultsMenu = NodePath("../../PanelContainer/ResultsMenu")
+
+[node name="HowTo" type="Node" parent="FSMMenu" node_paths=PackedStringArray("howToMenu")]
+script = ExtResource("7_c0b2j")
+howToMenu = NodePath("../../PanelContainer/HowToMenu")
+
+[node name="Credits" type="Node" parent="FSMMenu" node_paths=PackedStringArray("creditMenu")]
+script = ExtResource("8_io5wr")
+creditMenu = NodePath("../../PanelContainer/CreditsMenu")
+
+[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/NG_btn" to="FSMMenu/MainMenu" method="_on_ng_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/NGS_btn" to="FSMMenu/MainMenu" method="_on_ngs_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/Cont_btn" to="FSMMenu/MainMenu" method="_on_cont_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/Result_btn" to="FSMMenu/MainMenu" method="_on_result_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/HowTo_btn" to="FSMMenu/MainMenu" method="_on_how_to_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/Optn_btn" to="FSMMenu/MainMenu" method="_on_optn_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/Cred_btn" to="FSMMenu/MainMenu" method="_on_cred_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/Quit_btn" to="FSMMenu/MainMenu" method="_on_quit_btn_pressed"]
+[connection signal="toggled" from="PanelContainer/OptionsMenu/GridContainer/FulScrn_btn" to="FSMMenu/Options" method="_on_ful_scrn_btn_toggled"]
+[connection signal="item_selected" from="PanelContainer/OptionsMenu/GridContainer/UIRes_btn" to="FSMMenu/Options" method="_on_ui_res_btn_item_selected"]
+[connection signal="value_changed" from="PanelContainer/OptionsMenu/GridContainer/MusicSlider" to="FSMMenu/Options" method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="PanelContainer/OptionsMenu/GridContainer/SFXSlider" to="FSMMenu/Options" method="_on_sfx_slider_value_changed"]

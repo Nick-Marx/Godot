@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cu8ufuddbney3"]
+
+[ext_resource type="Script" path="res://scripts/FSM.gd" id="1_co40w"]
+[ext_resource type="Script" path="res://map/states/paused.gd" id="2_51reb"]
+[ext_resource type="Script" path="res://map/states/unpaused.gd" id="3_3s28b"]
+
+[node name="FSMPause" type="Node" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_co40w")
+initial_state = NodePath("Paused")
+
+[node name="Paused" type="Node" parent="."]
+script = ExtResource("2_51reb")
+
+[node name="Unpaused" type="Node" parent="."]
+script = ExtResource("3_3s28b")

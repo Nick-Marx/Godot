@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dticb7r531bu8"]
+[gd_scene load_steps=12 format=3 uid="uid://dticb7r531bu8"]
 
 [ext_resource type="Script" path="res://map/casual/pivot_map1.gd" id="1_k52wo"]
 [ext_resource type="PackedScene" uid="uid://dg4066jsu1k2a" path="res://map/dot.tscn" id="2_shkiv"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d1tsixcu6otx1" path="res://enemy/chaser.tscn" id="5_e47qi"]
 [ext_resource type="AudioStream" uid="uid://dfgt360xf3lh5" path="res://audio/gravity_turn_action.wav" id="6_ieipy"]
 [ext_resource type="AudioStream" uid="uid://b25vo5mn1xx2y" path="res://audio/gravity_turn_calm.wav" id="7_55s8l"]
+[ext_resource type="AudioStream" uid="uid://demjxmpgj1y5a" path="res://audio/menu.mp3" id="10_k01c4"]
 [ext_resource type="Script" path="res://scripts/Camera3d.gd" id="10_r4k1x"]
 
 [sub_resource type="Environment" id="Environment_s1i21"]
@@ -60,4 +61,8 @@ bus = &"Music"
 
 [node name="AudioStreamPlayerFast" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_ieipy")
+bus = &"Music"
+
+[node name="AudioStreamPlayerMenu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_k01c4")
 bus = &"Music"
