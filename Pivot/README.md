@@ -255,9 +255,10 @@ v1.0.2:
 * Fixed glow effect when played through browser.
 * Adjusted audio volume to start at 25%.
 <br>
+
 v1.0.3:
-* Added FSMs to handle pause state and menuing
-* Moved menu music control node
+* Added FSMs to handle pause state and menuing.
+* Moved menu music control node.
 <br>
 
 ## **v1.0.3 Thoughts**
