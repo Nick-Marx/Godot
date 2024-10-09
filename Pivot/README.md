@@ -267,6 +267,6 @@ I used this to practice FSMs. Conclusion: not very useful for the scope of this 
 
 <br>
 
-\*I wanted to add this here in case anyone accuses me of retcon: All of my games are intended to build off each other and exist in the same 'universe'; Pivot is intended to be a meditative/mental practice tought to students in my 'Dream' settings\*
+Note: \*I wanted to add this here in case anyone accuses me of retcon: All of my games are intended to build off each other and exist in the same 'universe'; Pivot is intended to be a meditative/mental practice tought to students in my 'Dream' settings\*
 
 Note: GitHub MD sucks. It took me so many hours just to get this REAME formatted correctly and it still didn't turn out the way I wanted.
