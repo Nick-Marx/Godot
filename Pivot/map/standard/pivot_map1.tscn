@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://dticb7r531bu8"]
 
-[ext_resource type="Script" path="res://map/casual/pivot_map1.gd" id="1_k52wo"]
+[ext_resource type="Script" path="res://map/standard/pivot_map1.gd" id="1_k52wo"]
 [ext_resource type="PackedScene" uid="uid://dg4066jsu1k2a" path="res://map/dot.tscn" id="2_shkiv"]
 [ext_resource type="PackedScene" uid="uid://cqiiihls2rwj1" path="res://enemy/bumper.tscn" id="3_k0cat"]
 [ext_resource type="PackedScene" uid="uid://bgrem4yst700k" path="res://enemy/spinner.tscn" id="4_w7j6e"]
