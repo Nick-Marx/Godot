@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://p2t6adncdly2"]
+[gd_scene load_steps=15 format=3 uid="uid://p2t6adncdly2"]
 
 [ext_resource type="Script" path="res://map/menu/ResultsMenu.gd" id="2_y32v3"]
 [ext_resource type="Script" path="res://scripts/FSM.gd" id="4_8psv6"]
@@ -21,21 +21,56 @@ corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojane"]
 bg_color = Color(1, 1, 1, 0.141176)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nt1u0"]
-content_margin_left = 16.0
-content_margin_top = 8.0
-content_margin_right = 16.0
-content_margin_bottom = 8.0
+content_margin_bottom = 50.0
 bg_color = Color(0.6, 0.6, 0.6, 0)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vpo1n"]
+content_margin_left = 70.0
+content_margin_right = 70.0
+content_margin_bottom = 50.0
+bg_color = Color(1, 1, 1, 0.141176)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kqqeg"]
+content_margin_left = 70.0
+content_margin_right = 70.0
+content_margin_bottom = 50.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r8p4c"]
+content_margin_left = 85.0
+content_margin_right = 85.0
+content_margin_bottom = 85.0
+bg_color = Color(1, 1, 1, 0.141176)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h877x"]
+content_margin_left = 85.0
+content_margin_right = 85.0
+content_margin_bottom = 85.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="menu" type="CenterContainer"]
 process_mode = 3
@@ -67,8 +102,12 @@ size_flags_stretch_ratio = 7.0
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
-theme_override_constants/outline_size = 8
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.782667, 0.280217, 0.594292, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 10
 theme_override_font_sizes/font_size = 50
 text = "Pivot"
 horizontal_alignment = 1
@@ -77,95 +116,263 @@ vertical_alignment = 1
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MainMenu"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
 [node name="GridContainer" type="GridContainer" parent="PanelContainer/MainMenu/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
 columns = 2
 
-[node name="NG_btn" type="Button" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="NG_btn" type="Button" parent="PanelContainer/MainMenu/MarginContainer/GridContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_font_sizes/font_size = 30
 theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
 theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
+
+[node name="Label" type="Label" parent="PanelContainer/MainMenu/MarginContainer/GridContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0.529412, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 30
 text = "Casual"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="NGS_btn" type="Button" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 10
+
+[node name="NGS_btn" type="Button" parent="PanelContainer/MainMenu/MarginContainer/GridContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_font_sizes/font_size = 30
-theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
-theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vpo1n")
+theme_override_styles/normal = SubResource("StyleBoxFlat_kqqeg")
+
+[node name="Label" type="Label" parent="PanelContainer/MainMenu/MarginContainer/GridContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.466667, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 30
 text = "Survival"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="Cont_btn" type="Button" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Cont_btn" type="Button" parent="PanelContainer/MainMenu/MarginContainer/GridContainer/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_font_sizes/font_size = 30
 theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
 theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
+
+[node name="Label" type="Label" parent="PanelContainer/MainMenu/MarginContainer/GridContainer/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.424762, 0.606788, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 30
 text = "Continue"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="Result_btn" type="Button" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
+[node name="MarginContainer4" type="MarginContainer" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Result_btn" type="Button" parent="PanelContainer/MainMenu/MarginContainer/GridContainer/MarginContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_font_sizes/font_size = 30
 theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
 theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
+
+[node name="Label" type="Label" parent="PanelContainer/MainMenu/MarginContainer/GridContainer/MarginContainer4"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 0.466667, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 30
 text = "Results"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="HSeparator" type="HSeparator" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-size_flags_vertical = 7
-theme_override_constants/separation = 100
+theme_override_constants/separation = 75
 
 [node name="HSeparator2" type="HSeparator" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-size_flags_vertical = 7
-theme_override_constants/separation = 100
+theme_override_constants/separation = 75
 
-[node name="HowTo_btn" type="Button" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
+[node name="MarginContainer5" type="MarginContainer" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 22
-theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
-theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
-text = "How to Play"
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="Optn_btn" type="Button" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
+[node name="HowTo_btn" type="Button" parent="PanelContainer/MainMenu/MarginContainer/GridContainer/MarginContainer5"]
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/hover = SubResource("StyleBoxFlat_r8p4c")
+theme_override_styles/normal = SubResource("StyleBoxFlat_h877x")
+
+[node name="Label" type="Label" parent="PanelContainer/MainMenu/MarginContainer/GridContainer/MarginContainer5"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.0375274, 0.275382, 0.999993, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 10
 theme_override_font_sizes/font_size = 30
+text = "How To
+   Play    "
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer6" type="MarginContainer" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Optn_btn" type="Button" parent="PanelContainer/MainMenu/MarginContainer/GridContainer/MarginContainer6"]
+layout_mode = 2
 theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
 theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
+
+[node name="Label" type="Label" parent="PanelContainer/MainMenu/MarginContainer/GridContainer/MarginContainer6"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.707967, 0.707967, 0.707967, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 30
 text = "Options"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="Cred_btn" type="Button" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
+[node name="MarginContainer7" type="MarginContainer" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Cred_btn" type="Button" parent="PanelContainer/MainMenu/MarginContainer/GridContainer/MarginContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_font_sizes/font_size = 30
 theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
 theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
+
+[node name="Label" type="Label" parent="PanelContainer/MainMenu/MarginContainer/GridContainer/MarginContainer7"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.393086, 0.393086, 0.393085, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 30
 text = "Credits"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="Quit_btn" type="Button" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
+[node name="MarginContainer8" type="MarginContainer" parent="PanelContainer/MainMenu/MarginContainer/GridContainer"]
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Quit_btn" type="Button" parent="PanelContainer/MainMenu/MarginContainer/GridContainer/MarginContainer8"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_font_sizes/font_size = 30
 theme_override_styles/hover = SubResource("StyleBoxFlat_ojane")
 theme_override_styles/normal = SubResource("StyleBoxFlat_nt1u0")
+
+[node name="Label" type="Label" parent="PanelContainer/MainMenu/MarginContainer/GridContainer/MarginContainer8"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.504074, 0.504074, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 30
 text = "Quit"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="CreditsMenu" type="VBoxContainer" parent="PanelContainer"]
 visible = false
@@ -450,14 +657,14 @@ howToMenu = NodePath("../../PanelContainer/HowToMenu")
 script = ExtResource("8_io5wr")
 creditMenu = NodePath("../../PanelContainer/CreditsMenu")
 
-[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/NG_btn" to="FSMMenu/MainMenu" method="_on_ng_btn_pressed"]
-[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/NGS_btn" to="FSMMenu/MainMenu" method="_on_ngs_btn_pressed"]
-[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/Cont_btn" to="FSMMenu/MainMenu" method="_on_cont_btn_pressed"]
-[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/Result_btn" to="FSMMenu/MainMenu" method="_on_result_btn_pressed"]
-[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/HowTo_btn" to="FSMMenu/MainMenu" method="_on_how_to_btn_pressed"]
-[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/Optn_btn" to="FSMMenu/MainMenu" method="_on_optn_btn_pressed"]
-[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/Cred_btn" to="FSMMenu/MainMenu" method="_on_cred_btn_pressed"]
-[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/Quit_btn" to="FSMMenu/MainMenu" method="_on_quit_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/MarginContainer/NG_btn" to="FSMMenu/MainMenu" method="_on_ng_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/MarginContainer2/NGS_btn" to="FSMMenu/MainMenu" method="_on_ngs_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/MarginContainer3/Cont_btn" to="FSMMenu/MainMenu" method="_on_cont_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/MarginContainer4/Result_btn" to="FSMMenu/MainMenu" method="_on_result_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/MarginContainer5/HowTo_btn" to="FSMMenu/MainMenu" method="_on_how_to_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/MarginContainer6/Optn_btn" to="FSMMenu/MainMenu" method="_on_optn_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/MarginContainer7/Cred_btn" to="FSMMenu/MainMenu" method="_on_cred_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMenu/MarginContainer/GridContainer/MarginContainer8/Quit_btn" to="FSMMenu/MainMenu" method="_on_quit_btn_pressed"]
 [connection signal="toggled" from="PanelContainer/OptionsMenu/GridContainer/FulScrn_btn" to="FSMMenu/Options" method="_on_ful_scrn_btn_toggled"]
 [connection signal="item_selected" from="PanelContainer/OptionsMenu/GridContainer/UIRes_btn" to="FSMMenu/Options" method="_on_ui_res_btn_item_selected"]
 [connection signal="value_changed" from="PanelContainer/OptionsMenu/GridContainer/MusicSlider" to="FSMMenu/Options" method="_on_music_slider_value_changed"]

@@ -27,8 +27,8 @@ FsmPause="*res://map/fsm_pause.tscn"
 
 [display]
 
-window/size/viewport_width=1080
-window/size/viewport_height=1080
+window/size/viewport_width=1000
+window/size/viewport_height=1000
 window/size/resizable=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
