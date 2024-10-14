@@ -28,6 +28,7 @@ func _on_area_3d_outer_area_entered(area):
 	if area.is_in_group("Gplayer") and !Global.isScenePaused:
 		if self.global_position == Global.player.prevDotPos:
 			return
+		$AnimationPlayer.play("bounce")
 		$AudioStreamPlayer.play()
 
 func _on_area_3d_outer_area_exited(area):

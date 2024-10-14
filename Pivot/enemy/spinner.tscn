@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgrem4yst700k"]
+[gd_scene load_steps=9 format=3 uid="uid://bgrem4yst700k"]
 
 [ext_resource type="Script" path="res://enemy/spinner.gd" id="1_sepq1"]
 [ext_resource type="AudioStream" uid="uid://d3ijx236kfux7" path="res://audio/Korg-M3R-Low-Wood-Block.wav" id="2_3a2t4"]
@@ -16,6 +16,43 @@ distance_fade_min_distance = 13.0
 [sub_resource type="CylinderMesh" id="CylinderMesh_j8gal"]
 material = SubResource("StandardMaterial3D_ddl4l")
 
+[sub_resource type="Animation" id="Animation_rhcml"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area3D/MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4ebqy"]
+resource_name = "bounce"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area3D/MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(2, 1, 2), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p75io"]
+_data = {
+"RESET": SubResource("Animation_rhcml"),
+"bounce": SubResource("Animation_4ebqy")
+}
+
 [node name="spinner" type="Node3D"]
 script = ExtResource("1_sepq1")
 
@@ -27,7 +64,7 @@ transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, 0, 0)
 shape = SubResource("CylinderShape3D_qtr5c")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
-transform = Transform3D(1, -1.42109e-14, 0, 8.88178e-16, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1, -8.88178e-16, 0, 8.88178e-16, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CylinderMesh_j8gal")
 skeleton = NodePath("")
 
@@ -35,5 +72,10 @@ skeleton = NodePath("")
 stream = ExtResource("2_3a2t4")
 volume_db = -10.0
 bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_p75io")
+}
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

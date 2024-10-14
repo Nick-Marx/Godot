@@ -17,6 +17,7 @@ func _on_area_3d_area_entered(area):
 		self.speed *= -1
 	
 	if area.is_in_group("Gplayer") and !Global.isScenePaused:
+		$AnimationPlayer.play("bounce")
 		$AudioStreamPlayer.play()
 	
 	if area.is_in_group("Gchaser") and !Global.isScenePaused:

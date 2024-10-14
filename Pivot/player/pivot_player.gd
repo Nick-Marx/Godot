@@ -165,12 +165,17 @@ func dotOuterExited(currentDot, area):
 	if area.is_in_group("Gplayer"):
 		currentDot.isActive = false
 		currentDotTouching = null
+		#currentDot.get_child(3).active = false
 	if currentDot.global_position == prevDotPos:
 		prevDotPos = self.global_position
 
 func dotInnerEntered(currentDot, area):
 	if area.is_in_group("Gplayer"):
 		currentDot.isInnerActive = true
+		#currentDot.get
+		#currentDot.get_child(3).active = true
+		#currentDot.get_child(3).play("bounce")
+		#currentDot.get_child(2).play()
 
 func dotInnerExited(currentDot, area):
 	if area.is_in_group("Gplayer"):

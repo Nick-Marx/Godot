@@ -12,7 +12,7 @@ func pause():
 func enter():
 	pause()
 
-func update(delta: float):
+func update(_delta: float):
 	if Input.is_action_just_pressed("pause"):
 		pass
 	if Global.menu.visible == false:

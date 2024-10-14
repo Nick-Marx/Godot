@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqiiihls2rwj1"]
+[gd_scene load_steps=9 format=3 uid="uid://cqiiihls2rwj1"]
 
 [ext_resource type="Script" path="res://enemy/bumper.gd" id="1_8h4dt"]
 [ext_resource type="AudioStream" uid="uid://b6cs3pmncbcus" path="res://audio/Closed-Hi-Hat-1.wav" id="2_vei8o"]
@@ -17,6 +17,43 @@ distance_fade_min_distance = 13.0
 [sub_resource type="CylinderMesh" id="CylinderMesh_02jra"]
 material = SubResource("StandardMaterial3D_6pxce")
 
+[sub_resource type="Animation" id="Animation_ps27c"]
+resource_name = "bounce"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area3D/MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.00266038, 0.10266, 0.2),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(2, 1, 2), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_upuyh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area3D/MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cubhf"]
+_data = {
+"RESET": SubResource("Animation_upuyh"),
+"bounce": SubResource("Animation_ps27c")
+}
+
 [node name="bumper" type="Node3D" groups=["Gbumper"]]
 script = ExtResource("1_8h4dt")
 
@@ -33,5 +70,10 @@ mesh = SubResource("CylinderMesh_02jra")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_vei8o")
 bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cubhf")
+}
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

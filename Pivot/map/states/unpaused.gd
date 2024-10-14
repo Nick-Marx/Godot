@@ -13,7 +13,7 @@ func unpause():
 func enter():
 	unpause()
 
-func update(delta: float):
+func update(_delta: float):
 	if Input.is_action_just_pressed("pause") or Global.menu.visible == true:
 		transitioned.emit(self, "paused")
 
