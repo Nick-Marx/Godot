@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="ADoN - T (A_Dream_of_Nights - Text)"
+run/main_scene="res://main/ui/ui.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [display]
 
 window/size/viewport_width=720
-window/size/viewport_height=1280
+window/size/viewport_height=1000
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/handheld/orientation=1
