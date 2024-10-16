@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://5fin3m0knfpd"]
+
+[ext_resource type="FontFile" uid="uid://i6vfostku4lv" path="res://themes/fonts/Mountain King.ttf" id="1_cdujs"]
+
+[resource]
+default_font = ExtResource("1_cdujs")

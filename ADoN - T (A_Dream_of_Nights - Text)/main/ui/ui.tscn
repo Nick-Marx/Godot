@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cofi0ww3t5r12"]
+[gd_scene load_steps=9 format=3 uid="uid://cofi0ww3t5r12"]
 
+[ext_resource type="Theme" uid="uid://5fin3m0knfpd" path="res://themes/default.tres" id="1_hk5fm"]
 [ext_resource type="Texture2D" uid="uid://by86sypcdnyow" path="res://icon.svg" id="1_pf8gb"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mge25"]
@@ -8,12 +9,24 @@ texture = ExtResource("1_pf8gb")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_en420"]
 texture = ExtResource("1_pf8gb")
 
-[node name="ui" type="Node2D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mq61s"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71huq"]
+bg_color = Color(0.429619, 7.70092e-07, 3.60981e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hy6q3"]
+bg_color = Color(0, 0, 0.513726, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ritw"]
+bg_color = Color(3.73013e-07, 0.256169, 3.36915e-07, 1)
+
+[node name="Ui" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Main" type="Control" parent="CanvasLayer"]
 clip_contents = true
 layout_mode = 3
 anchors_preset = 15
@@ -23,18 +36,9 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("1_hk5fm")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_pf8gb")
-region_rect = Rect2(24, 24, 80, 80)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Main"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,39 +48,29 @@ grow_vertical = 2
 theme_override_constants/separation = -1
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Main/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 theme_override_constants/separation = -1
 alignment = 1
 
-[node name="Button" type="MenuButton" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+[node name="Button" type="Button" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxTexture_mge25")
 text = "P"
-flat = false
 icon_alignment = 1
 
-[node name="PopupMenu" type="PopupMenu" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/Button"]
-theme_override_font_sizes/font_size = 30
-item_count = 3
-item_0/text = "Character"
-item_1/text = "Subordinates"
-item_1/id = 1
-item_2/text = "Reputation"
-item_2/id = 2
-
-[node name="Panel" type="Panel" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+[node name="Panel" type="Panel" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 4.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_en420")
 
-[node name="MenuButton2" type="MenuButton" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+[node name="Button2" type="Button" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 0, 0, 1)
@@ -84,54 +78,144 @@ theme_override_constants/align_to_largest_stylebox = 0
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxTexture_mge25")
 text = "O"
-flat = false
 icon_alignment = 1
-switch_on_hover = true
-item_count = 3
-popup/item_0/text = "Options"
-popup/item_0/separator = true
-popup/item_1/text = "Account"
-popup/item_1/id = 1
-popup/item_1/separator = true
-popup/item_2/text = "Quit"
-popup/item_2/id = 2
-popup/item_2/separator = true
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="CenterDisplay" type="Control" parent="CanvasLayer/Main/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="Panel" type="Panel" parent="CanvasLayer/Main/VBoxContainer/CenterDisplay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
+
+[node name="Character" type="Control" parent="CanvasLayer/Main/VBoxContainer/CenterDisplay"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="CanvasLayer/Main/VBoxContainer/CenterDisplay/Character"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 2
+theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_mq61s")
+tab_alignment = 1
+current_tab = 1
+tabs_position = 1
+clip_tabs = false
+all_tabs_in_front = true
+
+[node name="Character" type="Panel" parent="CanvasLayer/Main/VBoxContainer/CenterDisplay/Character/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_71huq")
+metadata/_tab_index = 0
+
+[node name="Subordinates" type="Panel" parent="CanvasLayer/Main/VBoxContainer/CenterDisplay/Character/TabContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hy6q3")
+metadata/_tab_index = 1
+
+[node name="Reputation" type="Panel" parent="CanvasLayer/Main/VBoxContainer/CenterDisplay/Character/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1ritw")
+metadata/_tab_index = 2
+
+[node name="Options" type="Control" parent="CanvasLayer/Main/VBoxContainer/CenterDisplay"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Gather" type="Control" parent="CanvasLayer/Main/VBoxContainer/CenterDisplay"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Train" type="Control" parent="CanvasLayer/Main/VBoxContainer/CenterDisplay"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Explore" type="Control" parent="CanvasLayer/Main/VBoxContainer/CenterDisplay"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Map" type="Control" parent="CanvasLayer/Main/VBoxContainer/CenterDisplay"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Craft" type="Control" parent="CanvasLayer/Main/VBoxContainer/CenterDisplay"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shop" type="Control" parent="CanvasLayer/Main/VBoxContainer/CenterDisplay"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Main/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 theme_override_constants/separation = -1
 alignment = 1
 
-[node name="MenuButton" type="MenuButton" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer2"]
+[node name="Button" type="Button" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxTexture_mge25")
 text = "G"
-flat = false
 icon_alignment = 1
-switch_on_hover = true
-item_count = 4
-popup/item_0/text = "Wood"
-popup/item_0/separator = true
-popup/item_1/text = "Minerals"
-popup/item_1/id = 1
-popup/item_1/separator = true
-popup/item_2/text = "Hunt"
-popup/item_2/id = 2
-popup/item_2/separator = true
-popup/item_3/text = "Plants"
-popup/item_3/id = 3
 
-[node name="MenuButton2" type="MenuButton" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer2"]
+[node name="Button2" type="Button" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 0, 0, 1)
@@ -139,20 +223,9 @@ theme_override_constants/align_to_largest_stylebox = 0
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxTexture_mge25")
 text = "T"
-flat = false
 icon_alignment = 1
-switch_on_hover = true
-item_count = 3
-popup/item_0/text = "Body"
-popup/item_0/separator = true
-popup/item_1/text = "Mind"
-popup/item_1/id = 1
-popup/item_1/separator = true
-popup/item_2/text = "skills"
-popup/item_2/id = 2
-popup/item_2/separator = true
 
-[node name="Button" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer2"]
+[node name="Button3" type="Button" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
@@ -162,7 +235,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_mge25")
 text = "Explore"
 icon_alignment = 1
 
-[node name="Button2" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer2"]
+[node name="Button4" type="Button" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
@@ -172,41 +245,20 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_mge25")
 text = "Map"
 icon_alignment = 1
 
-[node name="MenuButton3" type="MenuButton" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer2"]
+[node name="Button5" type="Button" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxTexture_mge25")
 text = "C"
-flat = false
 icon_alignment = 1
-switch_on_hover = true
-item_count = 8
-popup/item_0/text = "Chemistry"
-popup/item_0/separator = true
-popup/item_1/text = "Smithing"
-popup/item_1/id = 1
-popup/item_1/separator = true
-popup/item_2/text = "Tailor"
-popup/item_2/id = 2
-popup/item_2/separator = true
-popup/item_3/text = "Woodwork"
-popup/item_3/id = 3
-popup/item_4/text = "Cartographer"
-popup/item_4/id = 4
-popup/item_5/text = "engineering"
-popup/item_5/id = 5
-popup/item_6/text = "construct"
-popup/item_6/id = 6
-popup/item_7/text = "cooking"
-popup/item_7/id = 7
 
-[node name="Button3" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer2"]
+[node name="Button6" type="Button" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxTexture_mge25")
 text = "S"
 icon_alignment = 1
