@@ -12,7 +12,7 @@ config_version=5
 
 config/name="ADoN - T (A_Dream_of_Nights - Text)"
 run/main_scene="res://main/ui/ui.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+config/features=PackedStringArray("4.3", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [display]
@@ -26,6 +26,10 @@ window/handheld/orientation=1
 [dotnet]
 
 project/assembly_name="ADoN - T (A_Dream_of_Nights - Text)"
+
+[gui]
+
+theme/custom="res://themes/default.tres"
 
 [rendering]
 

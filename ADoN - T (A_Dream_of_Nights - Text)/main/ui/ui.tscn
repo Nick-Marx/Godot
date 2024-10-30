@@ -1,25 +1,26 @@
 [gd_scene load_steps=9 format=3 uid="uid://cofi0ww3t5r12"]
 
-[ext_resource type="Theme" uid="uid://5fin3m0knfpd" path="res://themes/default.tres" id="1_hk5fm"]
-[ext_resource type="Texture2D" uid="uid://by86sypcdnyow" path="res://icon.svg" id="1_pf8gb"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mge25"]
-texture = ExtResource("1_pf8gb")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_en420"]
-texture = ExtResource("1_pf8gb")
+[ext_resource type="Script" path="res://scripts/StateMachine.gd" id="1_1bh0b"]
+[ext_resource type="Texture2D" uid="uid://b22xhufjfu7oy" path="res://themes/textures/ui_big_pieces.png" id="1_xhebk"]
+[ext_resource type="Script" path="res://scripts/CharacterState.gd" id="2_0p5ti"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mq61s"]
 bg_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71huq"]
-bg_color = Color(0.429619, 7.70092e-07, 3.60981e-07, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80b2w"]
+bg_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hy6q3"]
-bg_color = Color(0, 0, 0.513726, 1)
+[sub_resource type="AtlasTexture" id="AtlasTexture_do4jp"]
+atlas = ExtResource("1_xhebk")
+region = Rect2(352, 416, 32, 32)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ritw"]
-bg_color = Color(3.73013e-07, 0.256169, 3.36915e-07, 1)
+[sub_resource type="AtlasTexture" id="AtlasTexture_khi0y"]
+atlas = ExtResource("1_xhebk")
+region = Rect2(400, 426, 48, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdjit"]
+atlas = ExtResource("1_xhebk")
+region = Rect2(459, 411, 42, 42)
 
 [node name="Ui" type="Node2D"]
 
@@ -36,7 +37,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("1_hk5fm")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Main"]
 layout_mode = 1
@@ -55,47 +55,37 @@ size_flags_stretch_ratio = 2.0
 theme_override_constants/separation = -1
 alignment = 1
 
-[node name="Button" type="Button" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer"]
+[node name="CharacterButton" type="Button" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = SubResource("StyleBoxTexture_mge25")
 text = "P"
 icon_alignment = 1
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 4.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_en420")
 
-[node name="Button2" type="Button" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer"]
+[node name="Panel" type="Panel" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer/PanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_constants/align_to_largest_stylebox = 0
+size_flags_stretch_ratio = 4.0
+
+[node name="OptionsButton" type="Button" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = SubResource("StyleBoxTexture_mge25")
 text = "O"
 icon_alignment = 1
 
-[node name="CenterDisplay" type="Control" parent="CanvasLayer/Main/VBoxContainer"]
+[node name="CenterDisplayFSM" type="Control" parent="CanvasLayer/Main/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 10.0
+script = ExtResource("1_1bh0b")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Main/VBoxContainer/CenterDisplay"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 10.0
-
-[node name="Character" type="Control" parent="CanvasLayer/Main/VBoxContainer/CenterDisplay"]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Main/VBoxContainer/CenterDisplayFSM"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -104,7 +94,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TabContainer" type="TabContainer" parent="CanvasLayer/Main/VBoxContainer/CenterDisplay/Character"]
+[node name="Panel" type="Panel" parent="CanvasLayer/Main/VBoxContainer/CenterDisplayFSM/PanelContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
+
+[node name="Character" type="Control" parent="CanvasLayer/Main/VBoxContainer/CenterDisplayFSM"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_0p5ti")
+
+[node name="TabContainer" type="TabContainer" parent="CanvasLayer/Main/VBoxContainer/CenterDisplayFSM/Character"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -113,30 +118,28 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 2
 theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_mq61s")
+theme_override_styles/panel = SubResource("StyleBoxFlat_80b2w")
 tab_alignment = 1
-current_tab = 1
+current_tab = 2
 tabs_position = 1
 clip_tabs = false
 all_tabs_in_front = true
 
-[node name="Character" type="Panel" parent="CanvasLayer/Main/VBoxContainer/CenterDisplay/Character/TabContainer"]
+[node name="Character" type="Panel" parent="CanvasLayer/Main/VBoxContainer/CenterDisplayFSM/Character/TabContainer"]
 visible = false
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_71huq")
 metadata/_tab_index = 0
 
-[node name="Subordinates" type="Panel" parent="CanvasLayer/Main/VBoxContainer/CenterDisplay/Character/TabContainer"]
+[node name="Subordinates" type="Panel" parent="CanvasLayer/Main/VBoxContainer/CenterDisplayFSM/Character/TabContainer"]
+visible = false
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_hy6q3")
 metadata/_tab_index = 1
 
-[node name="Reputation" type="Panel" parent="CanvasLayer/Main/VBoxContainer/CenterDisplay/Character/TabContainer"]
-visible = false
+[node name="Reputation" type="Panel" parent="CanvasLayer/Main/VBoxContainer/CenterDisplayFSM/Character/TabContainer"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_1ritw")
 metadata/_tab_index = 2
 
-[node name="Options" type="Control" parent="CanvasLayer/Main/VBoxContainer/CenterDisplay"]
+[node name="Options" type="Control" parent="CanvasLayer/Main/VBoxContainer/CenterDisplayFSM"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -145,7 +148,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Gather" type="Control" parent="CanvasLayer/Main/VBoxContainer/CenterDisplay"]
+[node name="Gather" type="Control" parent="CanvasLayer/Main/VBoxContainer/CenterDisplayFSM"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -154,7 +157,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Train" type="Control" parent="CanvasLayer/Main/VBoxContainer/CenterDisplay"]
+[node name="Train" type="Control" parent="CanvasLayer/Main/VBoxContainer/CenterDisplayFSM"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -163,7 +166,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Explore" type="Control" parent="CanvasLayer/Main/VBoxContainer/CenterDisplay"]
+[node name="Explore" type="Control" parent="CanvasLayer/Main/VBoxContainer/CenterDisplayFSM"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -172,7 +175,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Map" type="Control" parent="CanvasLayer/Main/VBoxContainer/CenterDisplay"]
+[node name="Map" type="Control" parent="CanvasLayer/Main/VBoxContainer/CenterDisplayFSM"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -181,7 +184,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Craft" type="Control" parent="CanvasLayer/Main/VBoxContainer/CenterDisplay"]
+[node name="Craft" type="Control" parent="CanvasLayer/Main/VBoxContainer/CenterDisplayFSM"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -190,7 +193,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Shop" type="Control" parent="CanvasLayer/Main/VBoxContainer/CenterDisplay"]
+[node name="Shop" type="Control" parent="CanvasLayer/Main/VBoxContainer/CenterDisplayFSM"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -206,59 +209,50 @@ size_flags_stretch_ratio = 2.0
 theme_override_constants/separation = -1
 alignment = 1
 
-[node name="Button" type="Button" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer2"]
+[node name="GatherButton" type="Button" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = SubResource("StyleBoxTexture_mge25")
-text = "G"
+icon = SubResource("AtlasTexture_do4jp")
 icon_alignment = 1
+expand_icon = true
 
-[node name="Button2" type="Button" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer2"]
+[node name="TrainingButton" type="Button" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_constants/align_to_largest_stylebox = 0
 theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = SubResource("StyleBoxTexture_mge25")
-text = "T"
+icon = SubResource("AtlasTexture_khi0y")
 icon_alignment = 1
+expand_icon = true
 
-[node name="Button3" type="Button" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer2"]
+[node name="ExploreButton" type="Button" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
-theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxTexture_mge25")
-text = "Explore"
+icon = SubResource("AtlasTexture_fdjit")
 icon_alignment = 1
+expand_icon = true
 
-[node name="Button4" type="Button" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer2"]
+[node name="MapButton" type="Button" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
-theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxTexture_mge25")
 text = "Map"
 icon_alignment = 1
 
-[node name="Button5" type="Button" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer2"]
+[node name="CraftButton" type="Button" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = SubResource("StyleBoxTexture_mge25")
 text = "C"
 icon_alignment = 1
 
-[node name="Button6" type="Button" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer2"]
+[node name="ShopButton" type="Button" parent="CanvasLayer/Main/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = SubResource("StyleBoxTexture_mge25")
 text = "S"
 icon_alignment = 1
+
+[connection signal="button_down" from="CanvasLayer/Main/VBoxContainer/HBoxContainer/CharacterButton" to="CanvasLayer/Main/VBoxContainer/CenterDisplayFSM/Character" method="_on_character_button_down"]
